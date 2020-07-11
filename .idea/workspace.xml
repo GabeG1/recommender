@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38aafa8d-67cd-4b6c-b27b-499fa9724b5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommender.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/zappy_boi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/images.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/unnamed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginInfo/LoginInfo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginInfo/LoginInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginInfo/loginBackground.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +24,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1eWG2zqu2gTMzYHss777WlTLF0a" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -41,6 +48,24 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\burlea\Personal Projects\recommender\src\Components\LoginPage\Login" />
+      <recent name="C:\Users\burlea\Personal Projects\recommender\src\Components\LoginPage\LoginInfo" />
+      <recent name="C:\Users\burlea\Personal Projects\recommender\src\Components\LoginPage" />
+      <recent name="C:\Users\burlea\Personal Projects\recommender\public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Login.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" working-dir="$PROJECT_DIR$/src/Components/LoginPage/Login">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.Login.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -51,7 +76,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594429732214</updated>
-      <workItem from="1594429735285" duration="1960000" />
+      <workItem from="1594429735285" duration="3937000" />
+      <workItem from="1594434251969" duration="15195000" />
     </task>
     <servers />
   </component>
@@ -59,6 +85,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="106" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594447585803">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="106" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594447585803" />
+    <state width="1493" height="178" key="GridCell.Tab.0.bottom" timestamp="1594447553550">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594447553550" />
+    <state width="1493" height="178" key="GridCell.Tab.0.center" timestamp="1594447553550">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594447553550" />
+    <state width="1493" height="178" key="GridCell.Tab.0.left" timestamp="1594447553550">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594447553550" />
+    <state width="1493" height="178" key="GridCell.Tab.0.right" timestamp="1594447553550">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594447553550" />
     <state x="489" y="205" key="git4idea.merge.GitPullDialog" timestamp="1594430325060">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
