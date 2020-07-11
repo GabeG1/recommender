@@ -1,15 +1,15 @@
 import React from 'react';
-import './App.css';
+import './Login.css';
 
-class App extends React.Component {
+class Login extends React.Component {
   render()
   {
   return (
-    <div className="App">
+    <div className="Login">
       <h1>Let's do this</h1>
       <h2> Im Ready</h2>
     </div>
   );
 }
 }
-export default App;
+export default Login;
