@@ -1,0 +1,19 @@
+
+body{
+    background-image: url('images.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction:row;
+    image-rendering: crisp-edges;
+    list-image-1: url('images.jpg');
+}
+
+.LoginTextBoxes {
+    display: block;
+    justify-content: center;
+}
+
+header > span {
+    font-weight: bold;
+    font-style: oblique;
+}

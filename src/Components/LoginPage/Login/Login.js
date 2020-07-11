@@ -1,15 +1,26 @@
 import React from 'react';
 import './Login.css';
+import LoginInfo from '../LoginInfo/LoginInfo'
 
 class Login extends React.Component {
-  render()
-  {
-  return (
-    <div className="Login">
-      <h1>Let's do this</h1>
-      <h2> Im Ready</h2>
-    </div>
-  );
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            username: ""
+        };
+    }
+
+    render() {
+
+        return (
+            <div className="Login">
+                <body>
+                    <LoginInfo/>
+                </body>
+            </div>
+        );
+    }
 }
-}
+
 export default Login;
