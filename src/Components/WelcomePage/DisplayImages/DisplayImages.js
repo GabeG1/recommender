@@ -1,21 +1,28 @@
 import React from 'react';
 import './DisplayImages.css';
-
+import CrossfadeImage from 'react-crossfade-image';
 export class DisplayImages extends React.Component {
 
     constructor(props) {
         super(props);
-        this.startTimer = this.startTimer.bind(this);
+        this.state = {
+            interval: null
+        }
     }
-    startTimer() {
-        console.log("here");
-        setInterval(this.props.updateImage, 3000);
+    componentWillMount() {
+
+        clearInterval(this.state.interval);
+    }
+    componentDidMount() {
+        this.setState({
+            interval: setInterval(this.props.updateImage, 3000)
+             });
     }
   render()
   {
   return (
-    <div onLoad={this.startTimer()} className="displayImages">
-      <img src={this.props.image} alt="display"/>
+    <div className="displayImages">
+      <CrossfadeImage src={this.props.image}/>
     </div>
   );
 }

@@ -29,8 +29,7 @@ class Welcome extends React.Component {
       imageDisplay: images[`image_${nextImage}`]
     });
   }
-  render()
-  {
+  render() {
   return (
     <div className="welcomeTitle">
       <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet"></link>
