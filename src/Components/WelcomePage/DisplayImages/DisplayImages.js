@@ -1,6 +1,6 @@
 import React from 'react';
 import './DisplayImages.css';
-import CrossfadeImage from 'react-crossfade-image';
+import CrossFadeImage from "react-crossfade-image";
 export class DisplayImages extends React.Component {
 
     constructor(props) {
@@ -15,14 +15,15 @@ export class DisplayImages extends React.Component {
     }
     componentDidMount() {
         this.setState({
-            interval: setInterval(this.props.updateImage, 3000)
+            interval: setInterval(this.props.updateImage, 4000)
              });
     }
   render()
   {
+  
   return (
     <div className="displayImages">
-      <CrossfadeImage src={this.props.image}/>
+      <CrossFadeImage duration={1000} src={this.props.image} alt="display"/>
     </div>
   );
 }

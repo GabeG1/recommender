@@ -41,11 +41,32 @@ header{
   font-size: 30px;
   font-family: 'Frank Ruhl Libre', serif;
   font-weight: bold;
-  margin-bottom: 15px;
 }
 
 header > span {
   color: rgb(103, 67, 222);
   font-weight: 900;
   font-size: 35px;
+}
+
+.buttonGroup {
+  position: fixed;
+  z-index: 1;
+  margin-left: 60px;
+
+}
+
+.changedRoot {
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+}
+.accountButtons {
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%) !important;
+  border-radius: 100%;
+  box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)';
+  color: rgb(243, 236, 230) !important;
+}
+header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 }

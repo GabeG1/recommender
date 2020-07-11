@@ -8,7 +8,6 @@ export class SearchBar extends React.Component {
     <div className="SearchBar">
      <form>
         <input id="searchQuery" type="text" name="query" placeholder="search something..."/>
-
      </form>
     </div>
   );
