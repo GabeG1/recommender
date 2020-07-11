@@ -33,17 +33,19 @@ h1 {
   font-family: 'Work Sans', serif;
 }
 
-h2 {
-  color: red;
-  background-color: #282c34;
-  font-family: 'Grenze Gotisch', cursive;
+header{
+  background-color: rgb(235, 224, 23);
+  color: rgb(31, 30, 33);
+  padding: 25px;
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header > span {
+  color: rgb(103, 67, 222);
+  font-weight: 900;
+  font-size: 35px;
 }

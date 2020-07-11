@@ -1,0 +1,12 @@
+
+#searchQuery {
+    padding: 10px 10px 10px 25px;
+    width: 30%;
+    text-align: left;
+    display: block;
+    font-weight: 15px;
+    border-radius: 30px;
+    outline: rgb(3, 22, 36);
+    border: 1.5px rgb(50, 121, 168) solid;
+    margin: 20px auto;
+}
