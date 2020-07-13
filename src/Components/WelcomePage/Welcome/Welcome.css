@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -6,6 +8,7 @@
   height: 40vmin;
   pointer-events: none;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -23,7 +26,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
@@ -33,40 +35,51 @@ h1 {
   font-family: 'Work Sans', serif;
 }
 
-header{
-  background-color: rgb(235, 224, 23);
-  color: rgb(31, 30, 33);
-  padding: 25px;
-  text-align: center;
+.title {
+  padding-left: 45px;
+  padding-top: 20px;
+  z-index: 2;
+  color: rgb(255, 255, 255);
   font-size: 30px;
   font-family: 'Frank Ruhl Libre', serif;
   font-weight: bold;
 }
-
-header > span {
+.title #inlineTitleDesign {
   color: rgb(103, 67, 222);
   font-weight: 900;
   font-size: 35px;
 }
 
-.buttonGroup {
-  position: fixed;
-  z-index: 1;
-  margin-left: 60px;
 
+.images {
+  margin-top: -150px;
 }
 
-.changedRoot {
-  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+
+.loginButton {
+  margin-right: 50px !important;
+  z-index: 2;
+  padding: 10px 20px !important;
+  margin-top: 20px !important;
+  text-shadow: 2px 2px 5px #b425a1 !important;
+  color: rgb(211, 15, 15) !important;
+  box-shadow: green !important;
+  font-weight: 600 !important;
+  border-radius: 3px !important;
+  background-color: white !important;
 }
-.accountButtons {
-  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%) !important;
-  border-radius: 100%;
-  box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)';
-  color: rgb(243, 236, 230) !important;
-}
-header {
-  position: fixed;
-  z-index: 1;
-  width: 100%;
+.signupButton {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  display: block  !important;
+  text-align: center  !important;
+  margin: 0 auto  !important;
+  color: white !important;
+  background: linear-gradient(217deg, rgba(243, 111, 203, 0.8), rgba(255,0,0,0) 70.71%),
+  linear-gradient(127deg, rgb(231, 210, 20), rgba(19, 85, 102, 0) 70.71%),
+  linear-gradient(336deg, rgba(153, 26, 26, 0.8), rgba(17, 117, 121, 0) 70.71%);
+  padding: 8px 100px !important;
+  z-index: 3  !important;
+  box-shadow: green !important;
+  border-radius: 30px !important;
 }
