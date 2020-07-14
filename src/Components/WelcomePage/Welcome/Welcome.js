@@ -5,8 +5,9 @@ import {DisplayImages} from '../DisplayImages/DisplayImages';
 import Grid from "@material-ui/core/Grid";
 import * as Styles from './WelcomeStyles.js';
 import Login from '../../LoginPage/Login/Login';
+import Signup from '../../SignupPage/Signup/Signup';
 import {LoginButton} from '../../LoginPage/LoginButton/LoginButton';
-
+import {SignupButton} from '../../SignupPage/SignupButton/SignupButton';
 
 const images = {
   image_1: "https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -21,23 +22,38 @@ export class Welcome extends React.Component {
     super(props);
     this.state = {
       imageDisplay: images.image_1,
-      displayLoginScreen: false
+      displayLoginScreen: false,
+      displaySignupScreen:  false
     }
     this.updateImage = this.updateImage.bind(this);
     this.displayLoginScreen = this.displayLoginScreen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleLoginClose = this.handleLoginClose.bind(this);
+    this.displaySignupScreen = this.displaySignupScreen.bind(this);
+    this.handleSignupClose = this.handleSignupClose.bind(this);
   }
   displayLoginScreen() {
     this.setState({
       displayLoginScreen: true
     })
   }
-  handleClose() {
+
+  displaySignupScreen() {
+    this.setState({
+      displaySignupScreen: true
+    })
+  }
+
+  handleLoginClose() {
     this.setState({
       displayLoginScreen: false
     })
   }
 
+  handleSignupClose() {
+    this.setState({
+      displaySignupScreen: false
+    })
+  }
   updateImage() {
     let curImageKey = Object.keys(images).find(key =>{
       return images[key] === this.state.imageDisplay});
@@ -68,12 +84,14 @@ export class Welcome extends React.Component {
     
      </DisplayImages>
      </section>
-     <Styles.SignupButton
-        onClick={e => e.preventDefault()}
+     <section className="signupButton">
+     <SignupButton
+        onClick={this.displaySignupScreen}
         size="small">
-                 Signup
-               </Styles.SignupButton>
-      {this.state.displayLoginScreen ? <Login onClose={this.handleClose}/> : null }
+        </SignupButton>
+       </section>
+      {this.state.displayLoginScreen ? <Login onClose={this.handleLoginClose}/> : null }
+      {this.state.displaySignupScreen ? <Signup onClose={this.handleSignupClose}/> : null }
       </div>
   );
 }
