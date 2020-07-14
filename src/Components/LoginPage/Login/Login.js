@@ -7,7 +7,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button'
 import IconButton from "@material-ui/core/IconButton";
-import clsx from "clsx";
 import './Login.css'
 import * as Styles from './LoginStyles.js'
 
@@ -63,23 +62,16 @@ const useStyles = makeStyles((theme) => ({
                 </header>
          <TextField
         id="username"
-        label="username"
         placeholder="Enter username"
         variant="outlined"
-        InputLabelProps={{
-          shrink: true,
-        }}/>
+        />
 
         <TextField
         id="password"
-        label="password"
         type="password"
         placeholder="Enter password"
         variant="outlined"
         filled="true"
-        InputLabelProps={{
-          shrink: true,
-        }}
         InputProps={{
         endAdornment: (
         <InputAdornment position="end">
@@ -93,16 +85,15 @@ const useStyles = makeStyles((theme) => ({
     </InputAdornment>
     )
     }} />
-            </Styles.FormControlLogin>
             <Styles.SubmitButtonStyled onClick={()=>{}}>
                 Submit
             </Styles.SubmitButtonStyled>
+        </Styles.FormControlLogin>
         </div>
     );
 
     return (
         <div>
-             {console.log('nowHere')};
             <Modal
                 open={true}
                 onClose={handleClose}
