@@ -5,41 +5,31 @@ import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
+import Button from '@material-ui/core/Button'
 import IconButton from "@material-ui/core/IconButton";
 import clsx from "clsx";
+import './Login.css'
+import * as Styles from './LoginStyles.js'
 
 
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+      display: 'block',
+      margin: '5% auto',
+      width: 300,
+      height: 400,
+      backgroundColor: theme.palette.background.paper,
+      borderRadius: '20px',
+     // background: 'linear-gradient(to right, #9796f0, #fbc7d4)',
+     // boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+      outline: 'none'
     },
-}));
+  }));
 
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
-
-export default function Login() {
+  export default function Login(props) {
     const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
-    const [modalStyle] = React.useState(getModalStyle);
-    const [open, setOpen] = React.useState(false);
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
@@ -49,12 +39,8 @@ export default function Login() {
     });
 
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
     const handleClose = () => {
-        setOpen(false);
+        props.onClose();
     };
 
     const handleChange = (prop) => (event) => {
@@ -70,45 +56,59 @@ export default function Login() {
     };
 
     const body = (
-        <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Username</h2>
-            <TextField/>
-            <FormControl>
-                <InputLabel htmlFor="standard-adornment-password" >Password</InputLabel>
-                <Input
-                    id="standard-adornment-password"
-                    type={values.showPassword ? 'text' : 'password'}
-                    value={values.password}
-                    onChange={handleChange('password')}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                            >
-                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                        </InputAdornment>
-                    }
-                />
-            </FormControl>
-            <button type="button" onClick={handleOpen}>
+        <div className={classes.paper}>
+            <Styles.FormControlLogin>
+                <header className="LoginTitle">
+                Login
+                </header>
+         <TextField
+        id="username"
+        label="username"
+        placeholder="Enter username"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}/>
+
+        <TextField
+        id="password"
+        label="password"
+        type="password"
+        placeholder="Enter password"
+        variant="outlined"
+        filled="true"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        InputProps={{
+        endAdornment: (
+        <InputAdornment position="end">
+        <IconButton
+            aria-label="toggle password visibility"
+            onClick={handleClickShowPassword}
+            onMouseDown={handleMouseDownPassword}
+        >
+        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+        </IconButton>
+    </InputAdornment>
+    )
+    }} />
+            </Styles.FormControlLogin>
+            <Styles.SubmitButtonStyled onClick={()=>{}}>
                 Submit
-            </button>
+            </Styles.SubmitButtonStyled>
         </div>
     );
 
     return (
         <div>
-            <button type="button" onClick={handleOpen}>
-                Submit
-            </button>
+             {console.log('nowHere')};
             <Modal
-                open={open}
+                open={true}
                 onClose={handleClose}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
+                border={0}
             >
                 {body}
             </Modal>
