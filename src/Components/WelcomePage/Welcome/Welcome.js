@@ -2,10 +2,10 @@
 import React from 'react';
 import './Welcome.css';
 import {DisplayImages} from '../DisplayImages/DisplayImages';
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-
+import * as Styles from './WelcomeStyles.js';
+import Login from '../../LoginPage/Login/Login';
+import {LoginButton} from '../../LoginPage/LoginButton/LoginButton';
 
 
 const images = {
@@ -16,14 +16,26 @@ const images = {
   image_5: "https://images.pexels.com/photos/1652353/pexels-photo-1652353.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
 }
 
-const useStyles = makeStyles();
-class Welcome extends React.Component {
+export class Welcome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageDisplay: images.image_1
+      imageDisplay: images.image_1,
+      displayLoginScreen: false
     }
     this.updateImage = this.updateImage.bind(this);
+    this.displayLoginScreen = this.displayLoginScreen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+  displayLoginScreen() {
+    this.setState({
+      displayLoginScreen: true
+    })
+  }
+  handleClose() {
+    this.setState({
+      displayLoginScreen: false
+    })
   }
 
   updateImage() {
@@ -35,12 +47,10 @@ class Welcome extends React.Component {
       imageDisplay: images[`image_${nextImage}`]
     });
   }
+
   render() {
-    const classes = this.props.classes;
-   //<CustomLinearProgress variant="determinate" color="primary" value={30}/>
   return (
     <div className="welcomeTitle">
-      <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet"></link>
     <header>
       <Grid container direction="row"
   justify="space-between"
@@ -48,15 +58,9 @@ class Welcome extends React.Component {
         <Grid item className="title">
       recommen<span id="inlineTitleDesign">derrr</span>
         </Grid>
-            <Grid item className="signupButtons">
-               <Button
-                 className='loginButton'
-                 onClick={e => e.preventDefault()}
-                 color="white"
-               >
-                Login
-               </Button>
-               </Grid>
+            <Styles.LoginGridItem item="true">
+            <LoginButton onClick={this.displayLoginScreen}/>
+               </Styles.LoginGridItem>
                </Grid>
                </header>
           <section className="images">
@@ -64,26 +68,16 @@ class Welcome extends React.Component {
     
      </DisplayImages>
      </section>
-     <Button
-                 className='signupButton'
-                 onClick={e => e.preventDefault()}
-                 round
-                 size="small"
-                 color="danger"
-               >
+     <Styles.SignupButton
+        onClick={e => e.preventDefault()}
+        size="small">
                  Signup
-               </Button>
-  
+               </Styles.SignupButton>
+      {this.state.displayLoginScreen ? <Login onClose={this.handleClose}/> : null }
       </div>
   );
 }
 
 }
 
-export default () => {
-  const classes = useStyles();
-  return (
-      <Welcome classes={classes} />
-  )
-}
 
