@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
 
         <TextField
         id="password"
-        type="password"
+        type={values.showPassword ? 'text' : 'password'}
         placeholder="Password"
         variant="outlined"
         filled="true"
