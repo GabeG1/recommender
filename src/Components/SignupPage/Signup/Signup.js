@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
                 <header className="SignupTitle">
                 Signup
                 </header>
-            <Grid item>
+    <Grid item>
                 <TextField
         id="firstName"
         placeholder="First Name"
