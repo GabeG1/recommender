@@ -21,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
        // maxWidth: '50%',
        // maxHeight:  '50%',   
     },
-    icon: {
-      color: 'rgba(255, 255, 255, 0.54)',
-    },
   }));
 
 export function VideoGameList(props) {

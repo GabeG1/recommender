@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 
-export const SearchButtonStyled = withStyles((theme) => ({
+export const SearchBarStyled = withStyles((theme) => ({
     root: {  
         '& .MuiInput-root': {
             width: 300,
