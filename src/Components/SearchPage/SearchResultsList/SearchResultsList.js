@@ -1,30 +1,25 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList'
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import {VideoGame} from '../VideoGame/VideoGame'
-import {Movie} from '../Movie/Movie'
-import { SearchResults } from '../SearchResults/SearchResults';
+import {VideoGame} from '../ResultsCategories/VideoGame/VideoGame'
+import {Movie} from '../ResultsCategories/Movie/Movie'
 import './SearchResultsList.css'
-import { TextareaAutosize } from '@material-ui/core';
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
     root: {
       [breakpoints.up('md')]: {
           display: 'flex',
-      //  justifyContent: 'center',
-        //boxSizing: 'border-box',
         overflow: 'auto',
         flexGrow: 1,
         alignContent: 'center',
-        //margin: '100%',
-    //    / width: '100%',
-        //maxWidth: 600,
-       //paddingLeft: 900
+        alignItems: 'center',
+      maxWidth: '95%',
+        margin: '0 auto',
+       padding: 10,
       },
     },
   }));
+
 
 export function SearchResultsList(props) {
     const gridStyles = useGridStyles();
@@ -39,7 +34,7 @@ export function SearchResultsList(props) {
             case 'movie':
             return  <Movie movie={result}/>
             default: 
-            console.log('nothing')
+            console.log('nothing') 
             }
         }) 
             

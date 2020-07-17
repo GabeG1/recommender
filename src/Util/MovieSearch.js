@@ -1,9 +1,9 @@
 const API_KEY = '5a8ae4f1';
 const URL = "http://omdbapi.com/?type=movie&apikey=";
-
+const CORS = "https://cors-anywhere.herokuapp.com/";
 const Movies = {
     searchVideoGames: async function (query) {
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/${URL}${API_KEY}&s=${query}`, {
+    const response = await fetch(`${URL}${API_KEY}&s=${query}`, {
         headers: {
           
         }

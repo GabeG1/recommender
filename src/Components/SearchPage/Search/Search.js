@@ -1,11 +1,10 @@
 import React from 'react';
 import './Search.css'
-import * as Styles from './SearchStyles.js';
-import TextField from '@material-ui/core/TextField';
 import { SearchBar } from '../SearchBar/SearchBar';
-import { SearchResults } from '../SearchResults/SearchResults';
+import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 import VideoGames from '../../../Util/VideoGameSearch';
 import Movies from '../../../Util/MovieSearch';
+
 export class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -48,7 +47,7 @@ export class Search extends React.Component {
             </header>
             <section  className="searchBar">
             <SearchBar search={this.search}/>
-            <SearchResults category={this.state.category} results={this.state.searchResults}/>
+            <SearchResultsList category={this.state.category} results={this.state.searchResults}/>
             </section>
         </div>
         )

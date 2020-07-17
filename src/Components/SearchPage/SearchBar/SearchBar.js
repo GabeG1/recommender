@@ -1,17 +1,12 @@
 import React from 'react';
 import './SearchBar.css';
-import * as Styles from './SearchBarStyles';
 import { makeStyles } from '@material-ui/core/styles';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Search from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
-import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import { blue, red } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,16 +19,16 @@ const useStyles = makeStyles((theme) => ({
   //alignContent: 'center',
  },
  select: {
-  //marginLeft: '200px',
-  display: 'flex',
-  //justifyContent: 'center',
-  width: 150,
-  padding: 20,
-  justifyContent: 'center',
-  textAlign: 'center',
-  //color: 'blue',
-  backgroundColor: 'rgba(212, 228, 235, 0.911)',
+  backgroundColor: 'rgba(212, 228, 235, 0.7)',
   borderRadius: 5,
+  textAlign: 'center',
+  padding: '15px 20px',
+  color: 'rgba(58, 173, 194, 0.925)',
+ justifyContent: 'center',
+ '&:focus': {
+  backgroundColor: 'rgba(212, 228, 235, 1)',
+  borderRadius: 5,
+},
  },
   paper: {
     padding: '2px 4px',
@@ -55,18 +50,13 @@ const useStyles = makeStyles((theme) => ({
     margin: 4,
   },
   nativeInput: {
-    //padding: 200,
-    backgroundColor: 'rgba(212, 228, 235, 0.911)',
-    borderRadius: 5,
-    textAlign: 'center',
-   // marginRight: 20,
-    //width: 200,
-    padding: '15px 20px',
-    color: 'rgba(58, 173, 194, 0.925)',
-   justifyContent: 'center',
+   // backgroundColor: 'red !important',
+    '&:focus': {
+    backgroundColor: 'red',
+    }
   },
   iconOpen: {
-    color: red,
+    color: 'red',
   },
   dropDown: {
     backgroundColor: 'rgba(212, 228, 235, 0.911)',
@@ -97,18 +87,13 @@ const categorySelection = (event) => {
     <div  className={classes.root}>
     <Select
     classes= {{
-      root: classes.nativeInput,
-      //select: classes.select,
+      select: classes.select,
       nativeInput: classes.nativeInput,
-     // icon: classes.dropDown,
-     // iconOpen: classes.iconOpen,
+      selectMenu: classes.nativeInput
     }}
           native
-          //className={classes.select}
-          //defaultValue='video game'
           value={category}
           disableUnderline={true} 
-          //variant='outlined'
           onChange={categorySelection}
           label="Category"
         >
