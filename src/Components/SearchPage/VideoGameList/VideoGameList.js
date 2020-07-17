@@ -1,37 +1,37 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList'
+import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
 import {VideoGame} from '../VideoGame/VideoGame'
 import { SearchResults } from '../SearchResults/SearchResults';
 import './VideoGameList.css'
 import { TextareaAutosize } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useGridStyles = makeStyles(({ breakpoints }) => ({
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        flexGrow: 1,
-    },
-    gridList: {   
-        display: 'flex',
-        height: '500px',
-        width: '800px',
-       // maxWidth: '50%',
-       // maxHeight:  '50%',   
+      [breakpoints.up('md')]: {
+          display: 'flex',
+        justifyContent: 'center',
+        //boxSizing: 'border-box',
+        overflow: 'scroll',
+        
+        //width: '100%',
+        //maxWidth: 600,
+       //paddingLeft: 900
+      },
     },
   }));
 
 export function VideoGameList(props) {
-    const classes = useStyles();
+    const gridStyles = useGridStyles();
         return (
-        <div className={classes.root}>
-            <GridList cellHeight={180} className={classes.gridList}>
+    <div styles={{flexGrow: 1}}>
+      <Grid classes={gridStyles} container spacing={3} wrap={'nowrap'}>
             {props.videoGames.map(game => {
-            return  <VideoGame game ={game} />; }) 
+            return  <VideoGame game={game} />; }) 
             }
-            </GridList>
-        </div>
+            </Grid>
+     </div>
         );
       }

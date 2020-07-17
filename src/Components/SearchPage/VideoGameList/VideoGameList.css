@@ -1,0 +1,10 @@
+.gridDiv::-webkit-scrollbar{
+    display: none !important;
+}
+.gridDiv{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll; 
+    justify-content: space-around;
+    flex-grow: 1;
+}

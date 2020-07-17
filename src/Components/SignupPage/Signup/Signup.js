@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
      // background: 'linear-gradient(to right, #9796f0, #fbc7d4)',
      // boxShadow: theme.shadows[5],
        maxHeight: 400, 
-       overflow: 'auto',
+       overflow: 'hidden',
       padding: theme.spacing(2, 1, 3),
       outline: 'none'
     },
