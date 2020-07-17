@@ -6,7 +6,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
-import './VideoGame.css';
 import Color from 'color';
 import NoSsr from '@material-ui/core/NoSsr';
 import Grid from '@material-ui/core/Grid';
@@ -119,16 +118,16 @@ const CustomCard = ({ classes, image, title, subtitle }) => {
 //props.game.name
 //props.game.description
 
- export function VideoGame(props) {
+ export function Movie(props) {
   const styles = useStyles({ color: randomColor() });
 
         return (    
           <CustomCard
           classes={styles}
-          title={props.game.name}
-          subtitle={props.game.description}
+          title={props.movie.title}
+          subtitle={props.movie.year}
           image={
-            props.game.image
+            props.movie.image
           }
             />  
         )  

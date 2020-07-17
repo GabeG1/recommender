@@ -1,12 +1,13 @@
 import React from 'react';
-import { VideoGameList } from '../VideoGameList/VideoGameList';
+import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 
 
 export class SearchResults extends React.Component {
     render() {
         return (
         <div>
-         <VideoGameList videoGames={this.props.results}></VideoGameList>   
+         <SearchResultsList category={this.props.category} 
+         results={this.props.results}></SearchResultsList>   
         </div>
         )
       } 
