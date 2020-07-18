@@ -6,7 +6,7 @@ export const LoginGridItem = withStyles((theme) => ({
     root: {
       
         marginRight: '50px',
-        zIndex: '8',
+        zIndex: '1',
         marginTop: '20px'
     }
 }))(Grid);

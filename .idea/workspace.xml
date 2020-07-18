@@ -4,8 +4,9 @@
     <list default="true" id="38aafa8d-67cd-4b6c-b27b-499fa9724b5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Example/material-kit-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Example/material-kit-react/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButtonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButtonStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/WelcomeStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/WelcomeStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
