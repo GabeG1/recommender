@@ -8,20 +8,3 @@
      margin-top: 15px;
      color: rgb(250, 31, 31);
 }
-
-::-webkit-scrollbar {
-    width: 15px;
-  }
-   
-  ::-webkit-scrollbar-track {
-    border-radius: 30px;
-  }
-   
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 137, 137);
-    border-radius: 30px;
-  }
-  /* Handle */
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(247, 92, 92);
-  }

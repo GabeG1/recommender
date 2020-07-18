@@ -56,5 +56,10 @@ h1 {
   z-index: 3;
 }
 .linkToLogin {
-  z-index: 5,
+  z-index: 5;
+  text-decoration: none;
+}
+
+.linkToSignup {
+  text-decoration: none;
 }

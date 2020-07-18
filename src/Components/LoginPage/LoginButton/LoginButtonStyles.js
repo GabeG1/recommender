@@ -11,8 +11,6 @@ export const LoginButtonStyled = withStyles((theme) => ({
             fontWeight: '600',
             borderRadius: '3px',
             backgroundColor: 'white',
-            zIndex: '2'
-
-
-    }
+    
+}
 }))(Button);
