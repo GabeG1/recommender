@@ -10,7 +10,7 @@ export const LoginButtonStyled = withStyles((theme) => ({
             boxShadow: 'green',
             fontWeight: '600',
             borderRadius: '3px',
-            backgroundColor: 'white'
+            backgroundColor: 'white',
     
 }
 }))(Button);

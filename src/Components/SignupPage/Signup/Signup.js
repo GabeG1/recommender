@@ -5,7 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Grid from '@material-ui/core/Grid'
+import Grid from '@material-ui/core/Grid';
+import { useHistory } from 'react-router-dom';
 import IconButton from "@material-ui/core/IconButton";
 import './Signup.css'
 import * as Styles from './SignupStyles.js'
@@ -19,16 +20,30 @@ const useStyles = makeStyles((theme) => ({
         width: 450,
         backgroundColor: theme.palette.background.paper,
         borderRadius: '10px',
-        // background: 'linear-gradient(to right, #9796f0, #fbc7d4)',
-        // boxShadow: theme.shadows[5],
         maxHeight: 400,
-        overflow: 'hidden',
+        overflow: 'auto',
         padding: theme.spacing(2, 1, 3),
-        outline: 'none'
+        outline: 'none',
+        '&::-webkit-scrollbar': {
+            width: 15,
+          },     
+          '&::-webkit-scrollbar-track': {
+            borderRadius: 30,
+          },
+           
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgb(255, 137, 137)',
+            borderRadius: 30,
+          },
+          /* Handle */
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: 'rgb(247, 92, 92)',
+          }
     },
 }));
 
 export default function Login(props) {
+    const history = useHistory();
     const classes = useStyles();
     const [values, setValues] = React.useState({
         amount: '',
@@ -40,7 +55,7 @@ export default function Login(props) {
 
 
     const handleClose = () => {
-        props.onClose();
+        history.goBack();
     };
 
 
@@ -105,7 +120,7 @@ export default function Login(props) {
                     variant="outlined"
                 />
 
-                <Styles.SubmitButtonStyled onClick={() => { }}>
+                <Styles.SubmitButtonStyled>
                     Submit
             </Styles.SubmitButtonStyled>
             </Styles.FormControlSignup>

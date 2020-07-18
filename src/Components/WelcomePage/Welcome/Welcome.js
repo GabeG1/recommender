@@ -29,37 +29,11 @@ export class Welcome extends React.Component {
     super(props);
     this.state = {
       imageDisplay: images.image_1,
-      displayLoginScreen: false,
-      displaySignupScreen: false
     }
     this.updateImage = this.updateImage.bind(this);
-    this.handleLoginClose = this.handleLoginClose.bind(this);
-    this.displaySignupScreen = this.displaySignupScreen.bind(this);
-    this.handleSignupClose = this.handleSignupClose.bind(this);
-  }
-  displayLoginScreen() {
-    this.setState({
-      displayLoginScreen: true
-    })
   }
 
-  displaySignupScreen() {
-    this.setState({
-      displaySignupScreen: true
-    })
-  }
 
-  handleLoginClose() {
-    this.setState({
-      displayLoginScreen: false
-    })
-  }
-
-  handleSignupClose() {
-    this.setState({
-      displaySignupScreen: false
-    })
-  }
   updateImage() {
     let curImageKey = Object.keys(images).find(key => {
       return images[key] === this.state.imageDisplay
@@ -100,15 +74,22 @@ export class Welcome extends React.Component {
         </header>
         <section className="images">
           <DisplayImages updateImage={this.updateImage} image={this.state.imageDisplay}>
-    
-     </DisplayImages>
+
+          </DisplayImages>
         </section>
-        <section className="signupButton">
-          <SignupButton
-            onClick={this.displaySignupScreen}
-            size="small">
-          </SignupButton>
-        </section>
+        <Router>
+          <Link to="/signup" className="linkToSignup">
+            <section className="signupButton">
+              <SignupButton size="small">
+              </SignupButton>
+            </section>
+          </Link>
+          <Switch>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+          </Switch>
+        </Router>
       </div>
     );
   }

@@ -6,6 +6,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from "@material-ui/core/IconButton";
+import { useHistory } from 'react-router-dom';
 import './Login.css'
 import * as Styles from './LoginStyles.js'
 
@@ -19,14 +20,13 @@ const useStyles = makeStyles((theme) => ({
         height: 400,
         backgroundColor: theme.palette.background.paper,
         borderRadius: '20px',
-        // background: 'linear-gradient(to right, #9796f0, #fbc7d4)',
-        // boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
         outline: 'none'
     },
 }));
 
 export default function Login(props) {
+    const history = useHistory();
     const classes = useStyles();
     const [values, setValues] = React.useState({
         amount: '',
@@ -38,7 +38,8 @@ export default function Login(props) {
 
 
     const handleClose = () => {
-        props.onClose();
+
+        history.goBack();
     };
 
     const handleClickShowPassword = () => {
@@ -80,7 +81,7 @@ export default function Login(props) {
                             </InputAdornment>
                         )
                     }} />
-                <Styles.SubmitButtonStyled onClick={() => { }}>
+                <Styles.SubmitButtonStyled onClick={handleClose}>
                     Submit
             </Styles.SubmitButtonStyled>
             </Styles.FormControlLogin>
