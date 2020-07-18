@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import {VideoGame} from '../ResultsCategories/VideoGame/VideoGame'
 import {Movie} from '../ResultsCategories/Movie/Movie'
+import {Song} from '../ResultsCategories/Song/Song'
 import './SearchResultsList.css'
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
@@ -30,11 +31,13 @@ export function SearchResultsList(props) {
             {props.results.map(result => {
             switch(props.category) {
                 case 'video game':
-            return  <VideoGame game={result} />
-            case 'movie':
-            return  <Movie movie={result}/>
-            default: 
-            console.log('nothing') 
+                  return  <VideoGame game={result} />
+                case 'movie':
+                  return  <Movie movie={result}/>
+                case 'song':
+                  return  <Song song={result}/> 
+                default: 
+                  console.log('nothing') 
             }
         }) 
             

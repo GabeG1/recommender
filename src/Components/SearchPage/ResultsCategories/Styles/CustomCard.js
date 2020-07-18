@@ -92,6 +92,7 @@ const randomColor = () => {
     },
     tooltip: {
       marginTop: 20,
+      fontSize: 20,
       display: 'flex',
       justifyContent: 'flex-end',
     },
@@ -110,7 +111,8 @@ export const CustomCard = ({ image, title, subtitle }) => {
             </Typography>
             <div className={classes.tooltip}>
             <Tooltip  title={subtitle} aria-label="description"
-            classes={{popper: classes.popper, 
+           placement="top"
+           classes={{popper: classes.popper, 
                       tooltip: classes.tooltip
             }}>
                   <IconButton aria-label={`info about `} className={classes.icon}>

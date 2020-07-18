@@ -10,33 +10,34 @@ import SearchIcon from '@material-ui/icons/Search';
 
 
 const useStyles = makeStyles((theme) => ({
- root: {
-  display: 'flex',
-  //padding: 5,
- // margin: 5,
-  justifyContent: 'center',
-  //alignItems: 'center',
-  //alignContent: 'center',
- },
  select: {
   backgroundColor: 'rgba(212, 228, 235, 0.7)',
   borderRadius: 5,
+  width: 100,
+  padding: '10px 15px',
+  height: 35,
+  display: 'block',
   textAlign: 'center',
-  padding: '15px 20px',
+  position: 'static',
+  '&.MuiInput-input': {
+    margin: '0 auto',
+    display: 'inline-block',
+    textAlign: 'center',
+  },
+  margin: '0 auto',
+  //padding: '15px 20px',
   color: 'rgba(58, 173, 194, 0.925)',
- justifyContent: 'center',
  '&:focus': {
   backgroundColor: 'rgba(212, 228, 235, 1)',
   borderRadius: 5,
 },
+
  },
   paper: {
     padding: '2px 4px',
     display: 'inline-flex',
-    //alignItems: 'center',
     width: 400,
     marginLeft: 20,
-   // margin: '0 auto',
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -49,18 +50,14 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     margin: 4,
   },
-  nativeInput: {
-   // backgroundColor: 'red !important',
-    '&:focus': {
-    backgroundColor: 'red',
-    }
-  },
   iconOpen: {
     color: 'red',
   },
-  dropDown: {
-    backgroundColor: 'rgba(212, 228, 235, 0.911)',
-  }
+  divContainer: {
+    backgroundColor: 'black',
+    display: 'block',
+    textAlign: 'center'
+  },
 }));
 
 
@@ -84,21 +81,23 @@ const categorySelection = (event) => {
 };
 
   return (
-    <div  className={classes.root}>
+    <div>
     <Select
     classes= {{
       select: classes.select,
-      nativeInput: classes.nativeInput,
-      selectMenu: classes.nativeInput
     }}
+    SelectDisplayProps={{className: 
+      classes.divContainer}}
           native
           value={category}
           disableUnderline={true} 
           onChange={categorySelection}
           label="Category"
         >
+        
           <option value={'video game'}>Video Game</option>
           <option value={'movie'}>Movie</option>
+          <option value={'song'}>Song</option>
         </Select>
 
     <Paper className={classes.paper} 

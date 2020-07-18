@@ -4,6 +4,7 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 import VideoGames from '../../../Util/VideoGameSearch';
 import Movies from '../../../Util/MovieSearch';
+import Songs from '../../../Util/SongFinder';
 
 export class Search extends React.Component {
     constructor(props) {
@@ -27,12 +28,20 @@ export class Search extends React.Component {
     });
                 break;
             case 'movie':
-                Movies.searchVideoGames(searchTerm).then(searchResults => {
+                Movies.searchMovies(searchTerm).then(searchResults => {
                     this.setState({
                     category: category,
                       searchResults: searchResults
                     });
-            });
+                });
+                break;
+            case 'song':
+                Songs.searchSongs(searchTerm).then(searchResults => {
+                    this.setState({
+                        category: category,
+                          searchResults: searchResults
+                        });
+                });
             break;
             default:
             console.log('no matches')
