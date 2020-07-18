@@ -31,20 +31,17 @@
 }
 
 h1 {
-  color: hsl(66,26%,30%);
-  font-family: 'Work Sans', serif;
+  padding-left: 30px;
 }
 
-.title {
-  padding-left: 45px;
-  padding-top: 20px;
+.welcomeTitle {
   z-index: 2;
-  color: rgb(255, 255, 255);
+  color: #35c9bccf;
   font-size: 30px;
   font-family: 'Frank Ruhl Libre', serif;
   font-weight: bold;
 }
-.title #inlineTitleDesign {
+.welcomeTitle #inlineTitleDesign {
   color: rgb(103, 67, 222);
   font-weight: 900;
   font-size: 35px;
@@ -57,4 +54,7 @@ h1 {
 
 .signupButton {
   z-index: 3;
+}
+.linkToLogin {
+  z-index: 5,
 }

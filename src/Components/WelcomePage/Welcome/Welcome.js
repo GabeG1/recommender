@@ -1,13 +1,20 @@
 
 import React from 'react';
-import './Welcome.css';
-import {DisplayImages} from '../DisplayImages/DisplayImages';
+import { DisplayImages } from '../DisplayImages/DisplayImages';
 import Grid from "@material-ui/core/Grid";
 import * as Styles from './WelcomeStyles.js';
 import Login from '../../LoginPage/Login/Login';
 import Signup from '../../SignupPage/Signup/Signup';
-import {LoginButton} from '../../LoginPage/LoginButton/LoginButton';
-import {SignupButton} from '../../SignupPage/SignupButton/SignupButton';
+import { LoginButton } from '../../LoginPage/LoginButton/LoginButton';
+import { SignupButton } from '../../SignupPage/SignupButton/SignupButton';
+import './Welcome.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 const images = {
   image_1: "https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -23,10 +30,9 @@ export class Welcome extends React.Component {
     this.state = {
       imageDisplay: images.image_1,
       displayLoginScreen: false,
-      displaySignupScreen:  false
+      displaySignupScreen: false
     }
     this.updateImage = this.updateImage.bind(this);
-    this.displayLoginScreen = this.displayLoginScreen.bind(this);
     this.handleLoginClose = this.handleLoginClose.bind(this);
     this.displaySignupScreen = this.displaySignupScreen.bind(this);
     this.handleSignupClose = this.handleSignupClose.bind(this);
@@ -55,46 +61,57 @@ export class Welcome extends React.Component {
     })
   }
   updateImage() {
-    let curImageKey = Object.keys(images).find(key =>{
-      return images[key] === this.state.imageDisplay});
+    let curImageKey = Object.keys(images).find(key => {
+      return images[key] === this.state.imageDisplay
+    });
     const curImageNum = Number(curImageKey.substr(6));
-    const nextImage = (curImageNum+1)%5+1;
-    this.setState( {
+    const nextImage = (curImageNum + 1) % 5 + 1;
+    this.setState({
       imageDisplay: images[`image_${nextImage}`]
     });
   }
 
   render() {
-  return (
-    <div className="welcomeTitle">
-    <header>
-      <Grid container direction="row"
-  justify="space-between"
-  alignItems="center">
-        <Grid item className="title">
-      recommen<span id="inlineTitleDesign">derrr</span>
-        </Grid>
-            <Styles.LoginGridItem item="true">
-            <LoginButton onClick={this.displayLoginScreen}/>
-               </Styles.LoginGridItem>
-               </Grid>
-               </header>
-          <section className="images">
-     <DisplayImages updateImage={this.updateImage} image={this.state.imageDisplay}>
+    return (
+      <div className="welcomeTitle">
+        <header>
+          <Grid container direction="row"
+            justify="space-between"
+            alignItems="center">
+            <Grid item className="welcomeTitle">
+              <h1>
+                recommen<span id="inlineTitleDesign">derrr</span>
+              </h1>
+            </Grid>
+            <Router>
+              <Link to="/login" className="linkToLogin">
+                <Styles.LoginGridItem item>
+                  <LoginButton />
+                </Styles.LoginGridItem>
+              </Link>
+
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+              </Switch>
+            </Router>
+          </Grid>
+        </header>
+        <section className="images">
+          <DisplayImages updateImage={this.updateImage} image={this.state.imageDisplay}>
     
      </DisplayImages>
-     </section>
-     <section className="signupButton">
-     <SignupButton
-        onClick={this.displaySignupScreen}
-        size="small">
-        </SignupButton>
-       </section>
-      {this.state.displayLoginScreen ? <Login onClose={this.handleLoginClose}/> : null }
-      {this.state.displaySignupScreen ? <Signup onClose={this.handleSignupClose}/> : null }
+        </section>
+        <section className="signupButton">
+          <SignupButton
+            onClick={this.displaySignupScreen}
+            size="small">
+          </SignupButton>
+        </section>
       </div>
-  );
-}
+    );
+  }
 
 }
 
