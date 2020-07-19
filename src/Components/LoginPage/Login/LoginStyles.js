@@ -12,6 +12,7 @@ export const SubmitButtonStyled = withStyles((theme) => ({
         color: 'white',
         padding: '12px 30px',
         zIndex: '5',
+        width: 133,
         '&:hover': {
             backgroundColor: 'rgb(199, 11, 11)',
             boxShadow: '5px 5px 5px gray',

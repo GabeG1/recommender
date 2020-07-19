@@ -1,16 +1,22 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
-import { useHistory } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    useHistory,
+    Link
+} from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import './Signup.css'
 import * as Styles from './SignupStyles.js'
-
+import {Search} from "../../SearchPage/Search/Search";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,19 +32,19 @@ const useStyles = makeStyles((theme) => ({
         outline: 'none',
         '&::-webkit-scrollbar': {
             width: 15,
-          },     
-          '&::-webkit-scrollbar-track': {
+        },
+        '&::-webkit-scrollbar-track': {
             borderRadius: 30,
-          },
-           
-          '&::-webkit-scrollbar-thumb': {
+        },
+
+        '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgb(255, 137, 137)',
             borderRadius: 30,
-          },
-          /* Handle */
-          '&::-webkit-scrollbar-thumb:hover': {
+        },
+        /* Handle */
+        '&::-webkit-scrollbar-thumb:hover': {
             background: 'rgb(247, 92, 92)',
-          }
+        }
     },
 }));
 
@@ -60,7 +66,7 @@ export default function Login(props) {
 
 
     const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
+        setValues({...values, showPassword: !values.showPassword});
     };
 
     const handleMouseDownPassword = (event) => {
@@ -77,21 +83,21 @@ export default function Login(props) {
                     <TextField
                         id="firstName"
                         placeholder="First Name"
-                        variant="outlined" />
+                        variant="outlined"/>
                     <TextField
                         id="lastName"
                         placeholder="Last Name"
-                        variant="outlined" />
+                        variant="outlined"/>
                 </Grid>
                 <TextField
                     id="Email address"
                     placeholder="Email address"
-                    variant="outlined" />
+                    variant="outlined"/>
 
                 <TextField
                     id="username"
                     placeholder="Username"
-                    variant="outlined" />
+                    variant="outlined"/>
 
                 <TextField
                     id="password"
@@ -107,11 +113,11 @@ export default function Login(props) {
                                     onClick={handleClickShowPassword}
                                     onMouseDown={handleMouseDownPassword}
                                 >
-                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    {values.showPassword ? <Visibility/> : <VisibilityOff/>}
                                 </IconButton>
                             </InputAdornment>
                         )
-                    }} />
+                    }}/>
 
                 <TextField
                     id="confirmPassword"
@@ -119,10 +125,12 @@ export default function Login(props) {
                     placeholder="Confirm Password"
                     variant="outlined"
                 />
+                <Link to="/search" style={{textDecoration: 'none'}}>
 
-                <Styles.SubmitButtonStyled>
-                    Submit
-            </Styles.SubmitButtonStyled>
+                    <Styles.SubmitButtonStyled>
+                        Submit
+                    </Styles.SubmitButtonStyled>
+                </Link>
             </Styles.FormControlSignup>
         </div>
     );

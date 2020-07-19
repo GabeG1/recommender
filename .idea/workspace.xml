@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="38aafa8d-67cd-4b6c-b27b-499fa9724b5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/LoginStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/Login/LoginStyles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButtonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButtonStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/SignupButton/SignupButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignupPage/SignupButton/SignupButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/WelcomeStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/WelcomeStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +75,9 @@
       <workItem from="1594689201748" duration="614000" />
       <workItem from="1594727405492" duration="256000" />
       <workItem from="1594768873637" duration="1245000" />
+      <workItem from="1595107600656" duration="74000" />
+      <workItem from="1595135599065" duration="209000" />
+      <workItem from="1595178166242" duration="249000" />
     </task>
     <task id="LOCAL-00001" summary="save random changes">
       <created>1595099313510</created>
@@ -103,10 +101,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="106" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594685764262" />
-    <state x="385" y="8" key="CommitChangelistDialog2" timestamp="1595099311507">
+    <state x="385" y="8" key="CommitChangelistDialog2" timestamp="1595178493448">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="385" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595099311507" />
+    <state x="385" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595178493448" />
     <state width="1493" height="328" key="GridCell.Tab.0.bottom" timestamp="1594689133998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -123,9 +121,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="328" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594689133998" />
-    <state x="489" y="205" key="git4idea.merge.GitPullDialog" timestamp="1594727442612">
+    <state x="522" y="124" key="RollbackChangesDialog" timestamp="1595178205049">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="489" y="205" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1594727442612" />
+    <state x="522" y="124" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595178205049" />
+    <state x="462" y="144" width="611" height="536" key="find.popup" timestamp="1595102570233">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="462" y="144" width="611" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1595102570233" />
+    <state x="489" y="205" key="git4idea.merge.GitPullDialog" timestamp="1595178216168">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="489" y="205" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1595178216168" />
   </component>
 </project>
