@@ -4,15 +4,13 @@ import FormControl from '@material-ui/core/FormControl';
 
 export const SubmitButtonStyled = withStyles((theme) => ({
     root: {
-        marginTop: 35,
+        marginTop: '8%',
         display: 'block',
         margin: '0 auto',
         textAlign: 'center',
         backgroundColor: 'rgb(220, 0, 0)',
         color: 'white',
-        padding: '12px 30px',
-        zIndex: '5',
-        width: 133,
+        padding: '4% 9%',
         '&:hover': {
             backgroundColor: 'rgb(199, 11, 11)',
             boxShadow: '5px 5px 5px gray',
@@ -30,7 +28,7 @@ export const FormControlLogin = withStyles((theme) => ({
         margin: theme.spacing(2.5),    
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                width: 250,
+              width: '16rem',
               borderRadius: `30px`,
               border: '2px solid hsla(84, 5%, 22%, 0.897)',
             },
