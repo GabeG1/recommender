@@ -3,8 +3,6 @@ import React from 'react';
 import { DisplayImages } from '../DisplayImages/DisplayImages';
 import Grid from "@material-ui/core/Grid";
 import * as Styles from './WelcomeStyles.js';
-import Login from '../../LoginPage/Login/Login';
-import Signup from '../../SignupPage/Signup/Signup';
 import { LoginButton } from '../../LoginPage/LoginButton/LoginButton';
 import { SignupButton } from '../../SignupPage/SignupButton/SignupButton';
 import './Welcome.css';
@@ -12,6 +10,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  withRouter,
   Link
 } from "react-router-dom";
 
@@ -57,19 +56,11 @@ export class Welcome extends React.Component {
                 recommen<span id="inlineTitleDesign">derrr</span>
               </h1>
             </Grid>
-            <Router>
-              <Link to="/login" className="linkToLogin">
-                <Styles.LoginGridItem item>
-                  <LoginButton />
-                </Styles.LoginGridItem>
+            <Styles.LoginGridItem item>
+              <Link to="/login" className="linkToLogin" >
+                <LoginButton />
               </Link>
-
-              <Switch>
-                <Route path="/login">
-                  <Login />
-                </Route>
-              </Switch>
-            </Router>
+            </Styles.LoginGridItem>
           </Grid>
         </header>
         <section className="images">
@@ -77,19 +68,12 @@ export class Welcome extends React.Component {
 
           </DisplayImages>
         </section>
-        <Router>
+        <section className="signupButton">
           <Link to="/signup" className="linkToSignup">
-            <section className="signupButton">
-              <SignupButton size="small">
-              </SignupButton>
-            </section>
+            <SignupButton size="small">
+            </SignupButton>
           </Link>
-          <Switch>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-          </Switch>
-        </Router>
+        </section>
       </div>
     );
   }

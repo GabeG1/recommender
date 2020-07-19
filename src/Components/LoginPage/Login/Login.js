@@ -7,9 +7,19 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from 'react-router-dom';
+import { Search } from '../../SearchPage/Search/Search'
 import './Login.css'
 import * as Styles from './LoginStyles.js'
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    withRouter,
+    useRouteMatch
+} from "react-router-dom";
+import { Welcome } from '../../WelcomePage/Welcome/Welcome';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login(props) {
+    let { path, url } = useRouteMatch();
     const history = useHistory();
     const classes = useStyles();
     const [values, setValues] = React.useState({
@@ -51,6 +62,7 @@ export default function Login(props) {
     };
 
     const body = (
+
         <div className={classes.paper}>
             <Styles.FormControlLogin>
                 <header className="LoginTitle">
@@ -74,17 +86,21 @@ export default function Login(props) {
                                 <IconButton
                                     aria-label="toggle password visibility"
                                     onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                >
+                                    onMouseDown={handleMouseDownPassword}>
                                     {values.showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </InputAdornment>
                         )
                     }} />
-                <Styles.SubmitButtonStyled onClick={handleClose}>
-                    Submit
-            </Styles.SubmitButtonStyled>
+
+
+                <Link to='/search' style={{ textDecoration: 'none' }}>
+                    <Styles.SubmitButtonStyled>
+                        Submit
+                    </Styles.SubmitButtonStyled>
+                </Link>
             </Styles.FormControlLogin>
+
         </div>
     );
 

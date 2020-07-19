@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Welcome} from './Components/WelcomePage/Welcome/Welcome';
+import App from './Components/App/App';
 
-ReactDOM.render(<Welcome />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
