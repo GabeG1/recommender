@@ -1,0 +1,74 @@
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-link {
+  color: #61dafb;
+}
+
+.header {
+  padding-top: 1rem;
+}
+.welcomeTitle {
+  padding-left: 3%;
+  z-index: 2;
+  color: #35c9bccf;
+  font-size: 3rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: bold;
+}
+.welcomeTitle #inlineTitleDesign {
+  color: rgb(103, 67, 222);
+  font-weight: 900;
+  font-size: 2.5rem;
+}
+
+.loginButton {
+  z-index: 1;
+}
+
+.images {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -5.3rem;
+}
+
+.signupButton {
+  position: relative;
+  padding-top: 20rem;
+  z-index: 3;
+
+}
+.linkToLogin {
+  z-index: 5;
+  text-decoration: none;
+}
+
+.linkToSignup {
+  text-decoration: none;
+}
