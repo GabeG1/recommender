@@ -30,6 +30,38 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         padding: theme.spacing(2, 1, 3),
         outline: 'none',
+        display: 'block',
+        textAlign: 'center',
+       '& .MuiTextField-root': {
+       margin: theme.spacing(2.5),
+       width: 375,
+       '& .MuiOutlinedInput-root': {
+           '& fieldset': {
+               display: 'block',
+               margin: '0 auto',
+               backgroundColor: 'hsla(220, 15%, 10%, 0.075)',
+               padding: '5%',
+           },
+           '&.Mui-focused fieldset': {
+              borderColor: 'rgb(221, 61, 61)',
+              backgroundColor: 'hsla(0, 0%, 20%, 0.05)',
+             },
+             '&:hover fieldset': {
+               border: '2px solid rgb(221, 61, 61)',
+             },
+           },    
+       },
+       ' & .MuiGrid-item': {
+           '& .MuiTextField-root': {
+           maxWidth: '10.5rem',
+          
+           '& .MuiOutlinedInput-root': {
+               '& fieldset': {
+                   display: 'inline',
+               },
+           },
+       },
+    },
         '&::-webkit-scrollbar': {
             width: 15,
         },
@@ -75,7 +107,7 @@ export default function Login(props) {
 
     const body = (
         <div className={classes.paper}>
-            <Styles.FormControlSignup>
+            <form>
                 <header className="SignupTitle">
                     Signup
                 </header>
@@ -83,21 +115,26 @@ export default function Login(props) {
                     <TextField
                         id="firstName"
                         placeholder="First Name"
-                        variant="outlined"/>
+                        variant="outlined"
+                        required
+                        />
                     <TextField
                         id="lastName"
                         placeholder="Last Name"
-                        variant="outlined"/>
+                        variant="outlined"
+                        required/>
                 </Grid>
                 <TextField
                     id="Email address"
                     placeholder="Email address"
-                    variant="outlined"/>
+                    variant="outlined"
+                    required/>
 
                 <TextField
                     id="username"
                     placeholder="Username"
-                    variant="outlined"/>
+                    variant="outlined"
+                    required/>
 
                 <TextField
                     id="password"
@@ -105,6 +142,7 @@ export default function Login(props) {
                     placeholder="Password"
                     variant="outlined"
                     filled="true"
+                    required
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -120,18 +158,24 @@ export default function Login(props) {
                     }}/>
 
                 <TextField
+                //error
                     id="confirmPassword"
                     type="password"
+                    required
+                   // error
+                    //label="password"
+                    //isRequired="true"
+                    //helperText="Must enter password"
                     placeholder="Confirm Password"
                     variant="outlined"
                 />
-                <Link to="/search" style={{textDecoration: 'none'}}>
+                {/*<Link to="/search" style={{textDecoration: 'none'}}>*/}
 
-                    <Styles.SubmitButtonStyled>
+                    <Styles.SubmitButtonStyled type="submit">
                         Submit
                     </Styles.SubmitButtonStyled>
-                </Link>
-            </Styles.FormControlSignup>
+                {/*</Styles.FormControlSignup></Link>*/}
+            </form>
         </div>
     );
 
