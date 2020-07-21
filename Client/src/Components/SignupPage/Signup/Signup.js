@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         padding: theme.spacing(2, 1, 3),
         outline: 'none',
-        display: 'block',
         textAlign: 'center',
        '& .MuiTextField-root': {
        margin: theme.spacing(2.5),
@@ -81,16 +80,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login(props) {
-    const history = useHistory();
-    const classes = useStyles();
     const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
     });
-
+    const history = useHistory();
+    const classes = useStyles();
+    const fNameRef = useRef();
+    const lNameRef = useRef();
+    const usernameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmRef = useRef();
 
     const handleClose = () => {
         history.goBack();
@@ -98,6 +98,7 @@ export default function Login(props) {
 
 
     const handleClickShowPassword = () => {
+
         setValues({...values, showPassword: !values.showPassword});
     };
 
@@ -105,39 +106,49 @@ export default function Login(props) {
         event.preventDefault();
     };
 
+    const sendFormToAuth = () => {
+        console.log("inAuthMethod")
+        console.log(fNameRef.current)
+    };
+
     const body = (
         <div className={classes.paper}>
-            <form>
+            <form onSubmit={sendFormToAuth}>
                 <header className="SignupTitle">
                     Signup
                 </header>
                 <Grid item>
                     <TextField
                         id="firstName"
+                        inputRef={fNameRef}
                         placeholder="First Name"
                         variant="outlined"
                         required
                         />
                     <TextField
                         id="lastName"
+                        inputRef={lNameRef}
                         placeholder="Last Name"
                         variant="outlined"
                         required/>
                 </Grid>
                 <TextField
                     id="Email address"
+                    inputRef={emailRef}
                     placeholder="Email address"
                     variant="outlined"
                     required/>
 
                 <TextField
                     id="username"
+                    inputRef={usernameRef}
                     placeholder="Username"
                     variant="outlined"
                     required/>
 
                 <TextField
                     id="password"
+                    inputRef={passwordRef}
                     type={values.showPassword ? 'text' : 'password'}
                     placeholder="Password"
                     variant="outlined"
@@ -160,6 +171,7 @@ export default function Login(props) {
                 <TextField
                 //error
                     id="confirmPassword"
+                    inputRef={passwordConfirmRef}
                     type="password"
                     required
                    // error

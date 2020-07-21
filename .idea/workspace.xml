@@ -2,65 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38aafa8d-67cd-4b6c-b27b-499fa9724b5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BackEnd/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/bin/www" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/public/stylesheets/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/routes/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/views/error.jade" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/views/index.jade" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackEnd/views/layout.jade" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/zappy_boi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/App/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/Login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/Login/LoginStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButton.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoginPage/LoginButton/LoginButtonStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/ResultsCategories/Movie/Movie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/ResultsCategories/Song/Song.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/ResultsCategories/Styles/CustomCard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/ResultsCategories/VideoGame/VideoGame.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/ResultsCategories/VideoGame/VideoGame.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/Search/Search.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/Search/Search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/Search/SearchStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/SearchBar/SearchBar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/SearchBar/SearchBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/SearchBar/SearchBarStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/SearchResultsList/SearchResultsList.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/SearchResultsList/SearchResultsList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchPage/SearchResultsList/SearchResultsListStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/Signup/Signup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/Signup/SignupStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/SignupButton/SignupButton.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/SignupButton/SignupButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignupPage/SignupButton/SignupButtonStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/DisplayImages/DisplayImages.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/DisplayImages/DisplayImages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/Welcome.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WelcomePage/Welcome/WelcomeStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/MovieSearch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/SongFinder.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/VideoGameSearch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Components/SignupPage/Signup/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/SignupPage/Signup/Signup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
