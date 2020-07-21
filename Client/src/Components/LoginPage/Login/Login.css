@@ -1,10 +1,9 @@
-
 .LoginTitle {
-    text-align: center;
-    font-family: 'Yanone Kaffeesatz';
-     font-weight: bold;
-     font-size: 40px;
-     margin-bottom: 20px;
-     margin-top: 20px;
-     color: rgb(250, 31, 31);
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: rgb(250, 31, 31);
 }

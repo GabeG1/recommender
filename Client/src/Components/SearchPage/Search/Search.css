@@ -1,26 +1,30 @@
-
 .wrapper {
-    position:fixed;
-    background-color: rgb(237, 245, 245);
-    width: 100%;
-    height: 100%;
+  position: fixed;
+  background-color: rgb(237, 245, 245);
+  width: 100%;
+  height: 100%;
 }
 
 .title {
-    padding: 20px 0 20px 45px;
-    z-index: 2;
-    background-color: rgb(142, 221, 241);
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: bold;
-  }
-  .title #inlineTitleDesign {
-    color: rgb(103, 67, 222);
-    font-weight: 900;
-    font-size: 35px;
-  }
-  
-  .searchBar {
-      margin-top: 20px;
-  }
+  padding: 20px 0 20px 45px;
+  z-index: 2;
+  background-color: rgb(142, 221, 241);
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: bold;
+}
+.title #inlineTitleDesign {
+  color: rgb(103, 67, 222);
+  font-weight: 900;
+  font-size: 35px;
+}
+
+.searchBar {
+  margin-top: 20px;
+}
+
+.pages {
+  display: flex;
+  justify-content: flex-end;
+}
