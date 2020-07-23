@@ -1,0 +1,20 @@
+.cardTitle {
+  height: 26%;
+  max-height: 26%;
+  overflow-y: scroll;
+}
+
+.cardTitle::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 4px;
+}
+
+.cardTitle::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(167, 164, 164, 0.5);
+  box-shadow: 0 0 1px rgba(231, 223, 223, 0.5);
+}
+
+.cardTooltip {
+  margin-top: -8px;
+}

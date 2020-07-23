@@ -11,11 +11,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import UserRating from '../../UserRating/UserRating';
 import { CardActions, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import './CustomCard.css';
 
 const randomColor = () => {
-  const r = Math.floor(Math.random() * 220);
-  const g = Math.floor(Math.random() * 220);
-  const b = Math.floor(Math.random() * 220);
+  const r = Math.floor(Math.random() * 200) + 30;
+  const g = Math.floor(Math.random() * 200) + 30;
+  const b = Math.floor(Math.random() * 200) + 30;
   return `rgb(${r}, ${g}, ${b})`;
 };
 const useStyles = makeStyles(() => ({
@@ -78,23 +79,21 @@ const useStyles = makeStyles(() => ({
     marginTop: '2rem',
     fontWeight: 500,
     fontSize: 14,
-    '::-webkit-scrollbar-thumb': {
-      backgroundColor: 'blue',
-    },
   },
   icon: {
-    marginBottom: 200,
     color: 'rgba(255, 255, 255, 0.54)',
   },
   popper: {},
   tooltip: {
+    display: 'block',
     fontSize: 20,
   },
   box: {},
   bottomCard: {
-    marginTop: 60,
+    marginTop: 30,
+    padding: '0px 10px',
     justifyContent: 'space-between',
-    alignContent: 'flex-end',
+
     display: 'flex',
     wrap: 'noWrap',
   },
@@ -125,16 +124,21 @@ export const CustomCard = ({ image, title, subtitle, id }) => {
           <ThemeProvider theme={theme}>
             <div className={classes.bottomCard}>
               <UserRating id={id} />
-              <Tooltip
-                title={subtitle}
-                aria-label="description"
-                placement="top"
-                classes={{ tooltip: classes.tooltip }}
-              >
-                <IconButton aria-label={`info about `} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              </Tooltip>
+              <div className="cardTooltip">
+                <Tooltip
+                  title={subtitle}
+                  aria-label="description"
+                  placement="top"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <IconButton
+                    aria-label={`info about `}
+                    classes={{ root: classes.icon }}
+                  >
+                    <InfoIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
             </div>
           </ThemeProvider>
         </CardContent>
