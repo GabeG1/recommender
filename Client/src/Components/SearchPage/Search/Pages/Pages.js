@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, Box } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,17 +12,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Pages(props) {
   const classes = useStyles();
-
+  let history = useHistory();
   function handleChange(event, page) {
-    console.log(page);
-    props.onPageChange(page - 1);
+    props.onPageChange(page, history);
   }
   return (
     <div className={classes.root}>
-      {console.log('hey')}
       <Box visibility={props.showPages}>
         <Pagination
-          page={props.offset + 1}
+          page={Number(props.offset)}
           count={Math.floor(props.total / 20)}
           variant="outlined"
           color="primary"

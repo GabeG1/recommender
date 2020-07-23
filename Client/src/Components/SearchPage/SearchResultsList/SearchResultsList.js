@@ -16,7 +16,7 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
     overflowY: 'auto',
     flexGrow: 1,
     flexShrink: 1,
-    maxWidth: '98vw',
+    maxWidth: '100%',
     //margin: '0 auto',
     [breakpoints.up('xs')]: {
       maxHeight: '60vh',
@@ -29,6 +29,7 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
 
 export function SearchResultsList(props) {
   const gridStyles = useGridStyles();
+  console.log('searchresults called');
   return (
     <div>
       <Grid
@@ -46,7 +47,7 @@ export function SearchResultsList(props) {
             case 'movie':
               return <Movie movie={result} />;
             case 'song':
-              return <Song song={result} offset={props.offset} />;
+              return <Song song={result} />;
             default:
               console.log('nothing');
           }
