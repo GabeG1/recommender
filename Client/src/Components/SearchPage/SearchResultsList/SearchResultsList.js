@@ -13,7 +13,7 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
     display: 'flex',
     height: '100%',
     padding: '0 10px',
-    overflowY: 'auto',
+    //overflowY: 'auto',
     flexGrow: 1,
     flexShrink: 1,
     maxWidth: '100%',
@@ -30,6 +30,7 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
 export function SearchResultsList(props) {
   const gridStyles = useGridStyles();
   console.log('searchresults called');
+  console.log(props.category);
   return (
     <div>
       <Grid

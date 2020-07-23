@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
-import { LoadingIndicator } from '../../..';
+import { LoadingIndicator } from './LoadingInfo';
 //import { LoadingInfo } from './LoadingInfo';
 
 export default class Search extends React.Component {
@@ -132,7 +132,6 @@ export default class Search extends React.Component {
 
   componentDidUpdate() {
     window.focus();
-    console.log('didupdate');
 
     window.scrollTo(0, 0);
 
@@ -140,7 +139,6 @@ export default class Search extends React.Component {
   }
 
   render() {
-    console.log('entering render');
     const shouldCallSearch = this.shouldCallSearch();
     const didSearch = shouldCallSearch.didSearch;
     return (
@@ -160,28 +158,20 @@ export default class Search extends React.Component {
               )
             : ''}
           {!Boolean(shouldCallSearch) ? (
-            <Fade
-              in={true}
-              mountOnEnter
-              style={{
-                transitionDelay: !shouldCallSearch ? '800ms' : '0ms',
-              }}
-            >
-              <SearchResultsList
-                className="search"
-                category={this.state.category}
-                results={this.state.searchResults}
-                offset={this.state.offset}
-                total={this.state.total}
-              />
-            </Fade>
+            <SearchResultsList
+              className="search"
+              category={this.state.category}
+              results={this.state.searchResults}
+              offset={this.state.offset}
+              total={this.state.total}
+            />
           ) : (
             ''
           )}
         </>
         <section className="pages">
           <Pages
-            showPages={didSearch == false ? 'hidden' : 'visible'}
+            showPages={Boolean(shouldCallSearch) ? 'hidden' : 'visible'}
             total={this.state.total}
             offset={this.state.offset}
             onPageChange={this.handlePageChange}

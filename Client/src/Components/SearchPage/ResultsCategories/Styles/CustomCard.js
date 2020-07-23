@@ -9,6 +9,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import UserRating from '../../UserRating/UserRating';
+import { CardActions, createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 const randomColor = () => {
   const r = Math.floor(Math.random() * 220);
@@ -17,10 +19,10 @@ const randomColor = () => {
   return `rgb(${r}, ${g}, ${b})`;
 };
 const useStyles = makeStyles(() => ({
-  root: ({ bgColor = 'rgba(0, 0, 0, 0.08)' }) => ({
+  media: ({ bgColor = 'rgba(0, 0, 0, 0.08)' }) => ({
     width: '20rem',
     height: '0',
-    paddingBottom: 200,
+    paddingBottom: 220,
     objectFit: 'contain',
     backgroundColor: bgColor,
   }),
@@ -31,17 +33,18 @@ const useStyles = makeStyles(() => ({
     marginLeft: '5px',
     marginRight: '5px',
     height: '100%',
-    paddingBottom: '1rem',
+    paddingBottom: '1.5rem',
     borderRadius: 16,
     transition: '0.2s',
     '&:hover': {
       transform: 'scale(1.1)',
     },
+    '&focusVisible': {},
   },
   card: ({ color }) => ({
     borderRadius: '2rem',
     boxShadow: 'none',
-    height: '80%',
+    height: '450px',
     '&:hover': {
       boxShadow: `0 0.1rem 0.5px 0 ${Color(color)
         .rotate(-12)
@@ -51,8 +54,10 @@ const useStyles = makeStyles(() => ({
   }),
   content: ({ color }) => {
     return {
+      height: '100%',
       width: '18rem',
       backgroundColor: color,
+      //overflow: 'auto',
       // padding: '1rem 1.5rem 1.5rem 1rem',
     };
   },
@@ -63,11 +68,12 @@ const useStyles = makeStyles(() => ({
     height: 100,
     color: '#fff',
     textTransform: 'uppercase',
+    marginBottom: 10,
   },
   subtitle: {
     fontFamily: 'Montserrat',
     color: '#fff',
-    overflowY: 'scroll',
+    //overflowY: 'scroll',
     opacity: 0.87,
     marginTop: '2rem',
     fontWeight: 500,
@@ -77,39 +83,60 @@ const useStyles = makeStyles(() => ({
     },
   },
   icon: {
+    marginBottom: 200,
     color: 'rgba(255, 255, 255, 0.54)',
   },
   popper: {},
   tooltip: {
-    marginTop: 20,
     fontSize: 20,
+  },
+  box: {},
+  bottomCard: {
+    marginTop: 60,
+    justifyContent: 'space-between',
+    alignContent: 'flex-end',
     display: 'flex',
-    justifyContent: 'flex-end',
+    wrap: 'noWrap',
   },
 }));
 
-export const CustomCard = ({ image, title, subtitle }) => {
+const theme = createMuiTheme({
+  props: {
+    // Name of the component ⚛️
+    MuiButtonBase: {
+      // The default props to change
+      disableRipple: true, // No more ripple, on the whole application 💣!
+    },
+  },
+});
+
+export const CustomCard = ({ image, title, subtitle, id }) => {
   const classes = useStyles({ color: randomColor() });
   return (
     <CardActionArea className={classes.actionArea}>
       <Card className={classes.card}>
-        <CardMedia className={classes.root} image={image} />
+        <CardMedia className={classes.media} image={image} />
         <CardContent className={classes.content}>
-          <Typography className={classes.title} variant={'h2'}>
-            {title}
-          </Typography>
-          <div className={classes.tooltip}>
-            <Tooltip
-              title={subtitle}
-              aria-label="description"
-              placement="top"
-              classes={{ popper: classes.popper, tooltip: classes.tooltip }}
-            >
-              <IconButton aria-label={`info about `} className={classes.icon}>
-                <InfoIcon />
-              </IconButton>
-            </Tooltip>
+          <div className="cardTitle">
+            <Typography className={classes.title} variant={'h2'}>
+              {title}
+            </Typography>
           </div>
+          <ThemeProvider theme={theme}>
+            <div className={classes.bottomCard}>
+              <UserRating id={id} />
+              <Tooltip
+                title={subtitle}
+                aria-label="description"
+                placement="top"
+                classes={{ tooltip: classes.tooltip }}
+              >
+                <IconButton aria-label={`info about `} className={classes.icon}>
+                  <InfoIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
+          </ThemeProvider>
         </CardContent>
       </Card>
     </CardActionArea>
