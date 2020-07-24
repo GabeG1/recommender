@@ -23,7 +23,7 @@ export const LoadingIndicator = (props) => {
           alignItems: 'center',
         }}
       >
-        <RingLoader color="#BF69D8" height="100" width="100" />
+        <RingLoader color="#ffffff" height="100" width="100" />
       </div>
     )
   );

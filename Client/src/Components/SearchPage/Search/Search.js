@@ -149,7 +149,7 @@ export default class Search extends React.Component {
         <section className="searchBar">
           <SearchBar search={this.search} />
         </section>
-        <>
+        <div className="searchResultsArea">
           {Boolean(shouldCallSearch) && didSearch
             ? this.search(
                 shouldCallSearch.cat,
@@ -168,7 +168,7 @@ export default class Search extends React.Component {
           ) : (
             ''
           )}
-        </>
+        </div>
         <section className="pages">
           <Pages
             showPages={Boolean(shouldCallSearch) ? 'hidden' : 'visible'}
