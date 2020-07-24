@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -20,6 +20,8 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 import { Welcome } from '../../WelcomePage/Welcome/Welcome';
+import {PostNewUser} from "../../SignupPage/Signup/SignupAuth";
+import {PostExistingUser} from "./LoginAuth";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,16 +37,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login(props) {
+  const [values, setValues] = React.useState({
+    showPassword: false,
+  });
   let { path, url } = useRouteMatch();
   const history = useHistory();
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
-  });
+  const loginFormValues = {
+    usernameRef: useRef(),
+    passwordRef: useRef(),
+  };
 
   const handleClose = () => {
     history.goBack();
@@ -58,22 +60,31 @@ export default function Login(props) {
     event.preventDefault();
   };
 
+  const sendFormToAuth = async () => {
+    const responseData = await PostExistingUser(loginFormValues);
+    alert(responseData.data);
+  };
+
   const body = (
     <div className={classes.paper}>
-      <Styles.FormControlLogin>
+      <form onSubmit={sendFormToAuth}>
         <header className="LoginTitle">Login</header>
         <TextField
           id="username"
+          inputRef={loginFormValues.usernameRef}
           placeholder="Enter username"
           variant="outlined"
+          required
         />
 
         <TextField
           id="password"
+          inputRef={loginFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
           placeholder="Enter password"
           variant="outlined"
           filled="true"
+          required
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -90,9 +101,9 @@ export default function Login(props) {
         />
 
         <Link to="/search" style={{ textDecoration: 'none' }}>
-          <Styles.SubmitButtonStyled>Submit</Styles.SubmitButtonStyled>
+          <Styles.SubmitButtonStyled type="submit">Submit</Styles.SubmitButtonStyled>
         </Link>
-      </Styles.FormControlLogin>
+      </form>
     </div>
   );
 
