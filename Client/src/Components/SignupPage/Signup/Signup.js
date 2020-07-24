@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     borderRadius: '10px',
     maxHeight: '60%',
-    overflow: 'auto',
     padding: theme.spacing(2, 1, 3),
     outline: 'none',
     textAlign: 'center',
@@ -80,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login(props) {
+export default function Signup(props) {
   const [values, setValues] = React.useState({
     showPassword: false,
   });

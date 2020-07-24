@@ -1,20 +1,29 @@
 .cardTitle {
   height: 26%;
   max-height: 26%;
-  overflow-y: scroll;
-}
-
-.cardTitle::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 4px;
-}
-
-.cardTitle::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(167, 164, 164, 0.5);
-  box-shadow: 0 0 1px rgba(231, 223, 223, 0.5);
+  overflow-y: auto;
 }
 
 .cardTooltip {
   margin-top: -8px;
+}
+
+.cardTitle::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+  height: 5px;
+}
+.cardTitle::-webkit-scrollbar-thumb:hover {
+  background: rgb(177, 160, 160);
+}
+.cardTitle::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background: rgb(243, 239, 239);
+  width: 0px;
+}
+.cardTitle::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  box-shadow: 20px 20px rgb(104, 100, 100);
+  background-color: rgba(146, 143, 143, 0.57);
+  box-shadow: 0 0 0px rgba(231, 223, 223, 0.5);
 }

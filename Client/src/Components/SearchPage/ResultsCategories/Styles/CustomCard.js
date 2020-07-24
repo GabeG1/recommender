@@ -58,8 +58,6 @@ const useStyles = makeStyles(() => ({
       height: '100%',
       width: '18rem',
       backgroundColor: color,
-      //overflow: 'auto',
-      // padding: '1rem 1.5rem 1.5rem 1rem',
     };
   },
   title: {
@@ -74,7 +72,6 @@ const useStyles = makeStyles(() => ({
   subtitle: {
     fontFamily: 'Montserrat',
     color: '#fff',
-    //overflowY: 'scroll',
     opacity: 0.87,
     marginTop: '2rem',
     fontWeight: 500,

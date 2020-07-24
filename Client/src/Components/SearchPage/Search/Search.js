@@ -147,7 +147,18 @@ export default class Search extends React.Component {
           recommen<span id="inlineTitleDesign">derrr</span>
         </header>
         <section className="searchBar">
-          <SearchBar search={this.search} />
+          <SearchBar
+            category={
+              !Boolean(shouldCallSearch)
+                ? this.state.category
+                : shouldCallSearch.cat
+            }
+            searchTerm={
+              !Boolean(shouldCallSearch)
+                ? this.state.searchTerm
+                : shouldCallSearch.q
+            }
+          />
         </section>
         <div className="searchResultsArea">
           {Boolean(shouldCallSearch) && didSearch

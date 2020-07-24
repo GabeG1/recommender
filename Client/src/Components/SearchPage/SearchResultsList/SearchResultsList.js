@@ -13,16 +13,11 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
     display: 'flex',
     height: '100%',
     padding: '0 10px',
-    overflowY: 'auto',
     flexGrow: 1,
     flexShrink: 1,
     maxWidth: '100%',
-    //margin: '0 auto',
     [breakpoints.up('xs')]: {
-      maxHeight: '60vh',
-    },
-    [breakpoints.up('sm')]: {
-      maxHeight: '75vh',
+      maxHeight: '100%',
     },
   },
 }));

@@ -94,19 +94,19 @@ export function SearchBar(props) {
 
   function handleButtonClick(e) {
     if (e.keyCode === 13) {
-      // console.log('Enter pressed');
       return history.push(`/search?cat=${category}&q=${e.target.value}&pg=1`);
     }
   }
   function searchOnPress(e) {
-    //console.log(category);
-    props.search(
-      category,
-      e.currentTarget.parentNode.querySelector('[aria-label="search"]').value
-    );
+    const searchTerm = e.currentTarget.parentNode.querySelector(
+      '[aria-label="search"]'
+    ).value;
+    return history.push(`/search?cat=${category}&q=${searchTerm}&pg=1`);
   }
 
-  const [category, setCategory] = React.useState('video game');
+  const [category, setCategory] = React.useState(
+    props.category != '' ? props.category : 'video game'
+  );
 
   const categorySelection = (event) => {
     setCategory(event.target.value);
@@ -142,6 +142,7 @@ export function SearchBar(props) {
             type="search"
             classes={{ input: classes.input }}
             placeholder="Search"
+            defaultValue={props.searchTerm != '' ? props.searchTerm : ''}
             inputProps={{ 'aria-label': 'search' }}
             onKeyDown={handleButtonClick}
           />
