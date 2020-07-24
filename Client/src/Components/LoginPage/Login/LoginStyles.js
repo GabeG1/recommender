@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
 export const SubmitButtonStyled = withStyles((theme) => ({
   root: {
@@ -20,7 +21,7 @@ export const SubmitButtonStyled = withStyles((theme) => ({
   },
 }))(Button);
 
-export const FormControlLogin = withStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     margin: '0 auto',
     display: 'block',
@@ -38,4 +39,4 @@ export const FormControlLogin = withStyles((theme) => ({
       },
     },
   },
-}))(FormControl);
+}));
