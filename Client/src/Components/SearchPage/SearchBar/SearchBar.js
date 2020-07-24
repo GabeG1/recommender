@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     width: 100,
     padding: '10px 15px',
     height: 35,
-    color: 'rgba(58, 173, 194, 0.925)',
+    color: 'rgba(4, 25, 29, 0.925)',
     '&:focus': {
       backgroundColor: 'rgba(212, 228, 235, 1)',
       borderRadius: 5,
