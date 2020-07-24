@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { Grid } from '@material-ui/core';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
   container: {
@@ -18,36 +19,34 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
     //justifyContent: 'center',
     alignSelf: 'center',
     display: 'inherit',
-    [breakpoints.up('md')]: { 
+    [breakpoints.up('md')]: {
       flexWrap: 'no-wrap',
-     
     },
-    [breakpoints.up('xs')]: { 
+    [breakpoints.up('xs')]: {
       justifyContent: 'center',
       flexWrap: 'wrap',
-    },  
-    [breakpoints.up('sm')]: { 
+    },
+    [breakpoints.up('sm')]: {
       justifyContent: 'flex-end',
       lexWrap: 'no-wrap',
     },
   },
-    searchItem: {
-      //
-      display: 'inherit',
-      [breakpoints.up('md')]: { 
-        flexWrap: 'no-wrap',
-       
-      },
-      [breakpoints.up('xs')]: { 
+  searchItem: {
+    //
+    display: 'inherit',
+    [breakpoints.up('md')]: {
+      flexWrap: 'no-wrap',
+    },
+    [breakpoints.up('xs')]: {
       justifyContent: 'center',
-       flexWrap: 'wrap',
-      },  
-      [breakpoints.up('sm')]: { 
-        justifyContent: 'flex-start',
-        flexWrap: 'no-wrap',
-      },
-  }
-}))
+      flexWrap: 'wrap',
+    },
+    [breakpoints.up('sm')]: {
+      justifyContent: 'flex-start',
+      flexWrap: 'no-wrap',
+    },
+  },
+}));
 
 const useStyles = makeStyles((theme) => ({
   select: {
@@ -61,22 +60,20 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'rgba(212, 228, 235, 1)',
       borderRadius: 5,
     },
-
   },
   paper: {
     display: 'flex',
     padding: '2px 4px 2px 10px',
-   
+
     flexWrap: 'nowrap',
   },
   input: {
     width: '50vw',
-    maxWidth: "300px",
+    maxWidth: '300px',
     display: 'flex',
     flexBasis: '50%',
     flexGrow: 1,
     marginLeft: theme.spacing(1.5),
-    
   },
   iconButton: {
     paddingLeft: 10,
@@ -90,19 +87,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export function SearchBar(props) {
   const classes = useStyles();
   const gridStyles = useGridStyles();
+  let history = useHistory();
+
   function handleButtonClick(e) {
     if (e.keyCode === 13) {
-      props.search(category, e.target.value);
+      // console.log('Enter pressed');
+      return history.push(`/search?cat=${category}&q=${e.target.value}&pg=1`);
     }
   }
   function searchOnPress(e) {
-    console.log(category);
-    props.search(category, e.currentTarget.parentNode.querySelector('[aria-label="search"]').value);
+    //console.log(category);
+    props.search(
+      category,
+      e.currentTarget.parentNode.querySelector('[aria-label="search"]').value
+    );
   }
 
   const [category, setCategory] = React.useState('video game');
@@ -112,9 +113,13 @@ export function SearchBar(props) {
   };
 
   return (
-
-    <Grid container justify='center' spacing={3} classes={{container: gridStyles.container}}>
-      <Grid item classes={{item: gridStyles.categoryItem}} xs={12} sm={4}>
+    <Grid
+      container
+      justify="center"
+      spacing={3}
+      classes={{ container: gridStyles.container }}
+    >
+      <Grid item classes={{ item: gridStyles.categoryItem }} xs={12} sm={4}>
         <Select
           classes={{
             select: classes.select,
@@ -123,26 +128,28 @@ export function SearchBar(props) {
           value={category}
           disableUnderline={true}
           onChange={categorySelection}
-          label="Category">
-
+          label="Category"
+        >
           <option value={'video game'}>Video Game</option>
           <option value={'movie'}>Movie</option>
           <option value={'song'}>Song</option>
         </Select>
       </Grid>
-      <Grid item xs={12} sm={8} classes={{item: gridStyles.searchItem}}>
-        <Paper classes={{root: classes.paper}}
-          elevation={5}>
+      <Grid item xs={12} sm={8} classes={{ item: gridStyles.searchItem }}>
+        <Paper classes={{ root: classes.paper }} elevation={5}>
           <InputBase
             autoFocus={true}
             type="search"
-            classes={{input: classes.input}}
+            classes={{ input: classes.input }}
             placeholder="Search"
             inputProps={{ 'aria-label': 'search' }}
             onKeyDown={handleButtonClick}
           />
           <Divider className={classes.divider} orientation="vertical" />
-          <IconButton type="submit" className={classes.iconButton} aria-label="search"
+          <IconButton
+            type="submit"
+            className={classes.iconButton}
+            aria-label="search"
             onClick={searchOnPress}
           >
             <SearchIcon />

@@ -32,6 +32,7 @@ app.use(fileUpload());
 app.use('/public', express.static(__dirname + '/public'));
 
 app.use('/', index);
+app.use('/', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,10 +47,6 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  app.get('/', (req, res, next) => {
-    console.log('now here');
-    res.send('hey');
-  });
 // render the error page
   res.status(err.status || 500);
   res.render('error');
