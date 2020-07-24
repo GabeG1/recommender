@@ -79,11 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-<<<<<<< HEAD
 export default function Signup(props) {
-=======
-export default function SignUp(props) {
->>>>>>> fd76b563136891b4e03f5048ab5a0546893e264b
   const [values, setValues] = React.useState({
     showPassword: false,
   });
