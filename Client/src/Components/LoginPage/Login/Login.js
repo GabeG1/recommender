@@ -74,7 +74,6 @@ export default function Login(props) {
 
     const sendFormToAuth = async () => {
         const responseData = await PostExistingUser(loginFormValues);
-        alert(responseData.data);
     };
 
     const body = (
