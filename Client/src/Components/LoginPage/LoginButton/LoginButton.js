@@ -1,5 +1,4 @@
 import React from 'react';
-import './LoginButton.css';
 import { LoginButtonStyled } from './LoginButtonStyles';
 import { Link } from 'react-router-dom';
 

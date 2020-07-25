@@ -18,6 +18,7 @@ import {
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import { LoadingIndicator } from './LoadingInfo';
+import * as Styles from "../../SearchPage/RecommendationsButton/RecommendationsButtonSyles";
 //import { LoadingInfo } from './LoadingInfo';
 
 export default class Search extends React.Component {
@@ -190,6 +191,10 @@ export default class Search extends React.Component {
           />
         </section>
         <LoadingIndicator />
+
+        <Styles.RecommendationsButtonStyles>
+          View Recommendations
+        </Styles.RecommendationsButtonStyles>
       </div>
     );
   }

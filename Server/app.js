@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // addition we make
 const fileUpload = require('express-fileupload'); //addition we make
-
 const index = require('./routes/index');
 const users = require('./routes/users');
 
