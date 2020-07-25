@@ -25,7 +25,7 @@ const useGridStyles = makeStyles(({ breakpoints }) => ({
 export function SearchResultsList(props) {
   const gridStyles = useGridStyles();
   console.log('searchresults called');
-  console.log(props.category);
+  //console.log(props.category);
   return (
     <div>
       <Grid
@@ -36,18 +36,22 @@ export function SearchResultsList(props) {
         spacing={2}
         wrap={'nowrap'}
       >
-        {props.results.map((result) => {
-          switch (props.category) {
-            case 'video game':
-              return <VideoGame game={result} />;
-            case 'movie':
-              return <Movie movie={result} />;
-            case 'song':
-              return <Song song={result} />;
-            default:
-              console.log('nothing');
-          }
-        })}
+        {console.log(props.results)}
+        {props.results
+          ? props.results.map((result) => {
+              switch (props.category) {
+                case 'video game':
+                  return <VideoGame game={result} />;
+                case 'movie':
+                  return <Movie movie={result} />;
+                case 'song':
+                  return <Song song={result} />;
+                default:
+                  return {};
+                  console.log('nothing');
+              }
+            })
+          : ''}
       </Grid>
     </div>
   );

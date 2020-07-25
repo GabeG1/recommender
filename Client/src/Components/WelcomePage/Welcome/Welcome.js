@@ -6,6 +6,8 @@ import * as Styles from './WelcomeStyles.js';
 import { LoginButton } from '../../LoginPage/LoginButton/LoginButton';
 import { SignupButton } from '../../SignupPage/SignupButton/SignupButton';
 import './Welcome.css';
+import { FaFireAlt } from 'react-icons/fa';
+import { BsMusicNoteBeamed } from 'react-icons/bs';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,34 +16,26 @@ import {
   Link,
 } from 'react-router-dom';
 import { GridList, Box } from '@material-ui/core';
+import { PopularItems } from '../PopularItems/PopularItems';
+import Songs from '../../../Util/SongFinder';
+import { SearchResultsList } from '../../SearchPage/SearchResultsList/SearchResultsList';
 //#endregion
 const axios = require('axios');
-
-const images = {
-  //#region
-  image_1:
-    'https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  image_2:
-    'https://images.pexels.com/photos/39853/woman-girl-freedom-happy-39853.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  image_3:
-    'https://images.pexels.com/photos/390051/surfer-wave-sunset-the-indian-ocean-390051.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  image_4:
-    'https://images.pexels.com/photos/3004075/pexels-photo-3004075.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
-  image_5:
-    'https://images.pexels.com/photos/1652353/pexels-photo-1652353.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  //#endregion
-};
 
 export class Welcome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageDisplay: images.image_1,
+      popularTracks: '',
     };
-    this.updateImage = this.updateImage.bind(this);
     this.sendRequest = this.sendRequest.bind(this);
+    this.getPopularTracks = this.getPopularTracks.bind(this);
   }
 
+  async getPopularTracks() {
+    const popularTracks = await Songs.getPopularSongs();
+    this.setState({ popularTracks: popularTracks });
+  }
   async sendRequest() {
     const response = await axios.get('http://localhost:4000');
     console.log('About to send response');
@@ -51,23 +45,18 @@ export class Welcome extends React.Component {
 
   componentDidMount() {
     console.log('this gets called');
-    this.sendRequest();
+
+    //this.sendRequest();
   }
-  updateImage() {
-    let curImageKey = Object.keys(images).find((key) => {
-      return images[key] === this.state.imageDisplay;
-    });
-    const curImageNum = Number(curImageKey.substr(6));
-    const nextImage = ((curImageNum + 1) % 5) + 1;
-    this.setState({
-      imageDisplay: images[`image_${nextImage}`],
-    });
+  componentDidUpdate() {
+    console.log('updated');
   }
+
   render() {
-    ////this.sendRequest()
+    console.log('welcome is rendering');
     return (
-      <Grid container justify="center">
-        //#region
+      <Grid container justify="center" className="welcomeGrid">
+        {/*//#region*/}
         <Grid
           container
           justify="space-between"
@@ -86,17 +75,25 @@ export class Welcome extends React.Component {
           </Grid>
         </Grid>
         <Grid item xs={12} className="images">
-          <DisplayImages
-            updateImage={this.updateImage}
-            image={this.state.imageDisplay}
-          ></DisplayImages>
+          <DisplayImages />
         </Grid>
-        <Grid item xs={6} className="signupButton">
+        <Grid item xs={12} className="signupButton">
           <Link to="/signup" className="linkToSignup">
             <SignupButton size="small"></SignupButton>
           </Link>
         </Grid>
-        //#endregion
+        <Grid item xs={12} className="popularItems">
+          <h1 className="popularMusicLabel">
+            <span className="popularMusicTitle">Trending Music </span>
+            <span className="fire">
+              <BsMusicNoteBeamed className="fireIcon" />
+            </span>
+          </h1>
+          <section className="popularItemsList">
+            <PopularItems />
+          </section>
+        </Grid>
+        {/*//#endregion*/}
       </Grid>
     );
   }

@@ -4,4 +4,5 @@ img {
   object-fit: cover;
   position: relative;
   top: 84px;
+  border-bottom: 3px outset rgb(74, 151, 240);
 }

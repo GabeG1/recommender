@@ -168,6 +168,7 @@ export default class Search extends React.Component {
                 shouldCallSearch.pg
               )
             : ''}
+          {console.log(this.state.searchResults)}
           {!Boolean(shouldCallSearch) ? (
             <SearchResultsList
               className="search"

@@ -27,6 +27,10 @@
   color: #61dafb;
 }
 
+.welcomeGrid {
+  background-color: #282c34;
+  overflow-x: hidden;
+}
 .header {
   padding-top: 1rem;
 }
@@ -56,7 +60,7 @@
 }
 
 .signupButton {
-  position: relative;
+  justify-content: center;
   padding-top: 20rem;
   z-index: 3;
 }
@@ -67,4 +71,98 @@
 
 .linkToSignup {
   text-decoration: none;
+}
+
+.popularItems {
+  padding-top: 100px;
+}
+.popularMusicLabel {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: bold;
+  padding-bottom: 30px;
+}
+.popularMusicTitle {
+  font-size: 3.5rem;
+  padding-left: 20px;
+  padding-right: 10px;
+  background: -webkit-linear-gradient(rgb(66, 112, 212), rgb(160, 48, 204));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Set thee background size and repeat properties. */
+  background-size: 57%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Animate the text when loading the element. */
+  /* This animates it on page load and when hovering out. */
+  animation: rainbow-text-animation-rev 0.5s ease forwards;
+
+  cursor: pointer;
+}
+
+/* Add animation on hover. */
+.popularMusicTitle:hover {
+  animation: rainbow-text-animation 0.5s ease forwards;
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-animation {
+  0% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+}
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-animation-rev {
+  0% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+}
+
+.fire svg * {
+  fill: url(#lgrad);
+}
+.fireIcon {
+  font-size: 2.5rem;
+}
+.popularItemsList {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.popularItemsList::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background: transparent;
+  width: 0px;
+}
+.popularItemsList::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  box-shadow: 0px;
+  background-color: transparent;
+  box-shadow: 0px;
 }
