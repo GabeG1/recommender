@@ -1,15 +1,17 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:57308';
-const dbName = 'recommender';
+const url = 'mongodb://localhost:27017';
+const client = new MongoClient(url);
+const dbName = 'Recommender';
+const users = dbName.collection('Users');
 
-MongoClient.connect(url, function(err, client) {
-
-    const db = client.db(dbName);
-
-    });
+try {
+    await client.connect();
+} catch (e) {
+    console.error(e);
+};
 
 export function checkIfUsernameUnique (inputtedUsername) {
-
+    console.log("Got to Backend")
 }
 
 export function addNewUser(userInformation){

@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
 import {Users} from '../Services/Users.js'
 
+var express = require('express');
+var router = express.Router();
 
 router.post('/newUser', function(req, res, next) {
     let username = req.usernameRef;
