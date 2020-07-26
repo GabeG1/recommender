@@ -25,10 +25,7 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#832561",
-  "cSpell.words": [
-    "derrr",
-    "recommen"
-  ],
+  "cSpell.words": ["derrr", "recommen"],
   "autoimport.showNotifications": true,
   "javascript.suggest.autoImports": true
 }

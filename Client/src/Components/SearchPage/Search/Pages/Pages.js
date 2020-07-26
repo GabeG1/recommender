@@ -1,8 +1,8 @@
 import React from 'react';
-import { makeStyles, Box } from '@material-ui/core';
+import {makeStyles, Box} from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
-import { useHistory } from 'react-router-dom';
-import { PaginationItem } from '@material-ui/lab';
+import {useHistory} from 'react-router-dom';
+import {PaginationItem} from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -29,10 +29,10 @@ export default function Pages(props) {
       <Box visibility={props.showPages}>
         <Pagination
           page={Number(props.offset)}
-          count={Math.floor(props.total / 20)}
+          count={Math.ceil(props.total / props.resultsPerPage)}
           showFirstButton
           showLastButton
-          size="large"
+          size='large'
           onChange={handleChange}
           renderItem={(item) => (
             <PaginationItem

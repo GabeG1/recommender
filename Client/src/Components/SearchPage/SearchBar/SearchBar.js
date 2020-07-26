@@ -1,16 +1,16 @@
 import React from 'react';
 import './SearchBar.css';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import { Grid } from '@material-ui/core';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import {Grid} from '@material-ui/core';
+import {Link, Redirect, useHistory} from 'react-router-dom';
 
-const useGridStyles = makeStyles(({ breakpoints }) => ({
+const useGridStyles = makeStyles(({breakpoints}) => ({
   container: {
     justifyContent: 'center',
     alignContent: 'center',
@@ -105,7 +105,7 @@ export function SearchBar(props) {
   }
 
   const [category, setCategory] = React.useState(
-    props.category != '' ? props.category : 'video game'
+    props.category ? props.category : 'video game'
   );
 
   const categorySelection = (event) => {
@@ -115,11 +115,10 @@ export function SearchBar(props) {
   return (
     <Grid
       container
-      justify="center"
+      justify='center'
       spacing={3}
-      classes={{ container: gridStyles.container }}
-    >
-      <Grid item classes={{ item: gridStyles.categoryItem }} xs={12} sm={4}>
+      classes={{container: gridStyles.container}}>
+      <Grid item classes={{item: gridStyles.categoryItem}} xs={12} sm={4}>
         <Select
           classes={{
             select: classes.select,
@@ -128,31 +127,30 @@ export function SearchBar(props) {
           value={category}
           disableUnderline={true}
           onChange={categorySelection}
-          label="Category"
-        >
-          <option value={'video game'}>Video Game</option>
-          <option value={'movie'}>Movie</option>
-          <option value={'song'}>Song</option>
+          label='Category'>
+          <option value={'video game'}>Video Games</option>
+          <option value={'movie'}>Movies</option>
+          <option value={'song'}>Music</option>
+          <option value={'show'}>TV Shows</option>
         </Select>
       </Grid>
-      <Grid item xs={12} sm={8} classes={{ item: gridStyles.searchItem }}>
-        <Paper classes={{ root: classes.paper }} elevation={5}>
+      <Grid item xs={12} sm={8} classes={{item: gridStyles.searchItem}}>
+        <Paper classes={{root: classes.paper}} elevation={5}>
           <InputBase
             autoFocus={true}
-            type="search"
-            classes={{ input: classes.input }}
-            placeholder="Search"
+            type='search'
+            classes={{input: classes.input}}
+            placeholder='Search'
             defaultValue={props.searchTerm != '' ? props.searchTerm : ''}
-            inputProps={{ 'aria-label': 'search' }}
+            inputProps={{'aria-label': 'search'}}
             onKeyDown={handleButtonClick}
           />
-          <Divider className={classes.divider} orientation="vertical" />
+          <Divider className={classes.divider} orientation='vertical' />
           <IconButton
-            type="submit"
+            type='submit'
             className={classes.iconButton}
-            aria-label="search"
-            onClick={searchOnPress}
-          >
+            aria-label='search'
+            onClick={searchOnPress}>
             <SearchIcon />
           </IconButton>
         </Paper>

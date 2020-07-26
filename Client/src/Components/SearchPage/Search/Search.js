@@ -7,18 +7,20 @@ import Movies from '../../../Util/MovieSearch';
 import Songs from '../../../Util/SongFinder';
 import Pages from './Pages/Pages';
 import queryString from 'query-string';
-import { trackPromise, usePromiseTracker } from 'react-promise-tracker';
-import { useLocation, useHistory } from 'react-router-dom';
+import {trackPromise, usePromiseTracker} from 'react-promise-tracker';
+import {useLocation, useHistory} from 'react-router-dom';
 import {
   CircularProgress,
   Fade,
   Slide,
   LinearProgress,
+  Grid,
 } from '@material-ui/core';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import Loader from 'react-loader-spinner';
-import { LoadingIndicator } from './LoadingInfo';
-import * as Styles from "../../SearchPage/RecommendationsButton/RecommendationsButtonSyles";
+import {LoadingIndicator} from './LoadingInfo';
+import * as Styles from '../../SearchPage/RecommendationsButton/RecommendationsButtonSyles';
+import Shows from '../../../Util/ShowFinder';
 //import { LoadingInfo } from './LoadingInfo';
 
 export default class Search extends React.Component {
@@ -43,7 +45,9 @@ export default class Search extends React.Component {
 
   shouldCallSearch() {
     if (!this.props.location.search) {
-      return { didSearch: false };
+      return {
+        didSearch: false,
+      };
     }
     //*parse parameters
     const values = queryString.parse(this.props.location.search);
@@ -100,6 +104,18 @@ export default class Search extends React.Component {
           });
         });
         break;
+      case 'show':
+        Shows.searchShows(searchTerm, offset).then((searchResults) => {
+          this.setState({
+            category: category,
+            searchResults: searchResults.showList,
+            total: searchResults.totalResults,
+            offset: offset,
+            searchTerm: searchTerm,
+            loading: true,
+          });
+        });
+        break;
       case 'song':
         {
           Songs.searchSongs(searchTerm, offset - 1).then((searchResults) => {
@@ -143,28 +159,31 @@ export default class Search extends React.Component {
     const shouldCallSearch = this.shouldCallSearch();
     const didSearch = shouldCallSearch.didSearch;
     return (
-      <div className="wrapper">
-        <header className="title">
-          recommen<span id="inlineTitleDesign">derrr</span>
-        </header>
-        <Styles.RecommendationsButtonStyles>
-          View Recommendations
-        </Styles.RecommendationsButtonStyles>
-        <section className="searchBar">
-          <SearchBar
-            category={
-              !Boolean(shouldCallSearch)
-                ? this.state.category
-                : shouldCallSearch.cat
-            }
-            searchTerm={
-              !Boolean(shouldCallSearch)
-                ? this.state.searchTerm
-                : shouldCallSearch.q
-            }
-          />
-        </section>
-        <div className="searchResultsArea">
+      <div className='wrapper'>
+        <header className='title'>
+          recommen <span id='inlineTitleDesign'> derrr </span>{' '}
+        </header>{' '}
+        <Grid container>
+          <section className='searchBar'>
+            <SearchBar
+              category={
+                !Boolean(shouldCallSearch)
+                  ? this.state.category
+                  : shouldCallSearch.cat
+              }
+              searchTerm={
+                !Boolean(shouldCallSearch)
+                  ? this.state.searchTerm
+                  : shouldCallSearch.q
+              }
+            />{' '}
+          </section>{' '}
+          <Styles.RecommendationsButtonStyles>
+            View Recommendations{' '}
+          </Styles.RecommendationsButtonStyles>{' '}
+        </Grid>{' '}
+        <div className='searchResultsArea'>
+          {' '}
           {Boolean(shouldCallSearch) && didSearch
             ? this.search(
                 shouldCallSearch.cat,
@@ -175,7 +194,7 @@ export default class Search extends React.Component {
           {console.log(this.state.searchResults)}
           {!Boolean(shouldCallSearch) ? (
             <SearchResultsList
-              className="search"
+              className='search'
               category={this.state.category}
               results={this.state.searchResults}
               offset={this.state.offset}
@@ -191,11 +210,10 @@ export default class Search extends React.Component {
             total={this.state.total}
             offset={this.state.offset}
             onPageChange={this.handlePageChange}
+            resultsPerPage={20}
           />
         </section>
         <LoadingIndicator />
-
-
       </div>
     );
   }

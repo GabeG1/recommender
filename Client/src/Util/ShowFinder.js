@@ -2,12 +2,12 @@ import {trackPromise} from 'react-promise-tracker';
 
 const API_KEY = '1d708eee4a07873959932761d08189e4';
 const BaseURL = 'https://api.themoviedb.org/3';
-const searchURL = `${BaseURL}/search/movie`;
-const trendingURL = `${BaseURL}/trending/movie/week`;
+const searchURL = `${BaseURL}/search/tv`;
+const trendingURL = `${BaseURL}/trending/tv/week`;
 const apiParam = `api_key=${API_KEY}`;
 
-const Movies = {
-  searchMovies: async function (query, offset) {
+const Shows = {
+  searchShows: async function (query, offset) {
     const response = await trackPromise(
       fetch(
         `${searchURL}?${apiParam}&query=${query}&page=${offset}&include_adult=true`,
@@ -23,18 +23,18 @@ const Movies = {
     }
     return {
       totalResults: jsonResponse.total_results,
-      movieList: jsonResponse.results.map((movie) => {
+      showList: jsonResponse.results.map((show) => {
         return {
-          id: movie.id,
-          title: movie.original_title,
-          image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-          year: movie.release_date,
-          description: movie.overview,
+          id: show.id,
+          title: show.name,
+          image: `https://image.tmdb.org/t/p/original${show.poster_path}`,
+          year: show.release_date,
+          description: show.overview,
         };
       }),
     };
   },
-  getTrendingMovies: async function () {
+  getTrendingShows: async function () {
     const response = await trackPromise(
       fetch(`${trendingURL}?${apiParam}`, {
         headers: {},
@@ -46,16 +46,16 @@ const Movies = {
       return [];
     }
 
-    return jsonResponse.results.map((movie) => {
+    return jsonResponse.results.map((show) => {
       return {
-        id: movie.id,
-        title: movie.original_title,
-        image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-        year: movie.release_date,
-        description: movie.overview,
+        id: show.id,
+        title: show.name,
+        image: `https://image.tmdb.org/t/p/original${show.poster_path}`,
+        year: show.release_date,
+        description: show.overview,
       };
     });
   },
 };
 
-export default Movies;
+export default Shows;
