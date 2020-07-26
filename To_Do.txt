@@ -1,0 +1,48 @@
+To Do:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Bugs:
+
+- Fix scrolling issue with signup
+
+- Fix scrolling issue with search descriptions
+
+- Fix lag on welcome page
+
+- Fix white images when no image is available
+
+- Thicc white line on top of search
+
+- Thinn white line on top of welcome
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Tasks:
+
+++Front End++
+
+- Change video game API
+
+- Add logo to movie API (give credit)
+
+- Link recommendation button
+
+- Link signup and login to search
+
+- Make recommendation screen
+
+- Load recommendations
+
+- Add logic for login/signup
+
+- Add log out button
+
+===================================================================
+
+++Back End++
+
+- Connect to MongoDB
+
+- Make signup
+
+- make login
+
+/////////////////////////////////////////////////////////////
