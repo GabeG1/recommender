@@ -19,10 +19,11 @@ import {GridList, Box} from '@material-ui/core';
 import {PopularItems} from '../PopularItems/PopularItems';
 import Songs from '../../../Util/SongFinder';
 import {SearchResultsList} from '../../SearchPage/SearchResultsList/SearchResultsList';
+import RouteWithSubRoutes from '../../RouteWithSubRoutes'
 //#endregion
 const axios = require('axios');
 
-export class Welcome extends React.Component {
+class Welcome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,6 +51,9 @@ export class Welcome extends React.Component {
   }
   componentDidUpdate() {
     console.log('updated');
+  }
+  shouldComponentUpdate() {
+    return false;
   }
 
   render() {
@@ -121,7 +125,14 @@ export class Welcome extends React.Component {
           </section>
         </Grid>
         {/*//#endregion*/}
+        <Switch>
+        {this.props.routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
+      </Switch>
       </Grid>
     );
   }
 }
+
+export default Welcome;

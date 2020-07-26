@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38aafa8d-67cd-4b6c-b27b-499fa9724b5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/To_Do.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +127,7 @@
       <workItem from="1595629895927" duration="411000" />
       <workItem from="1595632585993" duration="9157000" />
       <workItem from="1595704862602" duration="4642000" />
-      <workItem from="1595785487953" duration="1983000" />
+      <workItem from="1595785487953" duration="2879000" />
     </task>
     <task id="LOCAL-00001" summary="save random changes">
       <created>1595099313510</created>
@@ -187,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595785910671</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added To Do List">
+      <created>1595787485655</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1595787485655</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +218,8 @@
     <MESSAGE value="Login needs to have all items filled out before submission" />
     <MESSAGE value="Made a button for recommendations" />
     <MESSAGE value="added recomendations button again with grid" />
-    <option name="LAST_COMMIT_MESSAGE" value="added recomendations button again with grid" />
+    <MESSAGE value="Added To Do List" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added To Do List" />
   </component>
   <component name="WindowStateProjectService">
     <state x="523" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595555084195">
@@ -228,10 +234,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="106" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595635937779" />
-    <state x="385" y="8" key="CommitChangelistDialog2" timestamp="1595785909543">
+    <state x="385" y="8" key="CommitChangelistDialog2" timestamp="1595787484950">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="385" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595785909543" />
+    <state x="385" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595787484950" />
     <state x="145" y="71" key="DiffContextDialog" timestamp="1595785847563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -272,10 +278,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595555965116" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1595643783121">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1595787491373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595643783121" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595787491373" />
     <state x="462" y="144" width="611" height="536" key="find.popup" timestamp="1595102570233">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

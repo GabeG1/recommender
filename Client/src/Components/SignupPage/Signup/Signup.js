@@ -1,6 +1,6 @@
 //#region
-import React, { useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useRef} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
@@ -17,11 +17,14 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import './Signup.css';
 import * as Styles from './SignupStyles.js';
-import { PostNewUser } from './SignupAuth';
+import {AuthenticateUser} from './SignupAuth';
+import {checkIfInformationIsValid} from './SignupAuth';
+
 //#endregion
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    overflowY: 'auto',
     display: 'block',
     margin: '5% auto',
     width: 450,
@@ -98,70 +101,86 @@ export default function Signup(props) {
   };
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setValues({...values, showPassword: !values.showPassword});
   };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const sendFormToAuth = async () => {
-    const responseData = await PostNewUser(signupFormValues);
-    alert(responseData.data);
+  function redirectUser(authenticationInformation) {}
+
+  function displayErrorMessage(message) {}
+
+  const authenticateInfo = async () => {
+    const invalidMessage = await checkIfInformationIsValid(signupFormValues);
+
+    if (invalidMessage) {
+      displayErrorMessage(invalidMessage);
+    } else {
+      const authenticationInformation = await AuthenticateUser(
+        signupFormValues
+      );
+
+      if (authenticationInformation.status == 200) {
+        redirectUser(authenticationInformation);
+      } else {
+        displayErrorMessage(authenticationInformation.data);
+      }
+    }
   };
 
   const body = (
     <div className={classes.paper}>
-      <form onSubmit={sendFormToAuth}>
-        <header className="SignupTitle">Signup</header>
+      <form onSubmit={authenticateInfo}>
+        <header className='SignupTitle'>Signup</header>
         <Grid item>
           <TextField
-            id="firstName"
+            id='firstName'
             inputRef={signupFormValues.fNameRef}
-            placeholder="First Name"
-            variant="outlined"
+            placeholder='First Name'
+            variant='outlined'
             required
           />
           <TextField
-            id="lastName"
+            id='lastName'
             inputRef={signupFormValues.lNameRef}
-            placeholder="Last Name"
-            variant="outlined"
+            placeholder='Last Name'
+            variant='outlined'
             required
           />
         </Grid>
         <TextField
-          id="Email address"
+          id='Email address'
           inputRef={signupFormValues.emailRef}
-          placeholder="Email address"
-          variant="outlined"
+          placeholder='Email address'
+          variant='outlined'
           required
         />
 
         <TextField
-          id="username"
+          id='username'
           inputRef={signupFormValues.usernameRef}
-          placeholder="Username"
-          variant="outlined"
+          placeholder='Username'
+          variant='outlined'
           required
         />
 
         <TextField
-          id="password"
+          id='password'
           inputRef={signupFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
-          placeholder="Password"
-          variant="outlined"
-          filled="true"
+          placeholder='Password'
+          variant='outlined'
+          filled='true'
           required
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
+              <InputAdornment position='end'>
                 <IconButton
-                  aria-label="toggle password visibility"
+                  aria-label='toggle password visibility'
                   onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
+                  onMouseDown={handleMouseDownPassword}>
                   {values.showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
@@ -171,16 +190,16 @@ export default function Signup(props) {
 
         <TextField
           //error
-          id="confirmPassword"
+          id='confirmPassword'
           inputRef={signupFormValues.passwordConfirmRef}
-          type="password"
+          type='password'
           required
-          placeholder="Confirm Password"
-          variant="outlined"
+          placeholder='Confirm Password'
+          variant='outlined'
         />
         {/*<Link to="/search" style={{textDecoration: 'none'}}>*/}
 
-        <Styles.SubmitButtonStyled type="submit">
+        <Styles.SubmitButtonStyled type='submit'>
           Submit
         </Styles.SubmitButtonStyled>
         {/*</Styles.FormControlSignup></Link>*/}
@@ -193,10 +212,9 @@ export default function Signup(props) {
       <Modal
         open={true}
         onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        border={0}
-      >
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        border={0}>
         {body}
       </Modal>
     </div>
