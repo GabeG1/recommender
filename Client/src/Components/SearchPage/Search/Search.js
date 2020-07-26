@@ -147,6 +147,9 @@ export default class Search extends React.Component {
         <header className="title">
           recommen<span id="inlineTitleDesign">derrr</span>
         </header>
+        <Styles.RecommendationsButtonStyles>
+          View Recommendations
+        </Styles.RecommendationsButtonStyles>
         <section className="searchBar">
           <SearchBar
             category={
@@ -192,9 +195,7 @@ export default class Search extends React.Component {
         </section>
         <LoadingIndicator />
 
-        <Styles.RecommendationsButtonStyles>
-          View Recommendations
-        </Styles.RecommendationsButtonStyles>
+
       </div>
     );
   }

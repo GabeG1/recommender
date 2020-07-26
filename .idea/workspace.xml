@@ -2,26 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38aafa8d-67cd-4b6c-b27b-499fa9724b5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/Services/MongoDB.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/Services/Users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/LoginPage/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/LoginPage/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/LoginPage/Login/LoginAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/LoginPage/Login/LoginAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/LoginPage/LoginButton/LoginButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/SearchPage/RecommendationsButton/RecommendationsButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/LoginPage/LoginButton/LoginButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/LoginPage/LoginButton/LoginButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/Components/SearchPage/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/SearchPage/Search/Search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/SignupPage/Signup/SignupAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/SignupPage/Signup/SignupAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/SignupPage/SignupButton/SignupButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/SearchPage/RecommendationsButton/RecommendationsButtonSyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Components/SignupPage/SignupButton/SignupButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Components/SignupPage/SignupButton/SignupButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +38,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/GabeG1/recommender.git" />
+      </set>
+    </option>
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -137,7 +130,9 @@
       <workItem from="1595548599981" duration="7263000" />
       <workItem from="1595555883355" duration="234000" />
       <workItem from="1595629895927" duration="411000" />
-      <workItem from="1595632585993" duration="7726000" />
+      <workItem from="1595632585993" duration="9157000" />
+      <workItem from="1595704862602" duration="4642000" />
+      <workItem from="1595785487953" duration="371000" />
     </task>
     <task id="LOCAL-00001" summary="save random changes">
       <created>1595099313510</created>
@@ -181,11 +176,29 @@
       <option name="project" value="LOCAL" />
       <updated>1595551828206</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made a button for recommendations">
+      <created>1595643775764</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1595643775764</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -194,7 +207,8 @@
     <MESSAGE value="save in order to pull" />
     <MESSAGE value="started making login send info and not allow blank boxes" />
     <MESSAGE value="Login needs to have all items filled out before submission" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login needs to have all items filled out before submission" />
+    <MESSAGE value="Made a button for recommendations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made a button for recommendations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="523" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595555084195">
@@ -209,30 +223,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="106" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595635937779" />
-    <state x="385" y="8" key="CommitChangelistDialog2" timestamp="1595551827393">
+    <state x="385" y="8" key="CommitChangelistDialog2" timestamp="1595643774749">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="385" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595551827393" />
-    <state x="145" y="71" key="DiffContextDialog" timestamp="1595550260682">
+    <state x="385" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595643774749" />
+    <state x="145" y="71" key="DiffContextDialog" timestamp="1595785847563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="145" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1595550260682" />
-    <state width="1493" height="324" key="GridCell.Tab.0.bottom" timestamp="1595548842736">
+    <state x="145" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1595785847563" />
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom" timestamp="1595712717113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="324" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595548842736" />
-    <state width="1493" height="324" key="GridCell.Tab.0.center" timestamp="1595548842736">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595712717113" />
+    <state width="1493" height="203" key="GridCell.Tab.0.center" timestamp="1595712717113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="324" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595548842736" />
-    <state width="1493" height="324" key="GridCell.Tab.0.left" timestamp="1595548842736">
+    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595712717113" />
+    <state width="1493" height="203" key="GridCell.Tab.0.left" timestamp="1595712717113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="324" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595548842736" />
-    <state width="1493" height="324" key="GridCell.Tab.0.right" timestamp="1595548842736">
+    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595712717113" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right" timestamp="1595712717113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="324" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595548842736" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595712717113" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1595556079489">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -245,18 +259,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595555965116" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1595551832840">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1595643783121">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595551832840" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595643783121" />
     <state x="462" y="144" width="611" height="536" key="find.popup" timestamp="1595102570233">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="144" width="611" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1595102570233" />
-    <state x="489" y="205" key="git4idea.merge.GitPullDialog" timestamp="1595629920766">
+    <state x="489" y="205" key="git4idea.merge.GitPullDialog" timestamp="1595785830256">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="489" y="205" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1595629920766" />
+    <state x="489" y="205" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1595785830256" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595637086464">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

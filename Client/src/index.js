@@ -5,7 +5,6 @@ import App from './Components/App/App';
 import Loader from 'react-loader-spinner';
 import { usePromiseTracker } from 'react-promise-tracker';
 import RingLoader from 'react-spinners/RingLoader';
-//hello
 
 ReactDOM.render(
   <div>
