@@ -1,27 +1,46 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
 const dbName = 'Recommender';
-const users = dbName.collection('Users');
+let users;
 
-try {
-    await client.connect();
-} catch (e) {
-    console.error(e);
-};
+MongoClient.connect(url, function(err, client) {
+    console.log("Connected successfully to server");
 
-export function checkIfUsernameUnique (inputtedUsername) {
-    console.log("Got to Backend")
+    const db = client.db(dbName);
+    users = db.collection('Users');
+  });
+
+function checkIfUsernameUnique (inputtedUsername) {
+    return users.findOne({username: inputtedUsername}).then(response => {
+      console.log(response)
+      return response == null;
+    } 
+    );
 }
 
-export function addNewUser(userInformation){
-    
+function addNewUser(userInformation){
+    let fName = userInformation.fName;
+    let lName = userInformation.lName;
+    let username = userInformation.usernameRef;
+    let email = userInformation.emailRef;
+    let password = userInformation.passwordRef;
+
+    console.log('fname:', fName);
+
+    users.insertOne({
+        firstName: fName,
+        lastName: lName,
+        username: username,
+        email: email,
+        password: password
+    });
 }
 
-export function authenticateUser(userInformation){
-    
+function authenticateUser(userInformation){
+
 }
 
+module.exports = {checkIfUsernameUnique, addNewUser, authenticateUser}
 
 
 

@@ -17,7 +17,7 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import './Signup.css';
 import * as Styles from './SignupStyles.js';
-import {AuthenticateUser} from './SignupAuth';
+import {authenticateUser} from './SignupAuth';
 import {checkIfInformationIsValid} from './SignupAuth';
 
 //#endregion
@@ -113,12 +113,16 @@ export default function Signup(props) {
   function displayErrorMessage(message) {}
 
   const authenticateInfo = async () => {
-    const invalidMessage = await checkIfInformationIsValid(signupFormValues);
-
-    if (invalidMessage) {
-      displayErrorMessage(invalidMessage);
+    authenticateUser(
+      signupFormValues
+    );
+    const message = await checkIfInformationIsValid(signupFormValues);
+    console.log(message);
+    if (message !== 'Successful') {
+      console.log('')
+      displayErrorMessage(message);
     } else {
-      const authenticationInformation = await AuthenticateUser(
+      const authenticationInformation = await authenticateUser(
         signupFormValues
       );
 
@@ -132,7 +136,7 @@ export default function Signup(props) {
 
   const body = (
     <div className={classes.paper}>
-      <form onSubmit={authenticateInfo}>
+      <form>
         <header className='SignupTitle'>Signup</header>
         <Grid item>
           <TextField
@@ -199,7 +203,7 @@ export default function Signup(props) {
         />
         {/*<Link to="/search" style={{textDecoration: 'none'}}>*/}
 
-        <Styles.SubmitButtonStyled type='submit'>
+        <Styles.SubmitButtonStyled onClick={authenticateInfo}>
           Submit
         </Styles.SubmitButtonStyled>
         {/*</Styles.FormControlSignup></Link>*/}
