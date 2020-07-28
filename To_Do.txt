@@ -2,7 +2,7 @@ To Do:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 Bugs:
 
-- Fix scrolling issue with signup
+- Fix scrolling issue with signup - completed
 
 - Fix scrolling issue with search descriptions
 

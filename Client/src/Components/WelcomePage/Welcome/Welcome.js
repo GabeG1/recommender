@@ -19,7 +19,7 @@ import {GridList, Box} from '@material-ui/core';
 import {PopularItems} from '../PopularItems/PopularItems';
 import Songs from '../../../Util/SongFinder';
 import {SearchResultsList} from '../../SearchPage/SearchResultsList/SearchResultsList';
-import RouteWithSubRoutes from '../../RouteWithSubRoutes'
+import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 //#endregion
 const axios = require('axios');
 
@@ -85,51 +85,12 @@ class Welcome extends React.Component {
             <SignupButton size='small'></SignupButton>
           </Link>
         </Grid>
-        <Grid item xs={12} className='popularItems'>
-          <h1 className='popularItemsLabel'>
-            <span className='popularItemsTitle musicTitle'>
-              Trending Music{' '}
-            </span>
-            <span className='fire'>
-              <BsMusicNoteBeamed className='fireIcon' />
-            </span>
-          </h1>
-          <section className='popularItemsList musicList'>
-            <PopularItems category='song' />
-          </section>
-        </Grid>
-        <Grid item xs={12} className='popularItems'>
-          <h1 className='popularItemsLabel'>
-            <span className='popularItemsTitle moviesTitle'>
-              Trending Movies{' '}
-            </span>
-            <span className='fire'>
-              <FaFireAlt className='fireIcon' />
-            </span>
-          </h1>
-          <section className='popularItemsList moviesList'>
-            <PopularItems category='movie' />
-          </section>
-        </Grid>
-        <Grid item xs={12} className='popularItems'>
-          <h1 className='popularItemsLabel'>
-            <span className='popularItemsTitle moviesTitle'>
-              Trending Shows{' '}
-            </span>
-            <span className='fire'>
-              <FaFireAlt className='fireIcon' />
-            </span>
-          </h1>
-          <section className='popularItemsList moviesList'>
-            <PopularItems category='show' />
-          </section>
-        </Grid>
         {/*//#endregion*/}
         <Switch>
-        {this.props.routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
+          {this.props.routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
       </Grid>
     );
   }

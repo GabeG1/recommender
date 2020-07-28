@@ -1,7 +1,7 @@
 import React from 'react';
 import './Search.css';
-import { SearchBar } from '../SearchBar/SearchBar';
-import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
+import {SearchBar} from '../SearchBar/SearchBar';
+import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
 import VideoGames from '../../../Util/VideoGameSearch';
 import Movies from '../../../Util/MovieSearch';
 import Songs from '../../../Util/SongFinder';
@@ -9,18 +9,27 @@ import Pages from './Pages/Pages';
 import queryString from 'query-string';
 import {trackPromise, usePromiseTracker} from 'react-promise-tracker';
 import {useLocation, useHistory} from 'react-router-dom';
+import image from './zappy_boi.jpg';
 import {
   CircularProgress,
   Fade,
   Slide,
   LinearProgress,
   Grid,
+  Avatar,
+  GridList,
+  CssBaseline,
+  IconButton,
 } from '@material-ui/core';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import {LoadingIndicator} from './LoadingInfo';
 import * as Styles from '../../SearchPage/RecommendationsButton/RecommendationsButtonSyles';
 import Shows from '../../../Util/ShowFinder';
+import {BsMusicNoteBeamed} from 'react-icons/bs';
+import {PopularItems} from '../../WelcomePage/PopularItems/PopularItems';
+import {FaFireAlt} from 'react-icons/fa';
+import CustomAvatar from './CustomAvatar';
 //import { LoadingInfo } from './LoadingInfo';
 
 export default class Search extends React.Component {
@@ -161,50 +170,101 @@ export default class Search extends React.Component {
     return (
       <div className='wrapper'>
         <header className='title'>
-          recommen <span id='inlineTitleDesign'> derrr </span>{' '}
-        </header>{' '}
-        <Grid container>
-          <section className='searchBar'>
-            <SearchBar
-              category={
-                !Boolean(shouldCallSearch)
-                  ? this.state.category
-                  : shouldCallSearch.cat
-              }
-              searchTerm={
-                !Boolean(shouldCallSearch)
-                  ? this.state.searchTerm
-                  : shouldCallSearch.q
-              }
-            />{' '}
-          </section>{' '}
-          <Styles.RecommendationsButtonStyles>
-            View Recommendations{' '}
-          </Styles.RecommendationsButtonStyles>{' '}
-        </Grid>{' '}
-        <div className='searchResultsArea'>
-          {' '}
-          {Boolean(shouldCallSearch) && didSearch
-            ? this.search(
-                shouldCallSearch.cat,
-                shouldCallSearch.q,
-                shouldCallSearch.pg
-              )
-            : ''}
-          {console.log(this.state.searchResults)}
-          {!Boolean(shouldCallSearch) ? (
-            <SearchResultsList
-              className='search'
-              category={this.state.category}
-              results={this.state.searchResults}
-              offset={this.state.offset}
-              total={this.state.total}
-            />
-          ) : (
-            ''
-          )}
-        </div>
-        <section className="pages">
+          <Grid container>
+            <Grid item xs={10}>
+              recommen<span id='inlineTitleDesign'>derrr </span>
+            </Grid>
+
+            <Grid item xs={2}>
+              <CustomAvatar
+                src='https://media-exp1.licdn.com/dms/image/C4E03AQE1Le64TE8m6Q/profile-displayphoto-shrink_100_100/0?e=1598486400&v=beta&t=L9ymk5BMqxbu-RP1o9xQgBC2YnDGX2xdkTuIzKm15Wg'
+                size={40}
+              />
+            </Grid>
+          </Grid>
+        </header>
+
+        <section className='searchBar'>
+          <SearchBar
+            category={
+              !Boolean(shouldCallSearch)
+                ? this.state.category
+                : shouldCallSearch.cat
+            }
+            searchTerm={
+              !Boolean(shouldCallSearch)
+                ? this.state.searchTerm
+                : shouldCallSearch.q
+            }
+          />
+        </section>
+        {Boolean(shouldCallSearch) && !didSearch ? (
+          <Grid container>
+            <Grid item xs={12} className='popularItems'>
+              <h1 className='popularItemsLabel'>
+                <span className='popularItemsTitle musicTitle'>
+                  Trending Music{' '}
+                </span>
+                <span className='fire'>
+                  <BsMusicNoteBeamed className='fireIcon' />
+                </span>
+              </h1>
+              <section className='popularItemsList musicList'>
+                <PopularItems category='song' />
+              </section>
+            </Grid>
+            <Grid item xs={12} className='popularItems'>
+              <h1 className='popularItemsLabel'>
+                <span className='popularItemsTitle moviesTitle'>
+                  Trending Movies{' '}
+                </span>
+                <span className='fire'>
+                  <FaFireAlt className='fireIcon' />
+                </span>
+              </h1>
+              <section className='popularItemsList moviesList'>
+                <PopularItems category='movie' />
+              </section>
+            </Grid>
+            <Grid item xs={12} className='popularItems'>
+              <h1 className='popularItemsLabel'>
+                <span className='popularItemsTitle moviesTitle'>
+                  Trending Shows{' '}
+                </span>
+                <span className='fire'>
+                  <FaFireAlt className='fireIcon' />
+                </span>
+              </h1>
+              <section className='popularItemsList moviesList'>
+                <PopularItems category='show' />
+              </section>
+            </Grid>
+          </Grid>
+        ) : (
+          <div className='searchResultsArea'>
+            {' '}
+            {Boolean(shouldCallSearch) && didSearch
+              ? this.search(
+                  shouldCallSearch.cat,
+                  shouldCallSearch.q,
+                  shouldCallSearch.pg
+                )
+              : ''}
+            {console.log(this.state.searchResults)}
+            {!Boolean(shouldCallSearch) ? (
+              <SearchResultsList
+                className='search'
+                category={this.state.category}
+                results={this.state.searchResults}
+                offset={this.state.offset}
+                total={this.state.total}
+              />
+            ) : (
+              ''
+            )}
+          </div>
+        )}
+        <section className='pages'>
           <Pages
             showPages={Boolean(shouldCallSearch) ? 'hidden' : 'visible'}
             total={this.state.total}
