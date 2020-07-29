@@ -172,7 +172,9 @@ export default class Search extends React.Component {
         <header className='title'>
           <Grid container>
             <Grid item xs={10}>
-              recommen<span id='inlineTitleDesign'>derrr </span>
+              <section className='titleText'>
+                recommen<span id='inlineTitleDesign'>derrr </span>
+              </section>
             </Grid>
 
             <Grid item xs={2}>

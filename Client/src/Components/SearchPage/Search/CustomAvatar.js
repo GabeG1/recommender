@@ -41,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paperRoot: {
+    boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+    backgroundColor: '#f1f1f1',
     //position: relative,
     //marginTop: 12.1,
     //maxHeight: 'contain',
@@ -59,14 +61,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     fontFamily: 'Source Sans Pro',
     color: 'rgba(0, 0, 0, 0.6)',
-    fontSize: 14.4,
+    fontSize: 17,
     fontWeight: 600,
-    textDecorationColor: 'rgba(0, 0, 0, 0.6)',
+    //textDecorationColor: 'rgba(0, 0, 0, 0.6)',
     textSizeAdjust: '100%',
-    fontStretch: '100%',
+    //fontStretch: '100%',
     padding: '15px 10px',
     '&:hover': {
-      backgroundColor: 'rgba(122, 210, 220, 0.76)',
+      backgroundColor: '#ddd',
     },
   },
   popper: {
@@ -79,7 +81,8 @@ const useStyles = makeStyles((theme) => ({
       height: '1em',
       '&::before': {
         borderWidth: '0 1em 1em 1em',
-        borderColor: `transparent transparent ${theme.palette.background.paper} transparent`,
+        borderColor: `transparent transparent #f1f1f1 transparent`,
+        color: '#f1f1f1',
       },
     },
   },
@@ -108,10 +111,16 @@ export default function CustomAvatar(props) {
   //const arrowRef = React.useRef(null);
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    console.log('toggled');
+
+    setOpen((prevOpen) => {
+      console.log('prevOpen', prevOpen);
+      return !prevOpen;
+    });
   };
 
   const handleClose = (event) => {
+    console.log('closed');
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -145,77 +154,78 @@ export default function CustomAvatar(props) {
   //Object.assign(newStyle, style);
   return (
     <div>
-      <Badge
-        overlap='circle'
-        classes={{
-          badge: classes.badge,
-        }}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        variant='dot'>
-        <IconButton
-          style={newStyle}
-          ref={anchorRef}
-          aria-label='account of current user'
-          aria-controls={open ? 'menu-appbar' : undefined}
-          aria-haspopup='true'
-          onMouseEnter={handleToggle}
-        />
-      </Badge>
-      <Popper
-        open={open}
-        className={classes.popper}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        placement={'bottom'}
-        transition
-        modifiers={{
-          arrow: {
-            enabled: true,
-            element: arrowRef,
-          },
-        }}
-        onMouseLeave={handleClose}
-        disablePortal>
-        <span className={classes.arrow} ref={setArrowRef} />
-        <Paper classes={{root: classes.paperRoot}}>
-          <ClickAwayListener onClickAway={handleClose}>
-            <MenuList id='menu-appbar' classes={{root: classes.menuListRoot}}>
-              <MenuItem
-                button
-                onClick={handleClose}
-                classes={{
-                  root: classes.menuListItemRoot,
-                  selected: classes.itemSelected,
-                }}>
-                Profile
-              </MenuItem>
-              <Divider classes={{root: classes.dividerRoot}} />
-              <MenuItem
-                button
-                onClick={handleClose}
-                classes={{
-                  root: classes.menuListItemRoot,
-                  selected: classes.itemSelected,
-                }}>
-                My account
-              </MenuItem>
-              <Divider classes={{root: classes.dividerRoot}} />
-              <MenuItem
-                button
-                onClick={handleClose}
-                classes={{
-                  root: classes.menuListItemRoot,
-                  selected: classes.itemSelected,
-                }}>
-                View Recommendations
-              </MenuItem>
-            </MenuList>
-          </ClickAwayListener>
-        </Paper>
-      </Popper>
+      <section>
+        <Badge
+          overlap='circle'
+          classes={{
+            badge: classes.badge,
+          }}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          variant='dot'>
+          <IconButton
+            style={newStyle}
+            ref={anchorRef}
+            aria-label='account of current user'
+            aria-controls={open ? 'menu-appbar' : undefined}
+            aria-haspopup='true'
+            onMouseOver={handleToggle}
+          />
+        </Badge>
+        <Popper
+          open={open}
+          className={classes.popper}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          placement={'bottom'}
+          transition
+          modifiers={{
+            arrow: {
+              enabled: true,
+              element: arrowRef,
+            },
+          }}
+          disablePortal>
+          <span className={classes.arrow} ref={setArrowRef} />
+          <Paper classes={{root: classes.paperRoot}}>
+            <ClickAwayListener onClickAway={handleClose}>
+              <MenuList id='menu-appbar' classes={{root: classes.menuListRoot}}>
+                <MenuItem
+                  button
+                  onClick={handleClose}
+                  classes={{
+                    root: classes.menuListItemRoot,
+                    selected: classes.itemSelected,
+                  }}>
+                  Profile
+                </MenuItem>
+                <Divider classes={{root: classes.dividerRoot}} />
+                <MenuItem
+                  button
+                  onClick={handleClose}
+                  classes={{
+                    root: classes.menuListItemRoot,
+                    selected: classes.itemSelected,
+                  }}>
+                  My account
+                </MenuItem>
+                <Divider classes={{root: classes.dividerRoot}} />
+                <MenuItem
+                  button
+                  onClick={handleClose}
+                  classes={{
+                    root: classes.menuListItemRoot,
+                    selected: classes.itemSelected,
+                  }}>
+                  View Recommendations
+                </MenuItem>
+              </MenuList>
+            </ClickAwayListener>
+          </Paper>
+        </Popper>
+      </section>
     </div>
   );
 }

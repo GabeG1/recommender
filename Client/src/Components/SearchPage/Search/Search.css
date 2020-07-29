@@ -29,16 +29,44 @@
   background-color: black;
   background-image: linear-gradient(147deg, #383333 0%, #181516 50%);
   width: 100%;
-  color: rgb(255, 255, 255);
-  font-size: 30px;
-  font-family: 'Frank Ruhl Libre', serif;
-  font-weight: bold;
   border-bottom: 4px solid rgb(123, 76, 235);
 }
-.title #inlineTitleDesign {
-  color: rgb(103, 67, 222);
+.titleText {
+  position: relative;
+  font-family: 'Frank Ruhl Libre', sans-serif;
+  font-size: 45px;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff08ff, rgb(203, 199, 199), rgb(0, 0, 0));
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 10s infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.467);
+  -webkit-animation: animate 5s 0s infinite;
+}
+.titleText #inlineTitleDesign {
+  background: linear-gradient(
+    90deg,
+    rgb(103, 67, 222) rgb(203, 199, 199),
+    rgb(0, 0, 0)
+  );
   font-weight: 900;
+  letter-spacing: 2px;
   font-size: 35px;
+}
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  25% {
+    background-position: -50%;
+  }
+  75% {
+    background-position: 90%;
+  }
+  100% {
+    background-position: 500%;
+  }
 }
 
 .searchBar {
