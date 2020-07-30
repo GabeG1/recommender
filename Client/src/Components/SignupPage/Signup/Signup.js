@@ -13,6 +13,7 @@ import {
   Route,
   useHistory,
   Link,
+  Redirect,
 } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import './Signup.css';
@@ -113,13 +114,11 @@ export default function Signup(props) {
   function displayErrorMessage(message) {}
 
   const authenticateInfo = async () => {
-    authenticateUser(
-      signupFormValues
-    );
+    authenticateUser(signupFormValues);
     const message = await checkIfInformationIsValid(signupFormValues);
     console.log(message);
     if (message !== 'Successful') {
-      console.log('')
+      console.log('');
       displayErrorMessage(message);
     } else {
       const authenticationInformation = await authenticateUser(
@@ -136,7 +135,10 @@ export default function Signup(props) {
 
   const body = (
     <div className={classes.paper}>
-      <form>
+      <form
+        onSubmit={async () => {
+          return (await authenticateInfo()) ? history.push('/search') : null;
+        }}>
         <header className='SignupTitle'>Signup</header>
         <Grid item>
           <TextField
@@ -203,7 +205,7 @@ export default function Signup(props) {
         />
         {/*<Link to="/search" style={{textDecoration: 'none'}}>*/}
 
-        <Styles.SubmitButtonStyled onClick={authenticateInfo}>
+        <Styles.SubmitButtonStyled type='submit'>
           Submit
         </Styles.SubmitButtonStyled>
         {/*</Styles.FormControlSignup></Link>*/}

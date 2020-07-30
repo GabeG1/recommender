@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useRef} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
-import { useHistory } from 'react-router-dom';
-import { Search } from '../../SearchPage/Search/Search';
+import {useHistory} from 'react-router-dom';
+import {Search} from '../../SearchPage/Search/Search';
 import './Login.css';
 import * as Styles from './LoginStyles.js';
 import {
@@ -19,9 +19,9 @@ import {
   withRouter,
   useRouteMatch,
 } from 'react-router-dom';
-import { Welcome } from '../../WelcomePage/Welcome/Welcome';
-import { PostNewUser } from '../../SignupPage/Signup/SignupAuth';
-import { PostExistingUser } from './LoginAuth';
+import {Welcome} from '../../WelcomePage/Welcome/Welcome';
+import {PostNewUser} from '../../SignupPage/Signup/SignupAuth';
+import {PostExistingUser} from './LoginAuth';
 const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'block',
@@ -64,7 +64,7 @@ export default function Login(props) {
   };
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setValues({...values, showPassword: !values.showPassword});
   };
 
   const handleMouseDownPassword = (event) => {
@@ -77,32 +77,34 @@ export default function Login(props) {
 
   const body = (
     <div className={classes.paper}>
-      <form onSubmit={sendFormToAuth}>
-        <header className="LoginTitle">Login</header>
+      <form
+        onSubmit={async () => {
+          return (await sendFormToAuth()) ? history.push('/search') : null;
+        }}>
+        <header className='LoginTitle'>Login</header>
         <TextField
-          id="username"
+          id='username'
           inputRef={loginFormValues.usernameRef}
-          placeholder="Enter username"
-          variant="outlined"
+          placeholder='Enter username'
+          variant='outlined'
           required
         />
 
         <TextField
-          id="password"
+          id='password'
           inputRef={loginFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
-          placeholder="Enter password"
-          variant="outlined"
-          filled="true"
+          placeholder='Enter password'
+          variant='outlined'
+          filled='true'
           required
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
+              <InputAdornment position='end'>
                 <IconButton
-                  aria-label="toggle password visibility"
+                  aria-label='toggle password visibility'
                   onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
+                  onMouseDown={handleMouseDownPassword}>
                   {values.showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
@@ -110,7 +112,7 @@ export default function Login(props) {
           }}
         />
 
-        <Styles.SubmitButtonStyled type="submit">
+        <Styles.SubmitButtonStyled type='submit'>
           Submit
         </Styles.SubmitButtonStyled>
       </form>
@@ -122,10 +124,9 @@ export default function Login(props) {
       <Modal
         open={true}
         onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        border={0}
-      >
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        border={0}>
         {body}
       </Modal>
     </div>

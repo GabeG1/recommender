@@ -32,6 +32,9 @@ import {FaFireAlt} from 'react-icons/fa';
 import CustomAvatar from './CustomAvatar';
 //import { LoadingInfo } from './LoadingInfo';
 
+function animationEnded() {
+  console.log('animation ended');
+}
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -153,6 +156,13 @@ export default class Search extends React.Component {
   componentDidMount() {
     window.focus();
     window.scrollTo(0, 0);
+
+    const animated = document.querySelector('.titleText');
+
+    console.log(animated);
+    /*animated.addEventListener('animationiteration', () => {
+      animated.style.animationPlayState = 'paused';
+    });*/
     //document.querySelector('.search').scrollTo(0, 0);
   }
 

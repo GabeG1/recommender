@@ -11,6 +11,7 @@ import {
   Badge,
   makeStyles,
   Divider,
+  Grid,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -108,24 +109,22 @@ export default function CustomAvatar(props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [arrowRef, setArrowRef] = React.useState(null);
+  let mouseOver = false;
   //const arrowRef = React.useRef(null);
 
   const handleToggle = () => {
     console.log('toggled');
-
-    setOpen((prevOpen) => {
-      console.log('prevOpen', prevOpen);
-      return !prevOpen;
-    });
+    if (!open) {
+      setOpen(true);
+    }
   };
 
   const handleClose = (event) => {
-    console.log('closed');
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
+    setTimeout(() => {
+      if (mouseOver == false) {
+        setOpen(false);
+      }
+    }, 1);
   };
 
   useEffect(() => {
@@ -153,79 +152,91 @@ export default function CustomAvatar(props) {
 
   //Object.assign(newStyle, style);
   return (
-    <div>
-      <section>
-        <Badge
-          overlap='circle'
-          classes={{
-            badge: classes.badge,
+    <Grid container>
+      <Badge
+        overlap='circle'
+        classes={{
+          badge: classes.badge,
+        }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        variant='dot'>
+        <IconButton
+          style={newStyle}
+          onMouseOver={() => {
+            mouseOver = true;
+            handleToggle();
           }}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
+          onMouseOut={() => {
+            mouseOver = false;
+            handleClose();
           }}
-          variant='dot'>
-          <IconButton
-            style={newStyle}
-            ref={anchorRef}
-            aria-label='account of current user'
-            aria-controls={open ? 'menu-appbar' : undefined}
-            aria-haspopup='true'
-            onMouseOver={handleToggle}
-          />
-        </Badge>
-        <Popper
-          open={open}
-          className={classes.popper}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          placement={'bottom'}
-          transition
-          modifiers={{
-            arrow: {
-              enabled: true,
-              element: arrowRef,
-            },
-          }}
-          disablePortal>
-          <span className={classes.arrow} ref={setArrowRef} />
-          <Paper classes={{root: classes.paperRoot}}>
-            <ClickAwayListener onClickAway={handleClose}>
-              <MenuList id='menu-appbar' classes={{root: classes.menuListRoot}}>
-                <MenuItem
-                  button
-                  onClick={handleClose}
-                  classes={{
-                    root: classes.menuListItemRoot,
-                    selected: classes.itemSelected,
-                  }}>
-                  Profile
-                </MenuItem>
-                <Divider classes={{root: classes.dividerRoot}} />
-                <MenuItem
-                  button
-                  onClick={handleClose}
-                  classes={{
-                    root: classes.menuListItemRoot,
-                    selected: classes.itemSelected,
-                  }}>
-                  My account
-                </MenuItem>
-                <Divider classes={{root: classes.dividerRoot}} />
-                <MenuItem
-                  button
-                  onClick={handleClose}
-                  classes={{
-                    root: classes.menuListItemRoot,
-                    selected: classes.itemSelected,
-                  }}>
-                  View Recommendations
-                </MenuItem>
-              </MenuList>
-            </ClickAwayListener>
-          </Paper>
-        </Popper>
-      </section>
-    </div>
+          ref={anchorRef}
+          aria-label='account of current user'
+          aria-controls={open ? 'menu-appbar' : undefined}
+          aria-haspopup='true'
+        />
+      </Badge>
+      <Popper
+        open={open}
+        className={classes.popper}
+        anchorEl={anchorRef.current}
+        aria-label='menu-popper'
+        onMouseOver={() => {
+          mouseOver = true;
+        }}
+        onMouseOut={() => {
+          mouseOver = false;
+        }}
+        role={undefined}
+        placement={'bottom'}
+        transition
+        modifiers={{
+          arrow: {
+            enabled: true,
+            element: arrowRef,
+          },
+        }}
+        disablePortal>
+        <span className={classes.arrow} ref={setArrowRef} />
+        <Paper classes={{root: classes.paperRoot}}>
+          <ClickAwayListener onClickAway={handleClose}>
+            <MenuList id='menu-appbar' classes={{root: classes.menuListRoot}}>
+              <MenuItem
+                button
+                onClick={handleClose}
+                classes={{
+                  root: classes.menuListItemRoot,
+                  selected: classes.itemSelected,
+                }}>
+                Profile
+              </MenuItem>
+              <Divider classes={{root: classes.dividerRoot}} />
+              <MenuItem
+                button
+                onClick={handleClose}
+                classes={{
+                  root: classes.menuListItemRoot,
+                  selected: classes.itemSelected,
+                }}>
+                My account
+              </MenuItem>
+              <Divider classes={{root: classes.dividerRoot}} />
+              <MenuItem
+                button
+                onClick={handleClose}
+                classes={{
+                  root: classes.menuListItemRoot,
+                  selected: classes.itemSelected,
+                }}>
+                View Recommendations
+              </MenuItem>
+            </MenuList>
+          </ClickAwayListener>
+        </Paper>
+      </Popper>
+    </Grid>
   );
 }

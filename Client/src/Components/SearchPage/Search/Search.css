@@ -32,6 +32,7 @@
   border-bottom: 4px solid rgb(123, 76, 235);
 }
 .titleText {
+  display: block;
   position: relative;
   font-family: 'Frank Ruhl Libre', sans-serif;
   font-size: 45px;
@@ -39,30 +40,40 @@
   background: linear-gradient(90deg, #ff08ff, rgb(203, 199, 199), rgb(0, 0, 0));
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: animate 10s infinite;
+  animation: titleAnimation 5s infinite;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.467);
-  -webkit-animation: animate 5s 0s infinite;
+  -webkit-animation: titleAnimation 5s infinite;
 }
 .titleText #inlineTitleDesign {
-  background: linear-gradient(
-    90deg,
-    rgb(103, 67, 222) rgb(203, 199, 199),
-    rgb(0, 0, 0)
-  );
+  -webkit-text-fill-color: rgba(227, 17, 247, 0.712);
+  /*  background: linear-gradient(90deg, #9307a5, rgb(203, 199, 199), rgb(0, 0, 0));
+  background-clip: text;
+  -webkit-background-clip: text;*/
   font-weight: 900;
   letter-spacing: 2px;
   font-size: 35px;
 }
-@keyframes animate {
+@keyframes titleAnimation {
   0% {
     background-position: -500%;
   }
   25% {
     background-position: -50%;
   }
-  75% {
+  50% {
     background-position: 90%;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+@keyframes inlineTitleAnimation {
+  0% {
+    background-position: -500%;
   }
   100% {
     background-position: 500%;
