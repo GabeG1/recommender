@@ -16,7 +16,6 @@ import {
   Link,
 } from 'react-router-dom';
 import {GridList, Box} from '@material-ui/core';
-import {PopularItems} from '../PopularItems/PopularItems';
 import Songs from '../../../Util/SongFinder';
 import {SearchResultsList} from '../../SearchPage/SearchResultsList/SearchResultsList';
 import RouteWithSubRoutes from '../../RouteWithSubRoutes';

@@ -121,10 +121,10 @@ export default function CustomAvatar(props) {
 
   const handleClose = (event) => {
     setTimeout(() => {
-      if (mouseOver == false) {
+      if (mouseOver == false && open) {
         setOpen(false);
       }
-    }, 1);
+    }, 10);
   };
 
   useEffect(() => {
@@ -162,7 +162,15 @@ export default function CustomAvatar(props) {
           vertical: 'bottom',
           horizontal: 'right',
         }}
-        variant='dot'>
+        variant='dot'
+        onMouseOver={() => {
+          mouseOver = true;
+          handleToggle();
+        }}
+        onMouseOut={() => {
+          mouseOver = false;
+          handleClose();
+        }}>
         <IconButton
           style={newStyle}
           onMouseOver={() => {
@@ -186,9 +194,11 @@ export default function CustomAvatar(props) {
         aria-label='menu-popper'
         onMouseOver={() => {
           mouseOver = true;
+          handleToggle();
         }}
         onMouseOut={() => {
           mouseOver = false;
+          handleClose();
         }}
         role={undefined}
         placement={'bottom'}

@@ -1,4 +1,4 @@
-import { trackPromise } from 'react-promise-tracker';
+import {trackPromise} from 'react-promise-tracker';
 
 const CLIENT_ID = '0257e913a3d44ce9b0535e868949fd21';
 const URL = 'https://accounts.spotify.com/api/token';
@@ -72,14 +72,16 @@ const Songs = {
       return [];
     }
     console.log(token);
-    const response = await fetch(popularPlaylisturl, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const jsonResponse = await response.json();
+    const response = await trackPromise(
+      fetch(popularPlaylisturl, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    );
+    const jsonResponse = await trackPromise(response.json());
     if (!jsonResponse.tracks) {
       console.log('no response');
       return [];
