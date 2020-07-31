@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import './DisplayImages.css';
 import CrossFadeImage from 'react-crossfade-image';
 
@@ -30,22 +30,20 @@ export function DisplayImages() {
     const nextImage = ((curImageNum + 1) % 5) + 1;
     return images[`image_${nextImage}`];
   }
-  /* useEffect(() => {
-    console.log('here');
-    // return () => clearTimeout(timer);
-  }, []);
-*/
+  useEffect(() => {
+    setTimeout(() => {
+      updateImage(getNextImage());
+    }, 3000);
+  });
+
   return (
-    <div className="displayImages">
+    <div className='displayImages'>
       <CrossFadeImage
         duration={1000}
         src={imageDisplay}
-        alt="display"
-        className="displayImage"
+        alt='display'
+        className='displayImage'
       />
-      {setTimeout(() => {
-        updateImage(getNextImage());
-      }, 3000)}
     </div>
   );
 }
