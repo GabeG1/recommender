@@ -27,48 +27,13 @@
   color: #61dafb;
 }
 
-.welcomeGrid {
-  background-color: #282c34;
-  overflow-x: hidden;
-}
-.header {
-  padding-top: 1rem;
-}
-.welcomeTitle {
-  padding-left: 3%;
-  z-index: 2;
-  color: #35c9bccf;
-  font-size: 3rem;
-  font-family: 'Frank Ruhl Libre', serif;
-  font-weight: bold;
-}
-.welcomeTitle #inlineTitleDesign {
-  color: rgb(103, 67, 222);
-  font-weight: 900;
-  font-size: 2.5rem;
+#inlineTitleDesign {
+  color: 'rgb(103, 67, 222)';
+  font-weight: '900';
+  font-size: '2.5rem';
 }
 
-.loginButton {
-  z-index: 1;
-}
-
-.images {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -5.3rem;
-}
-
-.signupButton {
-  justify-content: center;
-  padding-top: 20rem;
-  z-index: 3;
-}
-.linkToLogin {
-  z-index: 5;
-  text-decoration: none;
-}
-
-.linkToSignup {
-  text-decoration: none;
+.linkToSearch {
+  text-decoration-line: none;
+  -moz-text-decoration-line: none;
 }
