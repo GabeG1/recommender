@@ -6,13 +6,12 @@ let users;
 MongoClient.connect(url, function(err, client) {
     console.log("Connected successfully to server");
 
-    const db = client.db(dbName);
-    users = db.collection('Users');
+    const database = client.db(dbName);
+    users = database.collection('Users');
   });
 
 function checkIfUsernameUnique (inputtedUsername) {
     return users.findOne({username: inputtedUsername}).then(response => {
-      console.log(response)
       return response == null;
     } 
     );
@@ -25,8 +24,6 @@ function addNewUser(userInformation){
     let email = userInformation.emailRef;
     let password = userInformation.passwordRef;
 
-    console.log('fname:', fName);
-
     users.insertOne({
         firstName: fName,
         lastName: lName,
@@ -36,13 +33,12 @@ function addNewUser(userInformation){
     });
 }
 
-function authenticateUser(userInformation){
-
+function authenticateUser(inputtedUsername, inputtedPassword){
+  return users.findOne({username: inputtedUsername, password: inputtedPassword}).then(response => {
+    console.log(response);
+    return response;
+  }
+  );
 }
 
 module.exports = {checkIfUsernameUnique, addNewUser, authenticateUser}
-
-
-
-
-

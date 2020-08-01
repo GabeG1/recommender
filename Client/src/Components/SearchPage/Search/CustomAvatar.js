@@ -17,7 +17,7 @@ import {
 const useStyles = makeStyles((theme) => ({
   badge: {
     backgroundColor: '#44b700',
-    color: '#44b700',
+    color: '##right-click on a color to see the context-menu ... and check out the intellisense command (see docs)',
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     '&::after': {
       position: 'absolute',
@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
       '&::before': {
         borderWidth: '0 1em 1em 1em',
         borderColor: `transparent transparent #f1f1f1 transparent`,
-        color: '#f1f1f1',
       },
     },
   },
@@ -150,7 +149,7 @@ export default function CustomAvatar(props) {
     backgroundPosition: '50% 50%',
   };
 
-  //Object.assign(newStyle, style);
+  //Object.assign(newStyle, style); 
   return (
     <Grid container>
       <Badge

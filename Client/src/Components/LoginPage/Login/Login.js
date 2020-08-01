@@ -73,12 +73,14 @@ export default function Login(props) {
 
   const sendFormToAuth = async () => {
     const responseData = await PostExistingUser(loginFormValues);
+    return responseData.status == 200;
   };
 
   const body = (
     <div className={classes.paper}>
       <form
-        onSubmit={async () => {
+        onSubmit={async (e) => {
+          e.preventDefault();
           return (await sendFormToAuth()) ? history.push('/search') : null;
         }}>
         <header className='LoginTitle'>Login</header>

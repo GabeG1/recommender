@@ -4,29 +4,33 @@ var router = express.Router();
 
 router.post('/newUser', function(req, res, next) {
     let username = req.body.usernameRef;
-    console.log('post request received');
-    console.log(username);
     Users.checkIfUsernameUnique(username).then(response => {
-    console.log(response);
     if (response){
-        console.log("Is unique");
         Users.addNewUser(req.body);
         res.status(200).send();
     }
     else{
-        console.log("Not unique");
         res.status(400).send("Username is already taken, please enter a new one");
     }
-        }
-    )
-    });
+})});
     
-router.post('/existingUser', function(req, res, next) {
-    let username = req.usernameRef;
-    let password = req.passwordRef;
-
-    Users.authenticateUser(username,password);
-
-});
+router.get('/existingUser', function(req, res, next) {
+    let username = req.query.username;
+    let password = req.query.password;
+    console.log(username);
+    console.log(password);
+    Users.authenticateUser(username, password).then(response => {
+    console.log("G^3");
+    console.log(response);
+    console.log(username);
+    console.log(password);
+    if (response != null){
+        res.status(200).send();
+        res.body = response
+    }
+    else{
+        res.status(400).send("Please ensure your username and password are correct");
+    }
+})});
 
 module.exports = router;

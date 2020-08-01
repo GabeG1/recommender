@@ -157,7 +157,7 @@ function Welcome(props) {
           sm={9}
           md={12}
           classes={{root: classes.websiteMessage}}>
-          Your Opinions Heard
+          "Stay inside and consume media" - G^3 & Sol
         </Grid>
       </Grid>
       <Grid item xs={12} classes={{root: classes.signupButton}}>

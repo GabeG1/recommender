@@ -19,7 +19,6 @@ import IconButton from '@material-ui/core/IconButton';
 import './Signup.css';
 import * as Styles from './SignupStyles.js';
 import {authenticateUser} from './SignupAuth';
-import {checkIfInformationIsValid} from './SignupAuth';
 
 //#endregion
 
@@ -84,9 +83,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signup(props) {
+  
+  const allLetters = "^[A-Za-z]+$";
+  const noWhiteSpaces = "[^' ']+$";
+  const validEmail = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+
   const [values, setValues] = React.useState({
     showPassword: false,
   });
+  const [firstNameValue, setFirstNameValue] = React.useState('');
+  const [lastNameValue, setLastNameValue] = React.useState('');
+  const [userNameValue, setUserNameValue] = React.useState('');
+  const [emailValue, setEmailValue] = React.useState('');
+  const [passwordValue, setPasswordValue] = React.useState('');
   const history = useHistory();
   const classes = useStyles();
   const signupFormValues = {
@@ -109,40 +118,27 @@ export default function Signup(props) {
     event.preventDefault();
   };
 
-  function redirectUser(authenticationInformation) {}
-
-  function displayErrorMessage(message) {}
-
   const authenticateInfo = async () => {
-    authenticateUser(signupFormValues);
-    const message = await checkIfInformationIsValid(signupFormValues);
-    console.log(message);
-    if (message !== 'Successful') {
-      console.log('');
-      displayErrorMessage(message);
-    } else {
-      const authenticationInformation = await authenticateUser(
-        signupFormValues
-      );
-
-      if (authenticationInformation.status == 200) {
-        redirectUser(authenticationInformation);
-      } else {
-        displayErrorMessage(authenticationInformation.data);
-      }
+      const authenticationInformation = await authenticateUser(signupFormValues);
+      console.log('...results returned');
+      console.log(authenticationInformation)
+      return authenticationInformation.status == 200;
     }
-  };
 
   const body = (
     <div className={classes.paper}>
       <form
-        onSubmit={async () => {
+         onSubmit={async (e) => {
+          e.preventDefault();
           return (await authenticateInfo()) ? history.push('/search') : null;
         }}>
         <header className='SignupTitle'>Signup</header>
         <Grid item>
           <TextField
             id='firstName'
+            inputProps = {{pattern: allLetters}}
+            value={firstNameValue}
+            onChange={(e)=>setFirstNameValue(e.target.value)}
             inputRef={signupFormValues.fNameRef}
             placeholder='First Name'
             variant='outlined'
@@ -150,6 +146,9 @@ export default function Signup(props) {
           />
           <TextField
             id='lastName'
+            inputProps = {{pattern: allLetters}}
+            value={lastNameValue}
+            onChange={(e)=>setLastNameValue(e.target.value)}
             inputRef={signupFormValues.lNameRef}
             placeholder='Last Name'
             variant='outlined'
@@ -157,6 +156,9 @@ export default function Signup(props) {
           />
         </Grid>
         <TextField
+        inputProps = {{pattern: validEmail}}
+        value={emailValue}
+            onChange={(e)=>setEmailValue(e.target.value)}
           id='Email address'
           inputRef={signupFormValues.emailRef}
           placeholder='Email address'
@@ -166,7 +168,10 @@ export default function Signup(props) {
 
         <TextField
           id='username'
+          inputProps = {{pattern: noWhiteSpaces}}
           inputRef={signupFormValues.usernameRef}
+          value={userNameValue}
+            onChange={(e)=>setUserNameValue(e.target.value)}
           placeholder='Username'
           variant='outlined'
           required
@@ -176,6 +181,8 @@ export default function Signup(props) {
           id='password'
           inputRef={signupFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
+          value={passwordValue}
+            onChange={(e)=>setPasswordValue(e.target.value)}
           placeholder='Password'
           variant='outlined'
           filled='true'
@@ -197,7 +204,7 @@ export default function Signup(props) {
         <TextField
           //error
           id='confirmPassword'
-          inputRef={signupFormValues.passwordConfirmRef}
+          inputProps={{pattern: passwordValue}}
           type='password'
           required
           placeholder='Confirm Password'

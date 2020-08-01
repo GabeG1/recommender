@@ -5,14 +5,19 @@ const axios = require('axios');
 
 export async function PostExistingUser(newUser) {
   const rawTextPassword = newUser.passwordRef.current.value;
-  const encryptedPassword = CryptoJS.AES.encrypt(
+ 
+  const encryptedPassword = CryptoJS.SHA3(rawTextPassword, { outputLength: 512 });
+ /* const encryptedPassword = CryptoJS.AES.encrypt(
     rawTextPassword,
-    'AngeloKookieBrownie'
-  );
-
-  const loginResponse = await axios.post('http://localhost:4000/existingUser', {
-    usernameRef: newUser.usernameRef.current.value,
-    passwordRef: encryptedPassword,
+    'AngeloKookieBrownie', { mode: CryptoJS.mode.ECB }
+  );*/
+    console.log(newUser.usernameRef.current.value);
+    console.log(encryptedPassword.toString(CryptoJS.enc.Hex));
+  const loginResponse = await axios.get('http://localhost:4000/existingUser', { 
+    params: { 
+    username: newUser.usernameRef.current.value,
+    password: encryptedPassword.toString(CryptoJS.enc.Hex)
+    }
   });
 
   return loginResponse;
