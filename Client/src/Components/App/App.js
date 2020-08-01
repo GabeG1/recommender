@@ -13,13 +13,20 @@ import Login from '../LoginPage/Login/Login';
 import Signup from '../SignupPage/Signup/Signup';
 import queryString from 'query-string';
 import RouteWithSubRoutes from '../RouteWithSubRoutes'
+import EditInfo from '../EditInfoPage/EditInfo/EditInfo';
 
 export default function App() {
   let history = useHistory();
   const routes = [
     {
       path: "/search",
-      component: Search
+      component: Search,
+      routes: [
+        {
+          path: "/search/editInfo",
+          component: EditInfo
+        }
+      ]
     },
     {
       path: "/",
@@ -32,7 +39,7 @@ export default function App() {
         {
           path: "/login",
           component: Login
-        }
+        },
       ]
     }
   ];

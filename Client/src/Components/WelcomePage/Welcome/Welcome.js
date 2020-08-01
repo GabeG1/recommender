@@ -157,7 +157,7 @@ function Welcome(props) {
           sm={9}
           md={12}
           classes={{root: classes.websiteMessage}}>
-          "Stay inside and consume media" - G^3 & Sol
+          "Stay inside and consume media" - G^2 & Sol
         </Grid>
       </Grid>
       <Grid item xs={12} classes={{root: classes.signupButton}}>
@@ -172,7 +172,10 @@ function Welcome(props) {
       {/*//#endregion*/}
       <Switch>
         {props.routes.map((route, i) => (
+          <div>
+            {console.log(route, '', i)}
           <RouteWithSubRoutes key={i} {...route} />
+          </div>
         ))}
       </Switch>
     </Grid>

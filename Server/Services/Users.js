@@ -35,7 +35,6 @@ function addNewUser(userInformation){
 
 function authenticateUser(inputtedUsername, inputtedPassword){
   return users.findOne({username: inputtedUsername, password: inputtedPassword}).then(response => {
-    console.log(response);
     return response;
   }
   );

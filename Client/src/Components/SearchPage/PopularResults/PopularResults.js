@@ -18,12 +18,11 @@ export function PopularResults() {
 
   useEffect(() => {
     async function search() {
-      console.log('popular songs:', Boolean(popularSongs));
+
       if (!Boolean(popularSongs)) {
-        console.log('searching in use effect');
+ 
         Songs.getPopularSongs().then((response) => {
-          //console.log(popularTracks);
-          console.log('results1 received');
+       
           setPopularSongs(response);
           return;
         });
@@ -34,7 +33,7 @@ export function PopularResults() {
 
   useEffect(() => {
     async function search() {
-      console.log('popular movies:', Boolean(popularMovies));
+   
       if (!Boolean(popularMovies)) {
         Movies.getTrendingMovies().then((response) => {
           setPopularMovies(response);
@@ -47,11 +46,11 @@ export function PopularResults() {
 
   useEffect(() => {
     async function search() {
-      console.log('popular shows:', Boolean(popularShows));
+   
       if (!Boolean(popularShows)) {
         Shows.getTrendingShows().then((response) => {
-          //console.log(popularTracks);
-          console.log('results3 received');
+         
+        
           setPopularShows(response);
           return;
         });

@@ -11,8 +11,6 @@ export async function PostExistingUser(newUser) {
     rawTextPassword,
     'AngeloKookieBrownie', { mode: CryptoJS.mode.ECB }
   );*/
-    console.log(newUser.usernameRef.current.value);
-    console.log(encryptedPassword.toString(CryptoJS.enc.Hex));
   const loginResponse = await axios.get('http://localhost:4000/existingUser', { 
     params: { 
     username: newUser.usernameRef.current.value,

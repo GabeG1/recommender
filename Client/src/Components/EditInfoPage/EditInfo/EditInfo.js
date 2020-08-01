@@ -8,19 +8,12 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   useHistory,
-  Link,
-  Redirect,
 } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
-import './Signup.css';
-import * as Styles from './SignupStyles.js';
-import {authenticateUser} from './SignupAuth';
-
-//#endregion
+import {authenticateUser} from './EditInfoAuth';
+import * as Styles from './EditInfoStyles.js';
+import './EditInfo.css';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -82,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signup(props) {
+export default function EditInfo(props) {
   
   const allLetters = "^[A-Za-z]+$";
   const noWhiteSpaces = "[^' ']+$";
@@ -98,7 +91,7 @@ export default function Signup(props) {
   const [passwordValue, setPasswordValue] = React.useState('');
   const history = useHistory();
   const classes = useStyles();
-  const signupFormValues = {
+  const editInfoFormValues = {
     fNameRef: useRef(),
     lNameRef: useRef(),
     usernameRef: useRef(),
@@ -119,9 +112,7 @@ export default function Signup(props) {
   };
 
   const authenticateInfo = async () => {
-      const authenticationInformation = await authenticateUser(signupFormValues);
-      console.log('...results returned');
-      console.log(authenticationInformation)
+      const authenticationInformation = await authenticateUser(editInfoFormValues);
       return authenticationInformation.status == 200;
     }
 
@@ -130,17 +121,18 @@ export default function Signup(props) {
       <form
          onSubmit={async (e) => {
           e.preventDefault();
-          return (await authenticateInfo()) ? history.push('/search', signupFormValues.usernameRef) : null;
+          return (await authenticateInfo()) ? history.push('/search') : null;
         }}>
-        <header className='SignupTitle'>Signup</header>
+        <header className='EditInformation'>Account Information</header>
         <Grid item>
           <TextField
             id='firstName'
             inputProps = {{pattern: allLetters}}
             value={firstNameValue}
             onChange={(e)=>setFirstNameValue(e.target.value)}
-            inputRef={signupFormValues.fNameRef}
+            inputRef={editInfoFormValues.fNameRef}
             placeholder='First Name'
+            label = 'First Name'
             variant='outlined'
             required
           />
@@ -149,8 +141,9 @@ export default function Signup(props) {
             inputProps = {{pattern: allLetters}}
             value={lastNameValue}
             onChange={(e)=>setLastNameValue(e.target.value)}
-            inputRef={signupFormValues.lNameRef}
+            inputRef={editInfoFormValues.lNameRef}
             placeholder='Last Name'
+            label = 'Last Name'
             variant='outlined'
             required
           />
@@ -160,8 +153,9 @@ export default function Signup(props) {
         value={emailValue}
             onChange={(e)=>setEmailValue(e.target.value)}
           id='Email address'
-          inputRef={signupFormValues.emailRef}
+          inputRef={editInfoFormValues.emailRef}
           placeholder='Email address'
+          label = 'Email address'
           variant='outlined'
           required
         />
@@ -169,21 +163,23 @@ export default function Signup(props) {
         <TextField
           id='username'
           inputProps = {{pattern: noWhiteSpaces}}
-          inputRef={signupFormValues.usernameRef}
+          inputRef={editInfoFormValues.usernameRef}
           value={userNameValue}
             onChange={(e)=>setUserNameValue(e.target.value)}
           placeholder='Username'
+          label='Username'
           variant='outlined'
           required
         />
 
         <TextField
           id='password'
-          inputRef={signupFormValues.passwordRef}
+          inputRef={editInfoFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
           value={passwordValue}
             onChange={(e)=>setPasswordValue(e.target.value)}
           placeholder='Password'
+          label='Password'
           variant='outlined'
           filled='true'
           required
@@ -200,28 +196,16 @@ export default function Signup(props) {
             ),
           }}
         />
-
-        <TextField
-          //error
-          id='confirmPassword'
-          inputProps={{pattern: passwordValue}}
-          type='password'
-          required
-          placeholder='Confirm Password'
-          variant='outlined'
-        />
-        {/*<Link to="/search" style={{textDecoration: 'none'}}>*/}
-
         <Styles.SubmitButtonStyled type='submit'>
           Submit
         </Styles.SubmitButtonStyled>
-        {/*</Styles.FormControlSignup></Link>*/}
       </form>
     </div>
   );
 
   return (
     <div>
+      {console.log('editInfo is rendering...')}
       <Modal
         open={true}
         onClose={handleClose}
