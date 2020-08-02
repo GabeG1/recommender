@@ -12,6 +12,13 @@ import {trackPromise, usePromiseTracker} from 'react-promise-tracker';
 import {useLocation, useHistory} from 'react-router-dom';
 import image from './zappy_boi.jpg';
 import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter,
+  Link,
+} from 'react-router-dom';
+import {
   CircularProgress,
   Fade,
   Slide,
@@ -29,12 +36,12 @@ import * as Styles from '../../SearchPage/RecommendationsButton/RecommendationsB
 import Shows from '../../../Util/ShowFinder';
 import CustomAvatar from './CustomAvatar';
 import {PopularResults} from '../PopularResults/PopularResults';
+import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 //import { LoadingInfo } from './LoadingInfo';
 
-function animationEnded() {
-  console.log('animation ended');
-}
 export default function Search(props) {
+
+  const username = props.location.state;
   const [searchValues, setSearchValues] = useState({
     category: '',
     searchResults: [],
@@ -84,7 +91,6 @@ export default function Search(props) {
 
   //call appropriate search function, using category, search term, and offset (page number). Once promise returns, update state values
   const search = (cat, st, ot) => {
-    console.log('search called');
     switch (cat) {
       case 'video game':
         VideoGames.searchVideoGames(st, ot - 1).then((results) => {
@@ -219,6 +225,14 @@ export default function Search(props) {
           resultsPerPage={20}
         />
       </section>
+      <Switch>
+        {props.routes.map((route, i) => (
+          <div>
+          {  console.log(route, '', i)}
+          <RouteWithSubRoutes key={i} {...route} />
+          </div>
+        ))}
+      </Switch>
     </div>
   );
 }

@@ -17,6 +17,5 @@ export async function authenticateUser(newUser) {
     emailRef: newUser.emailRef.current.value,
     passwordRef: encryptedPassword.toString(CryptoJS.enc.Hex),
   });
-
   return signupResponse;
 }

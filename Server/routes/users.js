@@ -17,13 +17,7 @@ router.post('/newUser', function(req, res, next) {
 router.get('/existingUser', function(req, res, next) {
     let username = req.query.username;
     let password = req.query.password;
-    console.log(username);
-    console.log(password);
     Users.authenticateUser(username, password).then(response => {
-    console.log("G^3");
-    console.log(response);
-    console.log(username);
-    console.log(password);
     if (response != null){
         res.status(200).send();
         res.body = response

@@ -13,6 +13,13 @@ import {
   Divider,
   Grid,
 } from '@material-ui/core';
+//import {makeStyles} from '@material-ui/core';
+import {
+  BrowserRouter as Router,
+  useHistory,
+} from 'react-router-dom';
+
+import EditInfo from '../../EditInfoPage/EditInfo/EditInfo'
 
 const useStyles = makeStyles((theme) => ({
   badge: {
@@ -72,6 +79,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#ddd',
     },
   },
+  logoutButtonMenuListItem: {
+    color: 'rgb(250, 250, 250)',
+    backgroundColor: 'rgb(206, 9, 9)',
+    '&:hover': {
+      color: 'rgb(230, 230, 230)',
+      backgroundColor: 'rgb(247,80,80)',
+    }
+  },
   popper: {
     zIndex: 1,
     '&[x-placement*="bottom"] $arrow': {
@@ -104,11 +119,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CustomAvatar(props) {
+  const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [arrowRef, setArrowRef] = React.useState(null);
   let mouseOver = false;
+  const toWelcome = { redirect: "/" };
   //const arrowRef = React.useRef(null);
 
   const handleToggle = () => {
@@ -126,6 +143,14 @@ export default function CustomAvatar(props) {
     }, 10);
   };
 
+  const editInfo = () => {
+    return history.push("/search/editInfo",{ response: "response" })
+
+  };
+
+  const logOut = (event) => {
+    return history.push("/");
+  }
   useEffect(() => {
     console.log(arrowRef);
   });
@@ -215,22 +240,12 @@ export default function CustomAvatar(props) {
             <MenuList id='menu-appbar' classes={{root: classes.menuListRoot}}>
               <MenuItem
                 button
-                onClick={handleClose}
+                onClick={editInfo}
                 classes={{
                   root: classes.menuListItemRoot,
                   selected: classes.itemSelected,
                 }}>
-                Profile
-              </MenuItem>
-              <Divider classes={{root: classes.dividerRoot}} />
-              <MenuItem
-                button
-                onClick={handleClose}
-                classes={{
-                  root: classes.menuListItemRoot,
-                  selected: classes.itemSelected,
-                }}>
-                My account
+                My Account
               </MenuItem>
               <Divider classes={{root: classes.dividerRoot}} />
               <MenuItem
@@ -241,6 +256,16 @@ export default function CustomAvatar(props) {
                   selected: classes.itemSelected,
                 }}>
                 View Recommendations
+              </MenuItem>
+              <Divider classes={{root: classes.dividerRoot}} />
+              <MenuItem
+                button
+                onClick={logOut}
+                classes={{
+                  root: classes.logoutButtonMenuListItem,
+                  selected: classes.itemSelected,
+                }}>
+                Log Out
               </MenuItem>
             </MenuList>
           </ClickAwayListener>

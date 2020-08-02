@@ -240,7 +240,10 @@ function Welcome(props) {
       {/*//#endregion*/}
       <Switch>
         {props.routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
+          <div>
+            {console.log(route, '', i)}
+            <RouteWithSubRoutes key={i} {...route} />
+          </div>
         ))}
       </Switch>
     </Grid>
