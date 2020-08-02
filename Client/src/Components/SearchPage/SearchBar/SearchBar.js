@@ -92,11 +92,14 @@ export function SearchBar(props) {
   const gridStyles = useGridStyles();
   let history = useHistory();
 
+  //if enter pressed, change url to have search parameters
   function handleButtonClick(e) {
     if (e.keyCode === 13) {
       return history.push(`/search?cat=${category}&q=${e.target.value}&pg=1`);
     }
   }
+
+  //if search button pressed, change url to have search parameters
   function searchOnPress(e) {
     const searchTerm = e.currentTarget.parentNode.querySelector(
       '[aria-label="search"]'
@@ -104,6 +107,7 @@ export function SearchBar(props) {
     return history.push(`/search?cat=${category}&q=${searchTerm}&pg=1`);
   }
 
+  //set  category state, to either value in url, else if none exists, default to video game
   const [category, setCategory] = React.useState(
     props.category ? props.category : 'video game'
   );

@@ -13,6 +13,7 @@ const popularPlaylisturl = `https://api.spotify.com/v1/playlists/${popularPlayli
 const tempURL =
   'https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M?market=ES&fields=items(track(name%2C%20id%2C%20artists(name)%2C%20album(name%2C%20images(url)%2C%20release_date)))';
 
+//Gets access token  to Spotify (oAuth2)
 async function getToken() {
   let response = await trackPromise(
     fetch(`${URL}`, {
@@ -30,11 +31,16 @@ async function getToken() {
 
 const Songs = {
   searchSongs: async function (query, offset) {
+    //get access token
     const token = await getToken();
     if (!token) {
       return [];
     }
+
+    //encode spaces in search query to %20
     query.replace(/\s/g, '%20');
+
+    //get songs from api
     const response = await trackPromise(
       fetch(
         `${searchUrl}?q=${query}&type=track&offset=${Number(offset * 20)}`,
@@ -45,6 +51,8 @@ const Songs = {
         }
       )
     );
+
+    //convert response to json
     const jsonResponse = await trackPromise(response.json());
     if (!jsonResponse.tracks) {
       return [];
@@ -53,6 +61,7 @@ const Songs = {
     return {
       totalResults: jsonResponse.tracks.total,
       offset: jsonResponse.tracks.offset / 20,
+      //create an array with song objects
       trackList: jsonResponse.tracks.items.map((track) => {
         return {
           id: track.id,

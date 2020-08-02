@@ -44,7 +44,9 @@ export default function Search(props) {
     loading: false,
   });
 
+  //determines whether to search an api
   const shouldCallSearch = () => {
+    //if no params in url, return that user has not search anything
     if (!props.location.search) {
       return {
         didSearch: false,
@@ -52,8 +54,8 @@ export default function Search(props) {
     }
     //*parse parameters
     const values = queryString.parse(props.location.search);
-    //*If there has been a change to any paramter (link parameters do no match states)
 
+    //*If there has been a change to any paramter (link parameters do not match states), update states
     if (
       values.q != searchValues.searchTerm ||
       values.pg != searchValues.offset ||
@@ -66,9 +68,12 @@ export default function Search(props) {
         cat: values.cat,
       };
     }
+
+    //return false, indicating user has already serached and results have been returned (function states match url params)
     return false;
   };
 
+  //if page changes, update offset in url
   const handlePageChange = (ot, history) => {
     if (props.location) {
       return history.push(
@@ -77,6 +82,7 @@ export default function Search(props) {
     }
   };
 
+  //call appropriate search function, using category, search term, and offset (page number). Once promise returns, update state values
   const search = (cat, st, ot) => {
     console.log('search called');
     switch (cat) {
@@ -136,6 +142,7 @@ export default function Search(props) {
   };
 
   useEffect(() => {
+    //focus window back to top left
     if (searchValues.cat) {
       return () => {
         window.focus();
@@ -144,11 +151,6 @@ export default function Search(props) {
     } else {
     }
   });
-
-  /*animated.addEventListener('animationiteration', () => {
-      animated.style.animationPlayState = 'paused';
-    });*/
-  //document.querySelector('.search').scrollTo(0, 0);
 
   const callSearch = shouldCallSearch();
 
@@ -173,6 +175,7 @@ export default function Search(props) {
       </header>
 
       <section className='searchBar'>
+        {/*determine search bar values. If searched should not be called, then set values to the stored states. Otherwise, set values to the url param values*/}
         <SearchBar
           category={
             !Boolean(callSearch) ? searchValues.category : callSearch.cat
@@ -182,11 +185,13 @@ export default function Search(props) {
           }
         />
       </section>
+      {/*if user has not searched anything, then display popular results*/}
       {Boolean(callSearch) && !didSearch ? (
         <div>
           <PopularResults />
         </div>
       ) : (
+        /*if search needs to be called, call it, then display results*/
         <div className='searchResultsArea'>
           {Boolean(callSearch) && didSearch
             ? search(callSearch.cat, callSearch.q, callSearch.pg)

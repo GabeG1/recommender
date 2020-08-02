@@ -83,10 +83,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signup(props) {
-  
-  const allLetters = "^[A-Za-z]+$";
+  const allLetters = '^[A-Za-z]+$';
   const noWhiteSpaces = "[^' ']+$";
-  const validEmail = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+  const validEmail = '^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$';
 
   const [values, setValues] = React.useState({
     showPassword: false,
@@ -106,10 +105,13 @@ export default function Signup(props) {
     passwordRef: useRef(),
     passwordConfirmRef: useRef(),
   };
+
+  //go back to welcome page if clicked away
   const handleClose = () => {
     history.goBack();
   };
 
+  //show password when icon clicked
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
   };
@@ -119,16 +121,16 @@ export default function Signup(props) {
   };
 
   const authenticateInfo = async () => {
-      const authenticationInformation = await authenticateUser(signupFormValues);
-      console.log('...results returned');
-      console.log(authenticationInformation)
-      return authenticationInformation.status == 200;
-    }
+    const authenticationInformation = await authenticateUser(signupFormValues);
+    console.log('...results returned');
+    console.log(authenticationInformation);
+    return authenticationInformation.status == 200;
+  };
 
   const body = (
     <div className={classes.paper}>
       <form
-         onSubmit={async (e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
           return (await authenticateInfo()) ? history.push('/search') : null;
         }}>
@@ -136,9 +138,9 @@ export default function Signup(props) {
         <Grid item>
           <TextField
             id='firstName'
-            inputProps = {{pattern: allLetters}}
+            inputProps={{pattern: allLetters}}
             value={firstNameValue}
-            onChange={(e)=>setFirstNameValue(e.target.value)}
+            onChange={(e) => setFirstNameValue(e.target.value)}
             inputRef={signupFormValues.fNameRef}
             placeholder='First Name'
             variant='outlined'
@@ -146,9 +148,9 @@ export default function Signup(props) {
           />
           <TextField
             id='lastName'
-            inputProps = {{pattern: allLetters}}
+            inputProps={{pattern: allLetters}}
             value={lastNameValue}
-            onChange={(e)=>setLastNameValue(e.target.value)}
+            onChange={(e) => setLastNameValue(e.target.value)}
             inputRef={signupFormValues.lNameRef}
             placeholder='Last Name'
             variant='outlined'
@@ -156,9 +158,9 @@ export default function Signup(props) {
           />
         </Grid>
         <TextField
-        inputProps = {{pattern: validEmail}}
-        value={emailValue}
-            onChange={(e)=>setEmailValue(e.target.value)}
+          inputProps={{pattern: validEmail}}
+          value={emailValue}
+          onChange={(e) => setEmailValue(e.target.value)}
           id='Email address'
           inputRef={signupFormValues.emailRef}
           placeholder='Email address'
@@ -168,10 +170,10 @@ export default function Signup(props) {
 
         <TextField
           id='username'
-          inputProps = {{pattern: noWhiteSpaces}}
+          inputProps={{pattern: noWhiteSpaces}}
           inputRef={signupFormValues.usernameRef}
           value={userNameValue}
-            onChange={(e)=>setUserNameValue(e.target.value)}
+          onChange={(e) => setUserNameValue(e.target.value)}
           placeholder='Username'
           variant='outlined'
           required
@@ -182,7 +184,7 @@ export default function Signup(props) {
           inputRef={signupFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
           value={passwordValue}
-            onChange={(e)=>setPasswordValue(e.target.value)}
+          onChange={(e) => setPasswordValue(e.target.value)}
           placeholder='Password'
           variant='outlined'
           filled='true'

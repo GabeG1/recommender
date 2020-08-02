@@ -5,45 +5,51 @@ import CrossFadeImage from 'react-crossfade-image';
 const images = {
   //#region
   image_1:
-    'https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'https://images.pexels.com/photos/1680140/pexels-photo-1680140.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   image_2:
-    'https://images.pexels.com/photos/4245826/pexels-photo-4245826.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'https://images.pexels.com/photos/2531353/pexels-photo-2531353.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   image_3:
-    'https://images.pexels.com/photos/556665/pexels-photo-556665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'https://images.pexels.com/photos/936094/pexels-photo-936094.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   image_4:
-    'https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    'https://images.pexels.com/photos/731022/pexels-photo-731022.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   image_5:
-    'https://images.pexels.com/photos/1652353/pexels-photo-1652353.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    'https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   //#endregion
 };
 
 export function DisplayImages() {
+  //keep track of current image
   const [imageDisplay, updateImage] = useState(images['image_1']);
   const image = useRef(imageDisplay);
   image.current = imageDisplay;
+  let interval = null;
 
   function getNextImage() {
+    //get the current image
     let curImageKey = Object.keys(images).find((key) => {
       return images[key] === image.current;
     });
+
+    //get the index of the current image
     const curImageNum = Number(curImageKey.substr(6));
+    //add 1 to current image index and mod by total images
     const nextImage = ((curImageNum + 1) % 5) + 1;
     return images[`image_${nextImage}`];
   }
   useEffect(() => {
+    //update image every 5 seconds
     setTimeout(() => {
+      //update to next image
       updateImage(getNextImage());
-    }, 3000);
+    }, 5000);
   });
 
   return (
-    <div className='displayImages'>
-      <CrossFadeImage
-        duration={1000}
-        src={imageDisplay}
-        alt='display'
-        className='displayImage'
-      />
-    </div>
+    <div
+      className='displayImage'
+      style={{
+        backgroundImage: `url(${imageDisplay})`,
+      }}
+    />
   );
 }

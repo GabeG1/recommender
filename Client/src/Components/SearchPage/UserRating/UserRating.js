@@ -1,12 +1,12 @@
-import React from "react";
-import { Box, Typography } from "@material-ui/core";
-import { Rating } from "@material-ui/lab";
+import React from 'react';
+import {Box, Typography} from '@material-ui/core';
+import {Rating} from '@material-ui/lab';
 
 export default function UserRating(props) {
   const [value, setValue] = React.useState(null);
   return (
-    <Box component="fieldset" mb={3} bord or="transparent">
-      <Typography component="legend"> </Typography>
+    <Box component='fieldset' mb={3} border='transparent'>
+      <Typography component='legend'> </Typography>
       <Rating
         name={props.id}
         value={value}

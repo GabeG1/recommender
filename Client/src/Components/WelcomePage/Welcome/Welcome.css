@@ -37,3 +37,24 @@
   text-decoration-line: none;
   -moz-text-decoration-line: none;
 }
+
+.displayImage {
+  background-attachment: inherit;
+  background-position: inherit;
+  background-repeat: inherit;
+  background-size: inherit;
+}
+
+.hello {
+  width: 100%;
+  height: auto;
+  font-family: Pacifico, cursive;
+  text-transform: uppercase;
+  color: #ffffffbd;
+  font-size: 60px;
+  word-spacing: 10px;
+  z-index: 12;
+  top: 100;
+  position: fixed;
+  line-height: 1.5;
+}

@@ -1,5 +1,5 @@
 //#region
-import React from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {DisplayImages} from '../DisplayImages/DisplayImages';
 import {Grid} from '@material-ui/core';
 import {LoginButton} from '../../LoginPage/LoginButton/LoginButton';
@@ -17,62 +17,67 @@ import {makeStyles} from '@material-ui/core';
 //#endregion
 const axios = require('axios');
 
+//styles
 const useStyles = makeStyles(({breakpoints}) => ({
   welcomeGrid: {
-    backgroundColor: '#282c34',
-    overflowX: 'hidden',
+    width: '100%',
+    backgroundColor: '#f8f6f6',
+    justifyContent: 'center',
   },
   header: {
-    height: '5rem',
-    backgroundColor: 'inherit',
-    borderBottom: '2px solid #dc4cacb5',
+    alignItems: 'center',
+    height: '4rem',
+    backgroundColor: '#ffffff',
+    WebkitBoxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
+    MozBoxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
+    boxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
     width: '100%',
     position: 'fixed',
     zIndex: '20',
-    paddingTop: '1rem',
-    paddingBottom: '1rem',
   },
   welcomeTitle: {
-    paddingLeft: '3%',
-    color: '#e3dddecc',
-    fontSize: '3rem',
+    textAlign: 'center',
+    color: 'rgba(79, 79, 79, 0.93)',
+    fontSize: '2rem',
     fontFamily: 'Frank Ruhl Libre, serif',
-    fontWeight: 'bold',
+    fontWeight: 800,
   },
 
   loginButton: {
     zIndex: '1',
   },
+  mainDisplayContent: {
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    justifyContent: 'center',
+  },
   images: {
-    position: 'absolute',
-    left: '0',
-    right: '0',
-
+    display: 'flex',
+    height: 800,
+    justifyContent: 'center',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
     zIndex: '1',
     [breakpoints.up('xs')]: {
-      '& img': {
-        width: '100%',
-        height: '600px',
-        objectFit: 'cover',
-      },
-    },
-    [breakpoints.up('sm')]: {
-      '& img': {height: '650px'},
-    },
-    [breakpoints.up('md')]: {
-      '& img': {height: '700px'},
-    },
-    [breakpoints.up('lg')]: {
-      '& img': {height: '750px'},
+      height: 800,
+      backgroundAttachment: 'fixed',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
     },
   },
   signupButton: {
-    position: 'relative',
-    bottom: 0,
+    cursor: 'pointer',
+    pointerEvents: 'auto',
     alignSelf: 'flex-end',
+    position: 'fixed',
     //paddingTop: 'rem',
     [breakpoints.up('xs')]: {
-      marginTop: '60px',
+      bottom: 100,
     },
     [breakpoints.up('sm')]: {
       marginTop: '100px',
@@ -92,31 +97,85 @@ const useStyles = makeStyles(({breakpoints}) => ({
   signupButtonText: {
     fontSize: 50,
   },
-  websiteMessageContainer: {
-    textAlign: 'center',
-  },
+
   websiteMessage: {
+    pointerEvents: 'none',
+    textAlign: 'center',
+    backgroundColor: 'transparent',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
     width: '100%',
     height: 'auto',
     fontFamily: 'Pacifico, cursive',
     textTransform: 'uppercase',
-    color: '#ffffffbd',
+    color: '#fafdffcc',
     fontSize: '60px',
     wordSpacing: 10,
-    zIndex: '5',
+    zIndex: 12,
+    top: 100,
+    position: 'fixed',
     lineHeight: 1.5,
-    [breakpoints.up('xs')]: {marginTop: 150},
-    [breakpoints.up('sm')]: {marginTop: 200},
+    [breakpoints.up('xs')]: {marginTop: 120},
+    [breakpoints.up('sm')]: {marginTop: 120},
+  },
+  websiteOverview: {
+    WebkitBoxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
+    MozBoxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
+    boxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
+    color: '#000000',
+    paddingTop: 50,
+    fontFamily: 'Yanone Kaffeesatz, sans-serif',
+    height: 300,
+    width: '100%',
+    zIndex: 11,
+    fontSize: 30,
+    textAlign: 'left',
+    paddingRight: 20,
+    backgroundColor: '#ffffff',
+  },
+  overviewQuestion: {
+    textAlign: 'center',
+    fontWeight: 800,
   },
 }));
 
 function Welcome(props) {
   const classes = useStyles();
-  const sendRequest = async () => {
-    const response = await axios.get('http://localhost:4000');
+
+  //Render display images: use memo only renders the display images componnet once, even if the Welcome component is rendered multiple times
+  const Images = React.memo((props) => {
+    return <DisplayImages />;
+  });
+
+  //Scroll handler
+  const handleScroll = (e) => {
+    console.log('scrolling');
+
+    //If user has scrolled, adjust opacity of the grid with the classname 'mainDisplayContent' scrolling down decreases opacity; scrolling up increases opacity
+    if (e.target.scrollTop > 0) {
+      var currScrollPos2 = e.target.scrollTop;
+      document.getElementById('mainDisplayContent').style.opacity =
+        1 - currScrollPos2 / 800;
+    }
   };
+  useEffect(() => {
+    //add scroll event listener
+    document.getElementById('root').addEventListener('scroll', handleScroll);
+    return () => {
+      //remove scroll event listener for cleanup purposes
+      document
+        .getElementById('root')
+        .removeEventListener('scroll', handleScroll);
+    };
+  });
   return (
-    <Grid container justify='center' classes={{root: classes.welcomeGrid}}>
+    <Grid
+      container
+      justify='center'
+      onScroll={handleScroll}
+      classes={{root: classes.welcomeGrid}}>
       {/*//#region*/}
       <Grid
         container
@@ -143,31 +202,40 @@ function Welcome(props) {
           </Link>
         </Grid>
       </Grid>
-      <Grid xs={12} sm={12} item classes={{item: classes.images}} id='images'>
-        <DisplayImages />
-      </Grid>
       <Grid
         container
-        justify='center'
-        alignContent='center'
-        classes={{root: classes.websiteMessageContainer}}>
+        id='mainDisplayContent'
+        classes={{container: classes.mainDisplayContent}}>
+        <Grid xs={12} sm={12} item classes={{item: classes.images}} id='images'>
+          <Images id='1' />
+        </Grid>
         <Grid
           item
           xs={12}
           sm={9}
           md={12}
           classes={{root: classes.websiteMessage}}>
-          "Stay inside and consume media" - G^3 & Sol
+          Welcome to our site!
+        </Grid>
+        <Grid item xs={12} classes={{root: classes.signupButton}}>
+          <Link
+            to='/signup'
+            underline='none'
+            className='linkToSearch'
+            classes={{root: classes.linkToSignup}}>
+            <SignupButton size='small' />
+          </Link>
         </Grid>
       </Grid>
-      <Grid item xs={12} classes={{root: classes.signupButton}}>
-        <Link
-          to='/signup'
-          underline='none'
-          className='linkToSearch'
-          classes={{root: classes.linkToSignup}}>
-          <SignupButton size='small' />
-        </Link>
+      <Grid container classes={{root: classes.websiteOverview}}>
+        <Grid item xs={3} classes={{root: classes.overviewQuestion}}>
+          Why Recomender?
+        </Grid>
+        <Grid item xs={9}>
+          A place to share whatever is on your mind about any topic of interest.
+          Love that song? Leave a review Not a afavorite of a movie? Share your
+          thoughts
+        </Grid>
       </Grid>
       {/*//#endregion*/}
       <Switch>

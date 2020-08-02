@@ -8,6 +8,7 @@ const apiParam = `api_key=${API_KEY}`;
 
 const Shows = {
   searchShows: async function (query, offset) {
+    //get shows from api
     const response = await trackPromise(
       fetch(
         `${searchURL}?${apiParam}&query=${query}&page=${offset}&include_adult=true`,
@@ -16,13 +17,17 @@ const Shows = {
         }
       )
     );
+
+    //convert response from website to json
     const jsonResponse = await trackPromise(response.json());
 
+    //if no results, return empty array
     if (!jsonResponse.results) {
       return [];
     }
     return {
       totalResults: jsonResponse.total_results,
+      //create an array with show objects
       showList: jsonResponse.results.map((show) => {
         return {
           id: show.id,

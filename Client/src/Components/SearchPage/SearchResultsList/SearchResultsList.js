@@ -25,8 +25,7 @@ const useGridStyles = makeStyles(({breakpoints}) => ({
 
 export function SearchResultsList(props) {
   const gridStyles = useGridStyles();
-  console.log('searchresults called');
-  //console.log(props.category);
+
   return (
     <div>
       <Grid
@@ -50,7 +49,6 @@ export function SearchResultsList(props) {
                   return <Song song={result} />;
                 default:
                   return {};
-                  console.log('nothing');
               }
             })
           : ''}

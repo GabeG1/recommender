@@ -1,0 +1,23 @@
+.displayImage {
+  height: 800px;
+  width: 95%;
+  transition: background-image 1.5s ease-out;
+  -webkit-transition: background-image 1.5s ease-out;
+  -moz-transition: background-image 1.5s ease-out;
+  -ms-transition: background-image 1.5s ease-out;
+  -o-transition: background-image 1.5s ease-out;
+}
+@keyframes cf3FadeInOut {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
