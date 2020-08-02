@@ -197,7 +197,7 @@ export default function EditInfo(props) {
           }}
         />
         <Styles.SubmitButtonStyled type='submit'>
-          Submit
+          Save Info
         </Styles.SubmitButtonStyled>
       </form>
     </div>

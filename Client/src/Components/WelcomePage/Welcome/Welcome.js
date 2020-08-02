@@ -1,6 +1,6 @@
 //#region
 import React, {useRef, useEffect, useState} from 'react';
-import {DisplayImages} from '../DisplayImages/DisplayImages';
+import DisplayImages from '../DisplayImages/DisplayImages';
 import {Grid} from '@material-ui/core';
 import {LoginButton} from '../../LoginPage/LoginButton/LoginButton';
 import {SignupButton} from '../../SignupPage/SignupButton/SignupButton';
@@ -14,8 +14,10 @@ import {
 } from 'react-router-dom';
 import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 import {makeStyles} from '@material-ui/core';
+import withMemo from '../../withMemo';
 //#endregion
 const axios = require('axios');
+
 
 //styles
 const useStyles = makeStyles(({breakpoints}) => ({
@@ -110,7 +112,8 @@ const useStyles = makeStyles(({breakpoints}) => ({
     height: 'auto',
     fontFamily: 'Pacifico, cursive',
     textTransform: 'uppercase',
-    color: '#fafdffcc',
+    //color: '#fafdffcc',
+    color: '#FFF',
     fontSize: '60px',
     wordSpacing: 10,
     zIndex: 12,
@@ -144,10 +147,6 @@ const useStyles = makeStyles(({breakpoints}) => ({
 function Welcome(props) {
   const classes = useStyles();
 
-  //Render display images: use memo only renders the display images componnet once, even if the Welcome component is rendered multiple times
-  const Images = React.memo((props) => {
-    return <DisplayImages />;
-  });
 
   //Scroll handler
   const handleScroll = (e) => {
@@ -207,7 +206,7 @@ function Welcome(props) {
         id='mainDisplayContent'
         classes={{container: classes.mainDisplayContent}}>
         <Grid xs={12} sm={12} item classes={{item: classes.images}} id='images'>
-          <Images id='1' />
+          <DisplayImages />
         </Grid>
         <Grid
           item
@@ -215,7 +214,7 @@ function Welcome(props) {
           sm={9}
           md={12}
           classes={{root: classes.websiteMessage}}>
-          Welcome to our site!
+          "Lets hope this works" -G^2, seconds before it didnt work
         </Grid>
         <Grid item xs={12} classes={{root: classes.signupButton}}>
           <Link
@@ -229,25 +228,36 @@ function Welcome(props) {
       </Grid>
       <Grid container classes={{root: classes.websiteOverview}}>
         <Grid item xs={3} classes={{root: classes.overviewQuestion}}>
-          Why Recomender?
+          Why Recommender?
         </Grid>
         <Grid item xs={9}>
           A place to share whatever is on your mind about any topic of interest.
-          Love that song? Leave a review Not a afavorite of a movie? Share your
-          thoughts
+          Love that song? Leave a review. A recent movie not your favorite? Share your
+          thoughts.
+        </Grid>
+        <Grid item xs={3} classes={{root: classes.overviewQuestion}}>
+          What is Recommender?
+        </Grid>
+        <Grid item xs={9}>
+          Created during the drudgery of lockdown caused by COVID 19. Recommender is a tool to
+
+          help people find new media to consume, brightening their day and making the pandemic
+          more bearable. It was a passion project, something beautiful to bloom from the 
+          bleakness that comes with a lockdown, which in turn can make other's lockdowns 
+          just a little brighter.
+
+          Stay indoors and consume media
+                  -G^2 and Sol
         </Grid>
       </Grid>
       {/*//#endregion*/}
       <Switch>
         {props.routes.map((route, i) => (
-          <div>
-            {console.log(route, '', i)}
-            <RouteWithSubRoutes key={i} {...route} />
-          </div>
+            <RouteWithSubRoutes key={i} id={i} {...route} />
         ))}
       </Switch>
     </Grid>
   );
 }
 
-export default Welcome;
+export default withMemo(Welcome, []);

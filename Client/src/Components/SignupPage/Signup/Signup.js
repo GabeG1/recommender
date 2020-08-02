@@ -132,7 +132,7 @@ export default function Signup(props) {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          return (await authenticateInfo()) ? history.push('/search', signupFormValues.usernameRef) : null;
+          return (await authenticateInfo()) ? history.push({ pathname: '/search', response: signupFormValues.usernameRef}) : null;
         }}>
         <header className='SignupTitle'>Signup</header>
         <Grid item>

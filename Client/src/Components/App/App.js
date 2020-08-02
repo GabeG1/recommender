@@ -14,9 +14,14 @@ import Signup from '../SignupPage/Signup/Signup';
 import queryString from 'query-string';
 import RouteWithSubRoutes from '../RouteWithSubRoutes'
 import EditInfo from '../EditInfoPage/EditInfo/EditInfo';
+import UserInfo from '../UserInfo/UserInfo';
 
-export default function App() {
+
+export default function App(props) {
   let history = useHistory();
+
+  const userContext = React.createContext({fName: 'hi'});
+
   const routes = [
     {
       path: "/search",
@@ -43,17 +48,16 @@ export default function App() {
       ]
     }
   ];
-  // const values = queryString.parse(this.props.location.search);
+
   return (
+    <userContext.Provider value={history ? history.response : null}>
     <Router>
-      <div>
         <Switch>
           {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
+            <RouteWithSubRoutes key={i} id={i}  {...route} />
           ))}
         </Switch>
-      </div>
     </Router>
-  );
-
+   </userContext.Provider>
+  )
           }

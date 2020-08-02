@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import './DisplayImages.css';
 import CrossFadeImage from 'react-crossfade-image';
+import withMemo from '../../withMemo';
 
 const images = {
   //#region
@@ -13,12 +14,14 @@ const images = {
   image_4:
     'https://images.pexels.com/photos/731022/pexels-photo-731022.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   image_5:
-    'https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    //'https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    'https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   //#endregion
 };
-
-export function DisplayImages() {
+const TOTAL_IMAGES = 5;
+function DisplayImages() {
   //keep track of current image
+  
   const [imageDisplay, updateImage] = useState(images['image_1']);
   const image = useRef(imageDisplay);
   image.current = imageDisplay;
@@ -33,7 +36,7 @@ export function DisplayImages() {
     //get the index of the current image
     const curImageNum = Number(curImageKey.substr(6));
     //add 1 to current image index and mod by total images
-    const nextImage = ((curImageNum + 1) % 5) + 1;
+    const nextImage = ((curImageNum + 1) % TOTAL_IMAGES) + 1;
     return images[`image_${nextImage}`];
   }
   useEffect(() => {
@@ -53,3 +56,5 @@ export function DisplayImages() {
     />
   );
 }
+
+export default withMemo(DisplayImages, []);

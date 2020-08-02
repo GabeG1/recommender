@@ -30,23 +30,21 @@ export function SearchResultsList(props) {
     <div>
       <Grid
         classes={gridStyles}
-        xs={12}
-        sm={12}
         container
         spacing={2}
         wrap={'nowrap'}>
         {console.log(props.results)}
         {props.results
-          ? props.results.map((result) => {
+          ? props.results.map((result, i) => {
               switch (props.category) {
                 case 'video game':
-                  return <VideoGame game={result} />;
+                  return <VideoGame key ={i} game={result} />;
                 case 'movie':
-                  return <Movie movie={result} />;
+                  return <Movie key ={i} movie={result} />;
                 case 'show':
-                  return <Show show={result} />;
+                  return <Show key ={i} show={result} />;
                 case 'song':
-                  return <Song song={result} />;
+                  return <Song key ={i} song={result} />;
                 default:
                   return {};
               }

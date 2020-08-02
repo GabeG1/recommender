@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Search.css';
 import {SearchBar} from '../SearchBar/SearchBar';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
@@ -37,9 +37,10 @@ import Shows from '../../../Util/ShowFinder';
 import CustomAvatar from './CustomAvatar';
 import {PopularResults} from '../PopularResults/PopularResults';
 import RouteWithSubRoutes from '../../RouteWithSubRoutes';
-//import { LoadingInfo } from './LoadingInfo';
+import withMemo from '../../withMemo';
+import UserInfo from '../../UserInfo/UserInfo';
 
-export default function Search(props) {
+ function Search(props) {
 
   const username = props.location.state;
   const [searchValues, setSearchValues] = useState({
@@ -149,6 +150,7 @@ export default function Search(props) {
 
   useEffect(() => {
     //focus window back to top left
+    console.log(props);
     if (searchValues.cat) {
       return () => {
         window.focus();
@@ -163,6 +165,7 @@ export default function Search(props) {
   const didSearch = callSearch.didSearch;
   return (
     <div className='wrapper'>
+        <UserInfo />
       <header className='title'>
         <Grid container>
           <Grid item xs={10}>
@@ -227,12 +230,11 @@ export default function Search(props) {
       </section>
       <Switch>
         {props.routes.map((route, i) => (
-          <div>
-          {  console.log(route, '', i)}
           <RouteWithSubRoutes key={i} {...route} />
-          </div>
         ))}
       </Switch>
     </div>
   );
 }
+
+export default withMemo(Search, []);

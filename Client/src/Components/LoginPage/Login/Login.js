@@ -81,7 +81,7 @@ export default function Login(props) {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          return (await sendFormToAuth()) ? history.push('/search', { response: loginFormValues.usernameRef }) : null;
+          return (await sendFormToAuth()) ? history.push({pathname: '/search',  response: loginFormValues}) : null;
         }}>
         <header className='LoginTitle'>Login</header>
         <TextField

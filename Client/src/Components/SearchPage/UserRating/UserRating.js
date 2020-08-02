@@ -8,7 +8,7 @@ export default function UserRating(props) {
     <Box component='fieldset' mb={3} border='transparent'>
       <Typography component='legend'> </Typography>
       <Rating
-        name={props.id}
+        name={String(props.id)}
         value={value}
         precision={0.5}
         onChange={(event, newValue) => {

@@ -129,7 +129,6 @@ export default function CustomAvatar(props) {
   //const arrowRef = React.useRef(null);
 
   const handleToggle = () => {
-    console.log('toggled');
     if (!open) {
       setOpen(true);
     }
