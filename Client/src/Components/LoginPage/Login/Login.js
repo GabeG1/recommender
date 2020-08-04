@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -6,22 +6,11 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
-import {useHistory} from 'react-router-dom';
-import {Search} from '../../SearchPage/Search/Search';
+import {Router, useHistory} from 'react-router-dom';
 import './Login.css';
 import * as Styles from './LoginStyles.js';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  withRouter,
-  useRouteMatch,
-} from 'react-router-dom';
-import {Welcome} from '../../WelcomePage/Welcome/Welcome';
-import {PostNewUser} from '../../SignupPage/Signup/SignupAuth';
 import {PostExistingUser} from './LoginAuth';
+import {store} from '../../UserInfo/UserInfo';
 const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'block',
@@ -54,6 +43,7 @@ export default function Login(props) {
   });
   const history = useHistory();
   const classes = useStyles();
+  const globalState = useContext(store);
   const loginFormValues = {
     usernameRef: useRef(),
     passwordRef: useRef(),
@@ -72,8 +62,17 @@ export default function Login(props) {
   };
 
   const sendFormToAuth = async () => {
+    console.log('returning true');
+    const {dispatch} = globalState;
+    dispatch({loggedIn: true, userName: 'cool'});
+    return true;
     const responseData = await PostExistingUser(loginFormValues);
-    return responseData.status == 200;
+    if (responseData.status == 200) {
+      console.log('returning true');
+      const {dispatch} = globalState;
+      dispatch({loggedIn: 'true'});
+      return true;
+    }
   };
 
   const body = (
@@ -81,7 +80,9 @@ export default function Login(props) {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          return (await sendFormToAuth()) ? history.push({pathname: '/search',  response: loginFormValues}) : null;
+          return (await sendFormToAuth())
+            ? history.push({pathname: '/search', response: loginFormValues})
+            : null;
         }}>
         <header className='LoginTitle'>Login</header>
         <TextField

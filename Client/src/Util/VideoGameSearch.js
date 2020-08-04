@@ -1,6 +1,7 @@
 import {trackPromise} from 'react-promise-tracker';
+import {tokens} from './tokens.json';
 
-const API_KEY = '15895c76bfcb812597f75d6d72e27d0e01ca5bb0';
+const API_KEY = tokens.games;
 const URL = 'https://www.giantbomb.com/api/games/?api_key=';
 const CORS = 'https://cors-anywhere.herokuapp.com/';
 

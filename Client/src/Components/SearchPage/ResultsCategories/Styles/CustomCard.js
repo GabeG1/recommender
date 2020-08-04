@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Color from 'color';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -10,7 +10,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import UserRating from '../../UserRating/UserRating';
-import { CardActions, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import {createMuiTheme, ThemeProvider} from '@material-ui/core';
 import './CustomCard.css';
 
 const randomColor = () => {
@@ -20,7 +20,7 @@ const randomColor = () => {
   return `rgb(${r}, ${g}, ${b})`;
 };
 const useStyles = makeStyles(() => ({
-  media: ({ bgColor = 'rgba(0, 0, 0, 0.08)' }) => ({
+  media: ({bgColor = 'rgba(0, 0, 0, 0.08)'}) => ({
     width: '20rem',
     height: '0',
     paddingBottom: 220,
@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
     },
     '&focusVisible': {},
   },
-  card: ({ color }) => ({
+  card: ({color}) => ({
     borderRadius: '2rem',
     boxShadow: 'none',
     height: '450px',
@@ -53,7 +53,7 @@ const useStyles = makeStyles(() => ({
         .fade(0.5)}`,
     },
   }),
-  content: ({ color }) => {
+  content: ({color}) => {
     return {
       height: '100%',
       width: '18rem',
@@ -106,14 +106,14 @@ const theme = createMuiTheme({
   },
 });
 
-export const CustomCard = ({ image, title, subtitle, id }) => {
-  const classes = useStyles({ color: randomColor() });
+export const CustomCard = ({image, title, subtitle, id}) => {
+  const classes = useStyles({color: randomColor()});
   return (
     <CardActionArea className={classes.actionArea}>
       <Card className={classes.card}>
         <CardMedia className={classes.media} image={image} />
         <CardContent className={classes.content}>
-          <div className="cardTitle">
+          <div className='cardTitle'>
             <Typography className={classes.title} variant={'h2'}>
               {title}
             </Typography>
@@ -121,17 +121,15 @@ export const CustomCard = ({ image, title, subtitle, id }) => {
           <ThemeProvider theme={theme}>
             <div className={classes.bottomCard}>
               <UserRating id={id} />
-              <div className="cardTooltip">
+              <div className='cardTooltip'>
                 <Tooltip
                   title={subtitle}
-                  aria-label="description"
-                  placement="top"
-                  classes={{ tooltip: classes.tooltip }}
-                >
+                  aria-label='description'
+                  placement='top'
+                  classes={{tooltip: classes.tooltip}}>
                   <IconButton
                     aria-label={`info about `}
-                    classes={{ root: classes.icon }}
-                  >
+                    classes={{root: classes.icon}}>
                     <InfoIcon />
                   </IconButton>
                 </Tooltip>

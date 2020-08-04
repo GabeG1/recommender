@@ -1,6 +1,7 @@
 import {trackPromise} from 'react-promise-tracker';
+import {tokens} from './tokens.json';
 
-const API_KEY = '1d708eee4a07873959932761d08189e4';
+const API_KEY = tokens.movies;
 const BaseURL = 'https://api.themoviedb.org/3';
 const searchURL = `${BaseURL}/search/movie`;
 const trendingURL = `${BaseURL}/trending/movie/week`;

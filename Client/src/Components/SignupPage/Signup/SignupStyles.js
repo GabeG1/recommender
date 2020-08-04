@@ -1,6 +1,5 @@
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
 
 export const SubmitButtonStyled = withStyles((theme) => ({
   root: {

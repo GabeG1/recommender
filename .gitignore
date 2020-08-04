@@ -8,6 +8,7 @@
 /Example
 # testing
 /coverage
+/tokens
 
 # production
 /build
@@ -23,3 +24,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 src/material-kit-react-master/dist/assets/jss/material-kit-react/views/componentsSections/pillsStyle.js
+Client/src/Util/tokens.json

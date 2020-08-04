@@ -1,4 +1,3 @@
-import React from 'react';
 const axios = require('axios');
 //const CircularJSON = require('circular-json');
 const CryptoJS = require('crypto-js');

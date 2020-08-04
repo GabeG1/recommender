@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './Search.css';
 import {SearchBar} from '../SearchBar/SearchBar';
 import {SearchResultsList} from '../SearchResultsList/SearchResultsList';
@@ -7,42 +7,17 @@ import Movies from '../../../Util/MovieSearch';
 import Songs from '../../../Util/SongFinder';
 import Pages from './Pages/Pages';
 import queryString from 'query-string';
-import useIsMounted from 'ismounted';
-import {trackPromise, usePromiseTracker} from 'react-promise-tracker';
-import {useLocation, useHistory} from 'react-router-dom';
-import image from './zappy_boi.jpg';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  withRouter,
-  Link,
-} from 'react-router-dom';
-import {
-  CircularProgress,
-  Fade,
-  Slide,
-  LinearProgress,
-  Grid,
-  Avatar,
-  GridList,
-  CssBaseline,
-  IconButton,
-} from '@material-ui/core';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import Loader from 'react-loader-spinner';
+import {BrowserRouter as Switch} from 'react-router-dom';
+import {Grid} from '@material-ui/core';
 import {LoadingIndicator} from './LoadingInfo';
-import * as Styles from '../../SearchPage/RecommendationsButton/RecommendationsButtonSyles';
 import Shows from '../../../Util/ShowFinder';
 import CustomAvatar from './CustomAvatar';
 import {PopularResults} from '../PopularResults/PopularResults';
 import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 import withMemo from '../../withMemo';
-import UserInfo from '../../UserInfo/UserInfo';
+import {store} from '../../UserInfo/UserInfo';
 
- function Search(props) {
-
-  const username = props.location.state;
+function Search(props) {
   const [searchValues, setSearchValues] = useState({
     category: '',
     searchResults: [],
@@ -65,9 +40,9 @@ import UserInfo from '../../UserInfo/UserInfo';
 
     //*If there has been a change to any paramter (link parameters do not match states), update states
     if (
-      values.q != searchValues.searchTerm ||
-      values.pg != searchValues.offset ||
-      values.cat != searchValues.category
+      values.q !== searchValues.searchTerm ||
+      values.pg !== searchValues.offset ||
+      values.cat !== searchValues.category
     ) {
       return {
         didSearch: true,
@@ -130,18 +105,17 @@ import UserInfo from '../../UserInfo/UserInfo';
         });
         break;
       case 'song':
-        {
-          Songs.searchSongs(st, ot - 1).then((results) => {
-            setSearchValues({
-              category: cat,
-              searchResults: results.trackList,
-              total: results.totalResults,
-              offset: ot,
-              searchTerm: st,
-              loading: true,
-            });
+        Songs.searchSongs(st, ot - 1).then((results) => {
+          setSearchValues({
+            category: cat,
+            searchResults: results.trackList,
+            total: results.totalResults,
+            offset: ot,
+            searchTerm: st,
+            loading: true,
           });
-        }
+        });
+
         break;
       default:
     }
@@ -163,9 +137,11 @@ import UserInfo from '../../UserInfo/UserInfo';
   const callSearch = shouldCallSearch();
 
   const didSearch = callSearch.didSearch;
+
+  const globalState = useContext(store);
+  console.log(globalState);
   return (
     <div className='wrapper'>
-        <UserInfo />
       <header className='title'>
         <Grid container>
           <Grid item xs={10}>

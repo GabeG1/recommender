@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import {Grid} from '@material-ui/core';
-import {Link, Redirect, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const useGridStyles = makeStyles(({breakpoints}) => ({
   container: {
@@ -145,7 +145,7 @@ export function SearchBar(props) {
             type='search'
             classes={{input: classes.input}}
             placeholder='Search'
-            defaultValue={props.searchTerm != '' ? props.searchTerm : ''}
+            defaultValue={props.searchTerm !== '' ? props.searchTerm : ''}
             inputProps={{'aria-label': 'search'}}
             onKeyDown={handleButtonClick}
           />

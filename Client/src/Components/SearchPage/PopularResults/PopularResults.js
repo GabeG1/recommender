@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {BsMusicNoteBeamed} from 'react-icons/bs';
 import {Grid} from '@material-ui/core';
 import {FaFireAlt} from 'react-icons/fa';
-import {LoadingIndicator} from '../Search/LoadingInfo';
-import {trackPromise, usePromiseTracker} from 'react-promise-tracker';
 import Songs from '../../../Util/SongFinder';
 import {SearchResultsList} from '../../SearchPage/SearchResultsList/SearchResultsList';
 import Movies from '../../../Util/MovieSearch';
@@ -18,11 +16,8 @@ export function PopularResults() {
 
   useEffect(() => {
     async function search() {
-
       if (!Boolean(popularSongs)) {
- 
         Songs.getPopularSongs().then((response) => {
-       
           setPopularSongs(response);
           return;
         });
@@ -33,7 +28,6 @@ export function PopularResults() {
 
   useEffect(() => {
     async function search() {
-   
       if (!Boolean(popularMovies)) {
         Movies.getTrendingMovies().then((response) => {
           setPopularMovies(response);
@@ -46,11 +40,8 @@ export function PopularResults() {
 
   useEffect(() => {
     async function search() {
-   
       if (!Boolean(popularShows)) {
         Shows.getTrendingShows().then((response) => {
-         
-        
           setPopularShows(response);
           return;
         });
@@ -63,7 +54,7 @@ export function PopularResults() {
     if (!display && popularSongs && popularMovies && popularShows) {
       setDisplay(true);
     }
-  });
+  }, [display, popularSongs, popularMovies, popularShows]);
 
   return !display ? (
     <div

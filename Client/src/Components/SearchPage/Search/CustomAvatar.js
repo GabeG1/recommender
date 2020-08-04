@@ -1,11 +1,9 @@
-import React, {Component, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {
   IconButton,
   MenuItem,
-  Menu,
   MenuList,
   ClickAwayListener,
-  Grow,
   Paper,
   Popper,
   Badge,
@@ -13,18 +11,12 @@ import {
   Divider,
   Grid,
 } from '@material-ui/core';
-//import {makeStyles} from '@material-ui/core';
-import {
-  BrowserRouter as Router,
-  useHistory,
-} from 'react-router-dom';
-
-import EditInfo from '../../EditInfoPage/EditInfo/EditInfo'
-
+import {BrowserRouter as Router, useHistory} from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   badge: {
     backgroundColor: '#44b700',
-    color: '##right-click on a color to see the context-menu ... and check out the intellisense command (see docs)',
+    color:
+      '##right-click on a color to see the context-menu ... and check out the intellisense command (see docs)',
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     '&::after': {
       position: 'absolute',
@@ -85,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: 'rgb(230, 230, 230)',
       backgroundColor: 'rgb(247,80,80)',
-    }
+    },
   },
   popper: {
     zIndex: 1,
@@ -125,8 +117,6 @@ export default function CustomAvatar(props) {
   const anchorRef = React.useRef(null);
   const [arrowRef, setArrowRef] = React.useState(null);
   let mouseOver = false;
-  const toWelcome = { redirect: "/" };
-  //const arrowRef = React.useRef(null);
 
   const handleToggle = () => {
     if (!open) {
@@ -136,25 +126,24 @@ export default function CustomAvatar(props) {
 
   const handleClose = (event) => {
     setTimeout(() => {
-      if (mouseOver == false && open) {
+      if (mouseOver === false && open) {
         setOpen(false);
       }
     }, 10);
   };
 
   const editInfo = () => {
-    return history.push("/search/editInfo",{ response: "response" })
-
+    return history.push('/search/editInfo', {response: 'response'});
   };
 
   const logOut = (event) => {
-    return history.push("/");
-  }
+    return history.push('/');
+  };
   useEffect(() => {
     console.log(arrowRef);
   });
 
-  const {src, size, onClick, style} = props;
+  const {src, size} = props;
   var newStyle = {
     width: size ? size + 'px' : '40px',
     height: size ? size + 'px' : '40px',
@@ -173,7 +162,7 @@ export default function CustomAvatar(props) {
     backgroundPosition: '50% 50%',
   };
 
-  //Object.assign(newStyle, style); 
+  //Object.assign(newStyle, style);
   return (
     <Grid container>
       <Badge

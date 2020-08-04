@@ -1,7 +1,5 @@
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import makeStyles from "@material-ui/core/styles/makeStyles";
 
 export const SubmitButtonStyled = withStyles((theme) => ({
   root: {
@@ -20,23 +18,3 @@ export const SubmitButtonStyled = withStyles((theme) => ({
     },
   },
 }))(Button);
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: '0 auto',
-    display: 'block',
-    '& .MuiTextField-root': {
-      margin: theme.spacing(2.5),
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          width: '16rem',
-          borderRadius: `30px`,
-          border: '2px solid hsla(84, 5%, 22%, 0.897)',
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: 'red',
-        },
-      },
-    },
-  },
-}));

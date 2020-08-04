@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
 import './DisplayImages.css';
-import CrossFadeImage from 'react-crossfade-image';
 import withMemo from '../../withMemo';
 
 const images = {
@@ -15,17 +14,16 @@ const images = {
     'https://images.pexels.com/photos/731022/pexels-photo-731022.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   image_5:
     //'https://images.pexels.com/photos/888899/pexels-photo-888899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    'https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    'https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
   //#endregion
 };
 const TOTAL_IMAGES = 5;
 function DisplayImages() {
   //keep track of current image
-  
+
   const [imageDisplay, updateImage] = useState(images['image_1']);
   const image = useRef(imageDisplay);
   image.current = imageDisplay;
-  let interval = null;
 
   function getNextImage() {
     //get the current image

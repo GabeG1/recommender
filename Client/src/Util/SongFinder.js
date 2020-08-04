@@ -1,17 +1,13 @@
 import {trackPromise} from 'react-promise-tracker';
+import {tokens} from './tokens.json';
 
-const CLIENT_ID = '0257e913a3d44ce9b0535e868949fd21';
+const CLIENT_ID = tokens.songs.clientId;
 const URL = 'https://accounts.spotify.com/api/token';
-const CORS = 'https://cors-anywhere.herokuapp.com/';
-const cs = '96a0cfebacfa4ad3a5757db18d09fac1';
+const cs = tokens.songs.codeSecret;
 const encodedData = window.btoa(CLIENT_ID + ':' + cs);
 const searchUrl = 'https://api.spotify.com/v1/search';
 const popularPlaylistID = '37i9dQZF1DXcBWIGoYBM5M';
-const fields =
-  'items(track(name%2C%20id%2C%20artists(name)%2C%20album(name%2C%20images(url)%2C%20release_date)))&limit=20';
 const popularPlaylisturl = `https://api.spotify.com/v1/playlists/${popularPlaylistID}?market=US&limit=20`;
-const tempURL =
-  'https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M?market=ES&fields=items(track(name%2C%20id%2C%20artists(name)%2C%20album(name%2C%20images(url)%2C%20release_date)))';
 
 //Gets access token  to Spotify (oAuth2)
 async function getToken() {

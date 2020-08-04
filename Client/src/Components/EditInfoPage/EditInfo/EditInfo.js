@@ -7,9 +7,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
-import {
-  useHistory,
-} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import {authenticateUser} from './EditInfoAuth';
 import * as Styles from './EditInfoStyles.js';
@@ -76,10 +74,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EditInfo(props) {
-  
-  const allLetters = "^[A-Za-z]+$";
+  const allLetters = '^[A-Za-z]+$';
   const noWhiteSpaces = "[^' ']+$";
-  const validEmail = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+  const validEmail = '^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$';
 
   const [values, setValues] = React.useState({
     showPassword: false,
@@ -112,14 +109,16 @@ export default function EditInfo(props) {
   };
 
   const authenticateInfo = async () => {
-      const authenticationInformation = await authenticateUser(editInfoFormValues);
-      return authenticationInformation.status == 200;
-    }
+    const authenticationInformation = await authenticateUser(
+      editInfoFormValues
+    );
+    return authenticationInformation.status === 200;
+  };
 
   const body = (
     <div className={classes.paper}>
       <form
-         onSubmit={async (e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
           return (await authenticateInfo()) ? history.push('/search') : null;
         }}>
@@ -127,45 +126,45 @@ export default function EditInfo(props) {
         <Grid item>
           <TextField
             id='firstName'
-            inputProps = {{pattern: allLetters}}
+            inputProps={{pattern: allLetters}}
             value={firstNameValue}
-            onChange={(e)=>setFirstNameValue(e.target.value)}
+            onChange={(e) => setFirstNameValue(e.target.value)}
             inputRef={editInfoFormValues.fNameRef}
             placeholder='First Name'
-            label = 'First Name'
+            label='First Name'
             variant='outlined'
             required
           />
           <TextField
             id='lastName'
-            inputProps = {{pattern: allLetters}}
+            inputProps={{pattern: allLetters}}
             value={lastNameValue}
-            onChange={(e)=>setLastNameValue(e.target.value)}
+            onChange={(e) => setLastNameValue(e.target.value)}
             inputRef={editInfoFormValues.lNameRef}
             placeholder='Last Name'
-            label = 'Last Name'
+            label='Last Name'
             variant='outlined'
             required
           />
         </Grid>
         <TextField
-        inputProps = {{pattern: validEmail}}
-        value={emailValue}
-            onChange={(e)=>setEmailValue(e.target.value)}
+          inputProps={{pattern: validEmail}}
+          value={emailValue}
+          onChange={(e) => setEmailValue(e.target.value)}
           id='Email address'
           inputRef={editInfoFormValues.emailRef}
           placeholder='Email address'
-          label = 'Email address'
+          label='Email address'
           variant='outlined'
           required
         />
 
         <TextField
           id='username'
-          inputProps = {{pattern: noWhiteSpaces}}
+          inputProps={{pattern: noWhiteSpaces}}
           inputRef={editInfoFormValues.usernameRef}
           value={userNameValue}
-            onChange={(e)=>setUserNameValue(e.target.value)}
+          onChange={(e) => setUserNameValue(e.target.value)}
           placeholder='Username'
           label='Username'
           variant='outlined'
@@ -177,7 +176,7 @@ export default function EditInfo(props) {
           inputRef={editInfoFormValues.passwordRef}
           type={values.showPassword ? 'text' : 'password'}
           value={passwordValue}
-            onChange={(e)=>setPasswordValue(e.target.value)}
+          onChange={(e) => setPasswordValue(e.target.value)}
           placeholder='Password'
           label='Password'
           variant='outlined'

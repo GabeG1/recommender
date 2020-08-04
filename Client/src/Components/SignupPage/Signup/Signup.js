@@ -7,14 +7,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-  Link,
-  Redirect,
-} from 'react-router-dom';
+import {BrowserRouter as Router, useHistory} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import './Signup.css';
 import * as Styles from './SignupStyles.js';
@@ -124,7 +117,7 @@ export default function Signup(props) {
     const authenticationInformation = await authenticateUser(signupFormValues);
     console.log('...results returned');
     console.log(authenticationInformation);
-    return authenticationInformation.status == 200;
+    return authenticationInformation.status === 200;
   };
 
   const body = (
@@ -132,7 +125,12 @@ export default function Signup(props) {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          return (await authenticateInfo()) ? history.push({ pathname: '/search', response: signupFormValues.usernameRef}) : null;
+          return (await authenticateInfo())
+            ? history.push({
+                pathname: '/search',
+                response: signupFormValues.usernameRef,
+              })
+            : null;
         }}>
         <header className='SignupTitle'>Signup</header>
         <Grid item>

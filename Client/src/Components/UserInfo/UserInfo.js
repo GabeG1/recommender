@@ -1,16 +1,29 @@
-import React, {useState, useEffect, useRef, useContext} from 'react';
-import withMemo from '../withMemo';
-import App from '../App/App'
+import React, {useReducer, createContext} from 'react';
 
-function UserInfo(props) {
-const userField = useContext(App.userContext)
+const initialState = {loggedIn: false};
+const store = createContext(initialState);
+const {Provider} = store;
+
+const UserInfo = ({children}) => {
+  const [state, dispatch] = useReducer((state, action) => {
+    console.log(action);
+    switch (action.loggedIn) {
+      case true:
+        return {loggedIn: true, userName: action.userName};
+      default:
+        throw new Error();
+    }
+  }, initialState);
+
+  return <Provider value={{state, dispatch}}>{children}</Provider>;
+};
+
+/*
     const [fName, setfName] = useState(props.location.state);
     const [lName, setlName] = useState(props.location.state);
     const [username, setUsername] = useState(props.location.state);
     const [email, setEmail] = useState(props.location.state);
     const [password, setPassword] = useState(props.location.state);
-  return (<div>{console.log(userField)}
-      </div> );
-}
-    
-    export default withMemo(UserInfo, []);
+    */
+
+export {store, UserInfo};

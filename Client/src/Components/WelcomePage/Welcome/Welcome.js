@@ -1,23 +1,16 @@
 //#region
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useEffect, useContext} from 'react';
 import DisplayImages from '../DisplayImages/DisplayImages';
 import {Grid} from '@material-ui/core';
 import {LoginButton} from '../../LoginPage/LoginButton/LoginButton';
 import {SignupButton} from '../../SignupPage/SignupButton/SignupButton';
 import './Welcome.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  withRouter,
-  Link,
-} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 import {makeStyles} from '@material-ui/core';
 import withMemo from '../../withMemo';
+import {store} from '../../UserInfo/UserInfo';
 //#endregion
-const axios = require('axios');
-
 
 //styles
 const useStyles = makeStyles(({breakpoints}) => ({
@@ -72,11 +65,15 @@ const useStyles = makeStyles(({breakpoints}) => ({
       backgroundSize: 'cover',
     },
   },
-  signupButton: {
+  signupButtonGrid: {
     cursor: 'pointer',
-    pointerEvents: 'auto',
-    alignSelf: 'flex-end',
     position: 'fixed',
+    justifyContent: 'center',
+    overflowY: 'scroll',
+
+    overflowX: 'hidden',
+
+    alignSelf: 'flex-end',
     //paddingTop: 'rem',
     [breakpoints.up('xs')]: {
       bottom: 100,
@@ -92,12 +89,16 @@ const useStyles = makeStyles(({breakpoints}) => ({
     },
     zIndex: '3',
   },
+
   linkToLogin: {
     zIndex: '5',
   },
-  linkToSignup: {textDecorationLine: 'none'},
-  signupButtonText: {
-    fontSize: 50,
+  linkToSignup: {
+    textDecorationLine: 'none',
+    transform: 'rotate(360deg)',
+    WebkitTransform: 'rotate(360deg)',
+    MozTransform: 'rotate(360deg)',
+    OTransform: 'rotate(360deg)',
   },
 
   websiteMessage: {
@@ -128,30 +129,38 @@ const useStyles = makeStyles(({breakpoints}) => ({
     MozBoxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
     boxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
     color: '#000000',
-    paddingTop: 50,
     fontFamily: 'Yanone Kaffeesatz, sans-serif',
     height: 300,
     width: '100%',
     zIndex: 11,
-    fontSize: 30,
+    fontSize: 25,
     textAlign: 'left',
-    paddingRight: 20,
     backgroundColor: '#ffffff',
   },
   overviewQuestion: {
     textAlign: 'center',
     fontWeight: 800,
   },
+  overviewAnswer: {
+    fontSize: 19,
+    paddingRight: 20,
+    fontWeight: 500,
+    fontFamily: 'Source Sans Pro, sans-serif',
+  },
+  questionOneSection: {
+    alignItems: 'center',
+  },
+  questionTwoSection: {
+    backgroundColor: '#d4d4d4',
+    alignItems: 'center',
+  },
 }));
 
 function Welcome(props) {
   const classes = useStyles();
 
-
   //Scroll handler
   const handleScroll = (e) => {
-    console.log('scrolling');
-
     //If user has scrolled, adjust opacity of the grid with the classname 'mainDisplayContent' scrolling down decreases opacity; scrolling up increases opacity
     if (e.target.scrollTop > 0) {
       var currScrollPos2 = e.target.scrollTop;
@@ -169,6 +178,8 @@ function Welcome(props) {
         .removeEventListener('scroll', handleScroll);
     };
   });
+  const globalState = useContext(store);
+  console.log(globalState);
   return (
     <Grid
       container
@@ -216,44 +227,45 @@ function Welcome(props) {
           classes={{root: classes.websiteMessage}}>
           "Lets hope this works" -G^2, seconds before it didnt work
         </Grid>
-        <Grid item xs={12} classes={{root: classes.signupButton}}>
+        <Grid item xs={12} classes={{root: classes.signupButtonGrid}}>
           <Link
             to='/signup'
             underline='none'
             className='linkToSearch'
             classes={{root: classes.linkToSignup}}>
-            <SignupButton size='small' />
+            <SignupButton size='small' classes={{root: classes.signupButton}} />
           </Link>
         </Grid>
       </Grid>
       <Grid container classes={{root: classes.websiteOverview}}>
-        <Grid item xs={3} classes={{root: classes.overviewQuestion}}>
-          Why Recommender?
+        <Grid container classes={{root: classes.questionOneSection}}>
+          <Grid item xs={12} sm={3} classes={{root: classes.overviewQuestion}}>
+            Why Recommender?
+          </Grid>
+          <Grid item xs={12} sm={9} classes={{root: classes.overviewAnswer}}>
+            A place to share whatever is on your mind about any topic of
+            interest. Love that song? Leave a review. A recent movie not your
+            favorite? Share your thoughts.
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          A place to share whatever is on your mind about any topic of interest.
-          Love that song? Leave a review. A recent movie not your favorite? Share your
-          thoughts.
-        </Grid>
-        <Grid item xs={3} classes={{root: classes.overviewQuestion}}>
-          What is Recommender?
-        </Grid>
-        <Grid item xs={9}>
-          Created during the drudgery of lockdown caused by COVID 19. Recommender is a tool to
-
-          help people find new media to consume, brightening their day and making the pandemic
-          more bearable. It was a passion project, something beautiful to bloom from the 
-          bleakness that comes with a lockdown, which in turn can make other's lockdowns 
-          just a little brighter.
-
-          Stay indoors and consume media
-                  -G^2 and Sol
+        <Grid container classes={{root: classes.questionTwoSection}}>
+          <Grid item xs={12} sm={3} classes={{root: classes.overviewQuestion}}>
+            What is Recommender?
+          </Grid>
+          <Grid item xs={12} sm={9} classes={{root: classes.overviewAnswer}}>
+            Created during the drudgery of lockdown caused by COVID 19.
+            Recommender is a tool to help people find new media to consume,
+            brightening their day and making the pandemic more bearable. It was
+            a passion project, something beautiful to bloom from the bleakness
+            that comes with a lockdown, which in turn can make other's lockdowns
+            just a little brighter. Stay indoors and consume media -G^2 and Sol
+          </Grid>
         </Grid>
       </Grid>
       {/*//#endregion*/}
       <Switch>
         {props.routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} id={i} {...route} />
+          <RouteWithSubRoutes key={i} id={i} {...route} />
         ))}
       </Switch>
     </Grid>
