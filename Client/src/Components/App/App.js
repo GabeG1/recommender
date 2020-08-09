@@ -11,7 +11,7 @@ import {UserInfo} from '../UserInfo/UserInfo';
 export default function App() {
   const routes = [
     {
-      path: '/search',
+      path: '/search/user/:user',
       component: Search,
       routes: [
         {
