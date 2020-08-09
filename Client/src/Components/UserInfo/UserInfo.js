@@ -1,6 +1,8 @@
-import React, {useReducer, createContext} from 'react';
+import React, {useReducer, createContext, useEffect} from 'react';
 
-const initialState = {loggedIn: false};
+const initialState = JSON.parse(localStorage.getItem('loginInfo')) || {
+  loggedIn: false,
+};
 const store = createContext(initialState);
 const {Provider} = store;
 
@@ -14,6 +16,10 @@ const UserInfo = ({children}) => {
         throw new Error();
     }
   }, initialState);
+
+  useEffect(() => {
+    localStorage.setItem('loginInfo', JSON.stringify(state));
+  }, [state]);
 
   return <Provider value={{state, dispatch}}>{children}</Provider>;
 };
