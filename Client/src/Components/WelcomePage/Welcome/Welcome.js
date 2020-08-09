@@ -10,6 +10,8 @@ import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 import {makeStyles} from '@material-ui/core';
 import withMemo from '../../withMemo';
 import {store} from '../../UserInfo/UserInfo';
+import spotify from './spotify.png'
+
 //#endregion
 
 //styles
@@ -69,9 +71,7 @@ const useStyles = makeStyles(({breakpoints}) => ({
     cursor: 'pointer',
     position: 'fixed',
     justifyContent: 'center',
-    overflowY: 'scroll',
 
-    overflowX: 'hidden',
 
     alignSelf: 'flex-end',
     //paddingTop: 'rem',
@@ -130,7 +130,7 @@ const useStyles = makeStyles(({breakpoints}) => ({
     boxShadow: '0 0 6px 0 rgba(0,0,0,.1)',
     color: '#000000',
     fontFamily: 'Yanone Kaffeesatz, sans-serif',
-    height: 300,
+    height: 500,
     width: '100%',
     zIndex: 11,
     fontSize: 25,
@@ -154,6 +154,24 @@ const useStyles = makeStyles(({breakpoints}) => ({
     backgroundColor: '#d4d4d4',
     alignItems: 'center',
   },
+  sponsorsSection: {
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  sponsors: {
+    fontSize: 19,
+    paddingRight: 20,
+    fontWeight: 500,
+    fontFamily: 'Source Sans Pro, sans-serif',
+    content: ""
+  },
+  sponsorImages: {
+    alignItems: 'center',
+    alignContent: 'center'
+  },
+  sponsorImage: {
+    alignSelf: 'center'
+  }
 }));
 
 function Welcome(props) {
@@ -225,7 +243,7 @@ function Welcome(props) {
           sm={9}
           md={12}
           classes={{root: classes.websiteMessage}}>
-          "Lets hope this works" -G^2, seconds before it didnt work
+          "I grew up to have my father's looks, my father's speech patterns, my father's posture, my father's opinions, and my mother's contempt for my father"
         </Grid>
         <Grid item xs={12} classes={{root: classes.signupButtonGrid}}>
           <Link
@@ -240,7 +258,7 @@ function Welcome(props) {
       <Grid container classes={{root: classes.websiteOverview}}>
         <Grid container classes={{root: classes.questionOneSection}}>
           <Grid item xs={12} sm={3} classes={{root: classes.overviewQuestion}}>
-            Why Recommender?
+            Why Recommenderrr?
           </Grid>
           <Grid item xs={12} sm={9} classes={{root: classes.overviewAnswer}}>
             A place to share whatever is on your mind about any topic of
@@ -250,7 +268,7 @@ function Welcome(props) {
         </Grid>
         <Grid container classes={{root: classes.questionTwoSection}}>
           <Grid item xs={12} sm={3} classes={{root: classes.overviewQuestion}}>
-            What is Recommender?
+            What is Recommenderrr?
           </Grid>
           <Grid item xs={12} sm={9} classes={{root: classes.overviewAnswer}}>
             Created during the drudgery of lockdown caused by COVID 19.
@@ -260,7 +278,27 @@ function Welcome(props) {
             that comes with a lockdown, which in turn can make other's lockdowns
             just a little brighter. Stay indoors and consume media -G^2 and Sol
           </Grid>
+          </Grid>
+        <Grid container classes={{root: classes.sponsorsSection}}>
+        <Grid item xs={12} sm={3} classes={{root: classes.overviewQuestion}}>
+            What Fuels Recommenderrr?
+          </Grid>
+          <Grid item xs={12} sm={9} classes={{root: classes.sponsors}}>
+            <Grid container spacing={5} classes={{root: classes.sponsorImages}}>
+              <Grid item  classes={{root: classes.sponsorImage}}>
+                <img src = "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" width={100}/>
+              </Grid>
+              <Grid item  classes={{root: classes.sponsorImage}}>
+                <img src = "https://www.programmableweb.com/sites/default/files/RAWG%20Video%20Games%20Database%20API%20Image.jpg" width = {75}/>
+              </Grid>
+              <Grid item  classes={{root: classes.sponsorImage}}>
+                <img src ={spotify} width = {175}/>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
+        
+       
       </Grid>
       {/*//#endregion*/}
       <Switch>

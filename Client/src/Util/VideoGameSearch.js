@@ -1,22 +1,21 @@
 import {trackPromise} from 'react-promise-tracker';
 import {tokens} from './tokens.json';
 
-const API_KEY = tokens.games;
-const URL = 'https://www.giantbomb.com/api/games/?api_key=';
-const CORS = 'https://cors-anywhere.herokuapp.com/';
+const URL = 'https://rawg-video-games-database.p.rapidapi.com/games';
 
 const VideoGames = {
   searchVideoGames: async function (query, offset) {
     //get video games from api
     const response = await trackPromise(
       fetch(
-        `${CORS}${URL}${API_KEY}&format=json&filter=name:${query}&limit=20&offset=${
+        `${URL}filter=name:${query}&limit=20&offset=${
           offset * 20
         }`,
         {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-          },
+          headers:  {
+            "x-rapidapi-host": tokens.games.x_rapidapi_host,
+            "x-rapidapi-key": tokens.games.x_rapidapi_key
+          }
         }
       )
     );
