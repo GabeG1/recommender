@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {
   IconButton,
   MenuItem,
@@ -12,6 +12,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import {BrowserRouter as Router, useHistory} from 'react-router-dom';
+import {store} from '../../UserInfo/UserInfo';
 const useStyles = makeStyles((theme) => ({
   badge: {
     backgroundColor: '#44b700',
@@ -114,6 +115,7 @@ export default function CustomAvatar(props) {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const globalState = useContext(store);
   const anchorRef = React.useRef(null);
   const [arrowRef, setArrowRef] = React.useState(null);
   let mouseOver = false;
@@ -137,6 +139,8 @@ export default function CustomAvatar(props) {
   };
 
   const logOut = (event) => {
+    const {dispatch} = globalState;
+      dispatch({loggedIn: false});
     return history.push('/');
   };
   useEffect(() => {

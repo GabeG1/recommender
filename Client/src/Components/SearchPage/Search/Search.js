@@ -17,7 +17,7 @@ import RouteWithSubRoutes from '../../RouteWithSubRoutes';
 import withMemo from '../../withMemo';
 import {store} from '../../UserInfo/UserInfo';
 
-function Search(props) {
+export default function Search(props) {
   const [searchValues, setSearchValues] = useState({
     category: '',
     searchResults: [],
@@ -212,5 +212,3 @@ function Search(props) {
     </div>
   );
 }
-
-export default withMemo(Search, []);

@@ -6,11 +6,11 @@ const URL = 'https://rawg-video-games-database.p.rapidapi.com/games';
 const VideoGames = {
   searchVideoGames: async function (query, offset) {
     //get video games from api
+    console.log(tokens);
     const response = await trackPromise(
       fetch(
-        `${URL}filter=name:${query}&limit=20&offset=${
-          offset * 20
-        }`,
+        `${URL}?search=${query}&page_size=20&page=${
+          offset+1}`,
         {
           headers:  {
             "x-rapidapi-host": tokens.games.x_rapidapi_host,
@@ -19,21 +19,21 @@ const VideoGames = {
         }
       )
     );
-
+console.log(response);
     //convert response to json
     const jsonResponse = await trackPromise(response.json());
     if (!jsonResponse.results) {
       return [];
     }
     return {
-      totalResults: jsonResponse.number_of_total_results,
+      totalResults: jsonResponse.count,
       //create video game array
       gameList: jsonResponse.results.map((game) => {
         return {
           id: game.id,
           name: game.name,
-          image: game.image.original_url,
-          description: game.deck,
+          image: game.background_image,
+          description: game.released,
         };
       }),
     };

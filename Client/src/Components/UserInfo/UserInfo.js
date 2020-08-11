@@ -12,6 +12,8 @@ const UserInfo = ({children}) => {
     switch (action.loggedIn) {
       case true:
         return {loggedIn: true, userName: action.userName};
+      case false: 
+        return {loggedIn: false};
       default:
         throw new Error();
     }

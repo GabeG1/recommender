@@ -62,15 +62,10 @@ export default function Login(props) {
   };
 
   const sendFormToAuth = async () => {
-    console.log('returning true');
-    const {dispatch} = globalState;
-    dispatch({loggedIn: true, userName: 'cool'});
-    return true;
     const responseData = await PostExistingUser(loginFormValues);
     if (responseData.status == 200) {
-      console.log('returning true');
       const {dispatch} = globalState;
-      dispatch({loggedIn: 'true'});
+      dispatch({loggedIn: true, userName: loginFormValues.usernameRef.current.value});
       return true;
     }
   };
