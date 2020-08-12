@@ -135,7 +135,7 @@ export default function CustomAvatar(props) {
   };
 
   const editInfo = () => {
-    return history.push('/search/editInfo', {response: 'response'});
+    return history.push('/search/editInfo');
   };
 
   const logOut = (event) => {

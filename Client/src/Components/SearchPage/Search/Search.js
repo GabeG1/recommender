@@ -14,7 +14,6 @@ import Shows from '../../../Util/ShowFinder';
 import CustomAvatar from './CustomAvatar';
 import {PopularResults} from '../PopularResults/PopularResults';
 import RouteWithSubRoutes from '../../RouteWithSubRoutes';
-import withMemo from '../../withMemo';
 import {store} from '../../UserInfo/UserInfo';
 
 export default function Search(props) {
@@ -206,7 +205,10 @@ export default function Search(props) {
       </section>
       <Switch>
         {props.routes.map((route, i) => (
+          <div>
+          {console.log(route)}
           <RouteWithSubRoutes key={i} {...route} />
+          </div>
         ))}
       </Switch>
     </div>

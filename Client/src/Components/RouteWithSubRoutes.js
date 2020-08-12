@@ -7,7 +7,10 @@ function RouteWithSubRoutes(route) {
       path={route.path}
       render={(props) => (
         // pass the sub-routes down to keep nesting
+<div>
+  {console.log('hello')}
         <route.component {...props} routes={route.routes} />
+        </div>
       )}
     />
   );

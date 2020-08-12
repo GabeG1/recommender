@@ -27,4 +27,28 @@ router.get('/existingUser', function(req, res, next) {
     }
 })});
 
+router.get('/getUserInfo', function(req, res, next) {
+    let username = req.query.username;
+    Users.getUserInfo(username).then(response => {
+    if (response != null){
+        res.status(200).send();
+        res.body = response
+    }
+    else{
+        res.status(400).send("Not a valid user");
+    }
+})});
+
+router.post('/editInfo', function(req, res, next) {
+    let newUsername = req.body.newUsernameRef;
+    Users.checkIfUsernameUnique(newUsername).then(response => {
+    if (response){
+        Users.editUserInfo(req.body);
+        res.status(200).send();
+    }
+    else{
+        res.status(400).send("Username is already taken, please enter a new one");
+    }
+})});
+
 module.exports = router;

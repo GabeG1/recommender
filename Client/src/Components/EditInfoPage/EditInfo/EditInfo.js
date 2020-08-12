@@ -7,7 +7,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
-import {useHistory} from 'react-router-dom';
+import {Router, useHistory, withRouter} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import {authenticateUser} from './EditInfoAuth';
 import * as Styles from './EditInfoStyles.js';
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditInfo(props) {
+function EditInfo(props) {
   const allLetters = '^[A-Za-z]+$';
   const noWhiteSpaces = "[^' ']+$";
   const validEmail = '^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$';
@@ -93,8 +93,7 @@ export default function EditInfo(props) {
     lNameRef: useRef(),
     usernameRef: useRef(),
     emailRef: useRef(),
-    passwordRef: useRef(),
-    passwordConfirmRef: useRef(),
+    passwordRef: useRef()
   };
   const handleClose = () => {
     history.goBack();
@@ -114,6 +113,12 @@ export default function EditInfo(props) {
     );
     return authenticationInformation.status === 200;
   };
+
+  const getInfo = async () => {
+  // const currentUserInformation = await getUserInfo(
+
+  // )
+  }
 
   const body = (
     <div className={classes.paper}>
@@ -203,8 +208,6 @@ export default function EditInfo(props) {
   );
 
   return (
-    <div>
-      {console.log('editInfo is rendering...')}
       <Modal
         open={true}
         onClose={handleClose}
@@ -213,6 +216,7 @@ export default function EditInfo(props) {
         border={0}>
         {body}
       </Modal>
-    </div>
   );
 }
+
+export default withRouter(EditInfo);

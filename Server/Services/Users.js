@@ -40,4 +40,24 @@ function authenticateUser(inputtedUsername, inputtedPassword){
   );
 }
 
-module.exports = {checkIfUsernameUnique, addNewUser, authenticateUser}
+function getUserInfo(inputtedUsername){
+  return users.findOne({username: inputtedUsername}).then(response =>{
+    return response;
+  })
+}
+
+function editUserInfo(userInformation){
+  let currentUser = {username: userInformation.oldUsername };
+  let newInformation = { $set: {
+    firstName: userInformation.inputtedFName,
+    lastName: userInformation.inputtedLName,
+    username: userInformation.inputtedUsername,
+    email: userInformation.inputtedEmail,
+    password: userInformation.inputtedPassword} };
+
+  users.updateOne(currentUser, newInformation).then(response=>{
+    return response;
+  })
+}
+
+module.exports = {checkIfUsernameUnique, addNewUser, authenticateUser, getUserInfo, editUserInfo}

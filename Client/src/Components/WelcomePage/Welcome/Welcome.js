@@ -243,7 +243,7 @@ function Welcome(props) {
           sm={9}
           md={12}
           classes={{root: classes.websiteMessage}}>
-          "I grew up to have my father's looks, my father's speech patterns, my father's posture, my father's opinions, and my mother's contempt for my father"
+          "Its recommenderrr, with the triple hard R" -Adi's mind
         </Grid>
         <Grid item xs={12} classes={{root: classes.signupButtonGrid}}>
           <Link

@@ -13,10 +13,6 @@ Tasks:
 
 ++Front End++
 
-- Change video game API
-
-- Add logo to movie API (give credit)
-
 - Link recommendation button
 
 - Make recommendation screen
